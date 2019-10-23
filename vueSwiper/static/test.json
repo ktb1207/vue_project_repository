@@ -1,0 +1,1226 @@
+{
+    "code": 0,
+    "message": "success",
+    "data": [
+        {
+            "id": "1110809289627586561",
+            "parentId": "1110809289518534658",
+            "name": "钢筋",
+            "unit": null,
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292920115201",
+            "parentId": "1110809292832034817",
+            "name": "抗渗混凝土",
+            "unit": null,
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293004001281",
+            "parentId": "1110809292920115201",
+            "name": "P6",
+            "unit": null,
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298557259777",
+            "parentId": "1110809298473373698",
+            "name": "立杆",
+            "unit": null,
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296938258434",
+            "parentId": "1110809296862760962",
+            "name": "扣件式钢管脚手架",
+            "unit": null,
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809289728249858",
+            "parentId": "1110809289627586561",
+            "name": "HPB300",
+            "unit": null,
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296862760962",
+            "parentId": "1110809296799846401",
+            "name": "脚手架、模板支架类",
+            "unit": null,
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296095203330",
+            "parentId": "1110809296023900161",
+            "name": "预拌砌筑砂浆",
+            "unit": null,
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292832034817",
+            "parentId": "1110809289518534658",
+            "name": "混凝土",
+            "unit": null,
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296426553345",
+            "parentId": "1110809296023900161",
+            "name": "水泥",
+            "unit": null,
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290445475842",
+            "parentId": "1110809289627586561",
+            "name": "HRB335",
+            "unit": null,
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809299219959810",
+            "parentId": "1110809298473373698",
+            "name": "水平杆",
+            "unit": null,
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293683478530",
+            "parentId": "1110809292920115201",
+            "name": "P8",
+            "unit": null,
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298473373698",
+            "parentId": "1110809296862760962",
+            "name": "轮扣式钢管脚手架",
+            "unit": null,
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294430064642",
+            "parentId": "1110809292832034817",
+            "name": "普通混凝土",
+            "unit": null,
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295168262145",
+            "parentId": "1110809292832034817",
+            "name": "细石混凝土",
+            "unit": null,
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295470252033",
+            "parentId": "1110809289518534658",
+            "name": "加气混凝土砌块",
+            "unit": null,
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291250782210",
+            "parentId": "1110809289627586561",
+            "name": "HRB400",
+            "unit": null,
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296023900161",
+            "parentId": "1110809289518534658",
+            "name": "砂浆",
+            "unit": null,
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292068671490",
+            "parentId": "1110809289627586561",
+            "name": "HRB500",
+            "unit": null,
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296573353985",
+            "parentId": "1110809289518534658",
+            "name": "机制砖",
+            "unit": null,
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809289518534658",
+            "parentId": "0",
+            "name": "主材类",
+            "unit": null,
+            "orderNo": 7,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296799846401",
+            "parentId": "0",
+            "name": "周转材料（租赁材料）",
+            "unit": null,
+            "orderNo": 8,
+            "isDelete": null,
+            "leaf": false,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293083693058",
+            "parentId": "1110809293004001281",
+            "name": "C20",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293171773441",
+            "parentId": "1110809293004001281",
+            "name": "C25",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293264048130",
+            "parentId": "1110809293004001281",
+            "name": "C30",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293352128514",
+            "parentId": "1110809293004001281",
+            "name": "C35",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293436014594",
+            "parentId": "1110809293004001281",
+            "name": "C40",
+            "unit": "",
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293519900674",
+            "parentId": "1110809293004001281",
+            "name": "C45",
+            "unit": "",
+            "orderNo": 6,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293603786753",
+            "parentId": "1110809293004001281",
+            "name": "C50",
+            "unit": "",
+            "orderNo": 7,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298632757249",
+            "parentId": "1110809298557259777",
+            "name": "1.2米",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298716643329",
+            "parentId": "1110809298557259777",
+            "name": "1.5米",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298800529410",
+            "parentId": "1110809298557259777",
+            "name": "1.8米",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298884415490",
+            "parentId": "1110809298557259777",
+            "name": "2.1米",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298968301570",
+            "parentId": "1110809298557259777",
+            "name": "2.5米",
+            "unit": "",
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809299052187650",
+            "parentId": "1110809298557259777",
+            "name": "2.7米",
+            "unit": "",
+            "orderNo": 6,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809299136073730",
+            "parentId": "1110809298557259777",
+            "name": "其他规格",
+            "unit": "",
+            "orderNo": 7,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297009561601",
+            "parentId": "1110809296938258434",
+            "name": "0.9米",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297093447681",
+            "parentId": "1110809296938258434",
+            "name": "1.2米",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297173139458",
+            "parentId": "1110809296938258434",
+            "name": "1.5米",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297303162881",
+            "parentId": "1110809296938258434",
+            "name": "1.8米",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297391243266",
+            "parentId": "1110809296938258434",
+            "name": "2.0米",
+            "unit": "",
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297479323650",
+            "parentId": "1110809296938258434",
+            "name": "2.4米",
+            "unit": "",
+            "orderNo": 6,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297563209730",
+            "parentId": "1110809296938258434",
+            "name": "2.5米",
+            "unit": "",
+            "orderNo": 7,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297647095810",
+            "parentId": "1110809296938258434",
+            "name": "2.7米",
+            "unit": "",
+            "orderNo": 8,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297730981890",
+            "parentId": "1110809296938258434",
+            "name": "3米",
+            "unit": "",
+            "orderNo": 9,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297814867970",
+            "parentId": "1110809296938258434",
+            "name": "3.6米",
+            "unit": "",
+            "orderNo": 10,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297898754050",
+            "parentId": "1110809296938258434",
+            "name": "4.0米",
+            "unit": "",
+            "orderNo": 11,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809297986834434",
+            "parentId": "1110809296938258434",
+            "name": "4.2米",
+            "unit": "",
+            "orderNo": 12,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298074914817",
+            "parentId": "1110809296938258434",
+            "name": "4.5米",
+            "unit": "",
+            "orderNo": 13,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298158800897",
+            "parentId": "1110809296938258434",
+            "name": "4.8米",
+            "unit": "",
+            "orderNo": 14,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298238492674",
+            "parentId": "1110809296938258434",
+            "name": "5.1米",
+            "unit": "",
+            "orderNo": 15,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298318184449",
+            "parentId": "1110809296938258434",
+            "name": "6.0米",
+            "unit": "",
+            "orderNo": 16,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809298402070530",
+            "parentId": "1110809296938258434",
+            "name": "其他规格",
+            "unit": "",
+            "orderNo": 17,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809289828913153",
+            "parentId": "1110809289728249858",
+            "name": "直径6",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809289925382145",
+            "parentId": "1110809289728249858",
+            "name": "直径8",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290009268225",
+            "parentId": "1110809289728249858",
+            "name": "直径12",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290097348609",
+            "parentId": "1110809289728249858",
+            "name": "直径14",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290185428993",
+            "parentId": "1110809289728249858",
+            "name": "直径16",
+            "unit": "",
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290273509377",
+            "parentId": "1110809289728249858",
+            "name": "直径18",
+            "unit": "",
+            "orderNo": 6,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290361589761",
+            "parentId": "1110809289728249858",
+            "name": "直径20",
+            "unit": "",
+            "orderNo": 7,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296170700802",
+            "parentId": "1110809296095203330",
+            "name": "DMM5砌筑砂浆",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296250392578",
+            "parentId": "1110809296095203330",
+            "name": "水泥抹灰砂浆",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296338472962",
+            "parentId": "1110809296095203330",
+            "name": "DPM10抹灰砂浆",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296497856513",
+            "parentId": "1110809296426553345",
+            "name": "PC32.5水泥",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290520973313",
+            "parentId": "1110809290445475842",
+            "name": "直径10",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290604859394",
+            "parentId": "1110809290445475842",
+            "name": "直径12",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290684551170",
+            "parentId": "1110809290445475842",
+            "name": "直径14",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290768437250",
+            "parentId": "1110809290445475842",
+            "name": "直径16",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290852323330",
+            "parentId": "1110809290445475842",
+            "name": "直径18",
+            "unit": "",
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809290932015105",
+            "parentId": "1110809290445475842",
+            "name": "直径20",
+            "unit": "",
+            "orderNo": 6,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291015901186",
+            "parentId": "1110809290445475842",
+            "name": "直径22",
+            "unit": "",
+            "orderNo": 7,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291095592961",
+            "parentId": "1110809290445475842",
+            "name": "直径25",
+            "unit": "",
+            "orderNo": 8,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291175284738",
+            "parentId": "1110809290445475842",
+            "name": "直径28",
+            "unit": "",
+            "orderNo": 9,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809299299651585",
+            "parentId": "1110809299219959810",
+            "name": "0.6米",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809299387731969",
+            "parentId": "1110809299219959810",
+            "name": "0.9米",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809299471618049",
+            "parentId": "1110809299219959810",
+            "name": "1.2米",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809299559698433",
+            "parentId": "1110809299219959810",
+            "name": "1.5米",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293758976002",
+            "parentId": "1110809293683478530",
+            "name": "C20",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293842862081",
+            "parentId": "1110809293683478530",
+            "name": "C25",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809293926748162",
+            "parentId": "1110809293683478530",
+            "name": "C30",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294010634241",
+            "parentId": "1110809293683478530",
+            "name": "C35",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294094520321",
+            "parentId": "1110809293683478530",
+            "name": "C40",
+            "unit": "",
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294178406401",
+            "parentId": "1110809293683478530",
+            "name": "C45",
+            "unit": "",
+            "orderNo": 6,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294262292481",
+            "parentId": "1110809293683478530",
+            "name": "C50",
+            "unit": "",
+            "orderNo": 7,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294350372866",
+            "parentId": "1110809293683478530",
+            "name": "C55",
+            "unit": "",
+            "orderNo": 8,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294505562113",
+            "parentId": "1110809294430064642",
+            "name": "C15",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294589448194",
+            "parentId": "1110809294430064642",
+            "name": "C20",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294673334273",
+            "parentId": "1110809294430064642",
+            "name": "C25",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294757220354",
+            "parentId": "1110809294430064642",
+            "name": "C30",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294849495041",
+            "parentId": "1110809294430064642",
+            "name": "C35",
+            "unit": "",
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809294933381122",
+            "parentId": "1110809294430064642",
+            "name": "C40",
+            "unit": "",
+            "orderNo": 6,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295017267202",
+            "parentId": "1110809294430064642",
+            "name": "C45",
+            "unit": "",
+            "orderNo": 7,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295096958978",
+            "parentId": "1110809294430064642",
+            "name": "C50",
+            "unit": "",
+            "orderNo": 8,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295239565314",
+            "parentId": "1110809295168262145",
+            "name": "C20",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295319257090",
+            "parentId": "1110809295168262145",
+            "name": "C25",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295398948866",
+            "parentId": "1110809295168262145",
+            "name": "C30",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295545749505",
+            "parentId": "1110809295470252033",
+            "name": "600*300*300",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295625441281",
+            "parentId": "1110809295470252033",
+            "name": "600*300*200",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295705133057",
+            "parentId": "1110809295470252033",
+            "name": "600*200*300",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295793213441",
+            "parentId": "1110809295470252033",
+            "name": "600*200*200",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295868710914",
+            "parentId": "1110809295470252033",
+            "name": "600*100*300",
+            "unit": "",
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809295948402690",
+            "parentId": "1110809295470252033",
+            "name": "600*100*200",
+            "unit": "",
+            "orderNo": 6,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291326279681",
+            "parentId": "1110809291250782210",
+            "name": "直径10",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291410165762",
+            "parentId": "1110809291250782210",
+            "name": "直径12",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291494051842",
+            "parentId": "1110809291250782210",
+            "name": "直径14",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291573743618",
+            "parentId": "1110809291250782210",
+            "name": "直径16",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291661824001",
+            "parentId": "1110809291250782210",
+            "name": "直径18",
+            "unit": "",
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291745710082",
+            "parentId": "1110809291250782210",
+            "name": "直径20",
+            "unit": "",
+            "orderNo": 6,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291825401857",
+            "parentId": "1110809291250782210",
+            "name": "直径22",
+            "unit": "",
+            "orderNo": 7,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291909287937",
+            "parentId": "1110809291250782210",
+            "name": "直径25",
+            "unit": "",
+            "orderNo": 8,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809291988979714",
+            "parentId": "1110809291250782210",
+            "name": "直径28",
+            "unit": "",
+            "orderNo": 9,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292144168961",
+            "parentId": "1110809292068671490",
+            "name": "直径12",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292228055041",
+            "parentId": "1110809292068671490",
+            "name": "直径14",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292311941122",
+            "parentId": "1110809292068671490",
+            "name": "直径16",
+            "unit": "",
+            "orderNo": 3,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292395827201",
+            "parentId": "1110809292068671490",
+            "name": "直径18",
+            "unit": "",
+            "orderNo": 4,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292479713282",
+            "parentId": "1110809292068671490",
+            "name": "直径20",
+            "unit": "",
+            "orderNo": 5,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292567793666",
+            "parentId": "1110809292068671490",
+            "name": "直径22",
+            "unit": "",
+            "orderNo": 6,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292660068354",
+            "parentId": "1110809292068671490",
+            "name": "直径25",
+            "unit": "",
+            "orderNo": 7,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809292748148738",
+            "parentId": "1110809292068671490",
+            "name": "直径28",
+            "unit": "",
+            "orderNo": 8,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296653045761",
+            "parentId": "1110809296573353985",
+            "name": "灰砂砖",
+            "unit": "",
+            "orderNo": 1,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        },
+        {
+            "id": "1110809296732737537",
+            "parentId": "1110809296573353985",
+            "name": "粘土砖",
+            "unit": "",
+            "orderNo": 2,
+            "isDelete": null,
+            "leaf": true,
+            "storeCount": null
+        }
+    ]
+}

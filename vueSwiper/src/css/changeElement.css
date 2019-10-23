@@ -1,0 +1,135 @@
+/* 
+ 修改按钮
+*/
+
+.header-select .el-button--text {
+    font-size: 20px;
+    color: #000000;
+    font-weight: 700;
+}
+
+.header-select .el-icon--right {
+    font-weight: 500;
+    font-size: 14px;
+    color: #2138A1;
+    margin-left: 12px;
+}
+
+
+/* 修改左侧导航样式 */
+
+.el-menu--horizontal.el-menu--dark .el-submenu .el-menu-item.is-active,
+.el-menu-item.is-active {
+    color: #ffffff;
+    background-color: #004CC8;
+}
+
+.el-menu-item.is-active:hover {
+    color: #ffffff;
+    background-color: #004CC8;
+    border: none;
+}
+
+.el-menu-item:hover,
+.el-submenu__title:hover {
+    background-color: #ffffff;
+    border: 1px solid #C4C8DA;
+}
+
+
+/* 修改右侧下拉选择 */
+
+.container-select .el-button--text {
+    font-size: 20px;
+    color: #555555;
+    font-weight: 500;
+}
+
+.container-select .el-icon--right {
+    font-weight: 500;
+    font-size: 14px;
+    color: #555555;
+    margin-left: 12px;
+}
+
+
+/* 跑马灯 */
+
+.el-carousel__item:nth-child(2n) {
+    background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n+1) {
+    background-color: #d3dce6;
+}
+
+.el-carousel__item img {
+    height: 100%;
+    width: 100%;
+}
+
+
+/* 隐藏百度地图左下侧文字 */
+
+.BMap_cpyCtrl {
+    display: none;
+}
+
+.anchorBL {
+    display: none;
+}
+
+
+/* 地图信息提示框 */
+
+.map-tip-wrp {
+    height: auto;
+    width: 286px;
+    background-color: #ffffff;
+}
+
+.map-left,
+.map-middle {
+    float: left;
+    height: 44px;
+}
+
+.map-left {
+    width: 12%;
+    text-align: left;
+    line-height: 52px;
+}
+
+.map-right {
+    float: left;
+    width: 24%;
+    height: 30px;
+    line-height: 30px;
+    background-color: #004CC8;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+    border-radius: 12px;
+    margin-top: 11px;
+}
+
+.map-middle {
+    width: 64%;
+    padding-top: 4px;
+}
+
+.map-middle>p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.map-middle>p:first-child {
+    color: #555555;
+    font-size: 18px;
+}
+
+.map-middle>p:last-child {
+    color: #888888;
+    font-size: 14px;
+}

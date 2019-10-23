@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    font-size: 14px;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #383838;
+    background-color: #F2F4F6;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.flex-box {
+    display: flex;
+}
+
+.flex-style-row {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+
+.text-overflow {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#app {
+    position: relative;
+}
+
+.aside-header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 4;
+    line-height: 70px;
+    padding-right: 24px;
+}
+
+.header-tittle {
+    font-size: 26px;
+    color: #555555;
+    width: 253px;
+    padding-left: 24px;
+}
+
+.header-select {
+    font-size: 20px;
+    color: #000000;
+    padding-left: 24px;
+    font-weight: 700;
+}
+
+.header-user {
+    font-size: 18px;
+    columns: #555555;
+}
+
+.header-user>img {
+    margin-right: 8px;
+}
+
+.aside-left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #ffffff;
+    width: 256px;
+    height: 100%;
+    padding-left: 34px;
+    padding-right: 34px;
+    padding-top: 128px;
+    z-index: 2;
+}
+
+.aside-ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 186px;
+}
+
+.aside-ul>li {
+    height: 50px;
+    line-height: 50px;
+    background-color: #ffffff;
+    color: #555555;
+    font-size: 18px;
+    box-sizing: border-box;
+    padding-left: 10px;
+}
+
+.aside-ul>li:hover {
+    background-color: #f0f2f5;
+    border: 1px solid #c4c8da;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.aside-ul .router-link-active {
+    background-color: #004cc8;
+    color: #ffffff;
+}
+
+.aside-ul .router-link-active:hover {
+    background-color: #004ff8;
+    border: none;
+    cursor: pointer;
+}
+
+.aside-ul>li>img {
+    margin-right: 4px;
+}
+
+.container {
+    width: 100%;
+    padding-top: 70px;
+    padding-left: 256px;
+    padding-right: 24px;
+    padding-bottom: 38px;
+    min-width: 1160px;
+    overflow-x: auto;
+    background-color: #F2F4F6;
+}
+
+.page-wrp {
+    position: relative;
+    background-color: #F2F4F6;
+}
