@@ -29,6 +29,21 @@ const router = new Router({
       component: () => import('./views/QueryPage.vue')
     },
     {
+      path: '/swiperPage',
+      name: 'swiperPage',
+      component: () => import('./views/SwiperStudy.vue')
+    },
+    {
+      path: '/boxShadow',
+      name: 'boxShadow',
+      component: () => import('./views/BoxShadow.vue')
+    },
+    {
+      path: '/transformTwo',
+      name: 'transformTwo',
+      component: () => import('./views/TransformTwo.vue')
+    },
+    {
       path: '/:projectId/aboutRoute',
       name: 'about',
       component: () => import('./views/About.vue')

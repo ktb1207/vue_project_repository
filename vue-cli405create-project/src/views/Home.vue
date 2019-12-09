@@ -19,6 +19,9 @@
       <el-button type="primary" @click="hrefParams">路由params传参</el-button>
       <el-button type="primary" @click="hrefQuery">路由query传参</el-button>
       <el-button type="primary" @click="routerParams">路由中定义参数</el-button>
+      <el-button type="primary" @click="hrefComemonPage('swiperPage')">swiperDemo</el-button>
+      <el-button type="primary" @click="hrefComemonPage('boxShadow')">css 边框阴影</el-button>
+      <el-button type="primary" @click="hrefComemonPage('transformTwo')">transform 2D</el-button>
     </div>
   </div>
 </template>
@@ -94,6 +97,12 @@ export default {
        * 刷新：
        * 页面刷新参数还在地址栏存在
        * */
+    },
+    hrefComemonPage(routerName) {
+      console.log(name);
+      this.$router.push({
+        name: routerName
+      });
     }
   },
   created() {},

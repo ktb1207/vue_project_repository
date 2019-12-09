@@ -6,7 +6,9 @@ import store from './store';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import ElementUI, { Message } from 'element-ui';
+import VueAwesomeSwiper from 'vue-awesome-swiper';
 import 'element-ui/lib/theme-chalk/index.css';
+import 'swiper/dist/css/swiper.css';
 import './registerServiceWorker';
 import './assets/reset.css';
 import './assets/style.less';
@@ -86,6 +88,7 @@ Vue.prototype.$delete = axios.delete;
 Vue.prototype.$utils = utils;
 Vue.use(ElementUI);
 Vue.use(VueAxios, axios);
+Vue.use(VueAwesomeSwiper);
 Vue.config.productionTip = false;
 
 new Vue({
