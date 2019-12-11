@@ -1,0 +1,18 @@
+
+.container{
+    width:100%;
+    height:auto;
+    position:relative;
+}
+.header{
+    width:980px;
+    height:72px;
+    margin:0 auto;
+    background-color:#CAFEAB;
+    line-height: 72px;
+}
+.router-wrp{
+    width:980px;
+    height:auto;
+    margin:0 auto;
+}

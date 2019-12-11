@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding:0;
+}
+html,body{
+    width:100%;
+    font-size:16px;
+}
+img{
+    vertical-align: middle;
+}
+button[disabled=disabled]{
+    background-color: #666666;
+}
+button[disabled=disabled]:hover{
+    cursor: not-allowed;
+}
+.container{
+    width:100%;
+    height:auto;
+    position:relative;
+}
+.header{
+    width:980px;
+    height:72px;
+    margin:0 auto;
+    background-color:#CAFEAB;
+    line-height: 72px;
+}
+.router-wrp{
+    width:980px;
+    height:auto;
+    margin:0 auto;
+}

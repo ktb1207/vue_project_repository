@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div class="container" id="indexApp">
+        <div class="header">
+            <tab-bar v-for="tab in tittleBar" :name=tab.tittle :active=tab.active :link=tab.to @selectchange="handleChange"></tab-bar>
+        </div>
+        <div class="router-wrp">
+            <router-view></router-view>
+        </div>
+    </div>
+</body>
+</html>

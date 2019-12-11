@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+<link href="index.css?2b24a4abd93d6b20f97e" rel="stylesheet"></head>
+<body>
+    <div class="container" id="indexApp">
+        <div class="header">
+            <tab-bar v-for="tab in tittleBar" :name="tab.tittle" :active="tab.active" :link="tab.to" @selectchange="handleChange"></tab-bar>
+        </div>
+        <div class="router-wrp">
+            <router-view></router-view>
+        </div>
+    </div>
+<script type="text/javascript" src="index.js?2b24a4abd93d6b20f97e"></script></body>
+</html>
