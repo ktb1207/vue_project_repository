@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <model-title title-name="项目标题要修改">
+    <model-title title-name="Vue Study">
       <div slot="right" class="title-right-wrp">top right</div>
     </model-title>
     <div class="page-router">

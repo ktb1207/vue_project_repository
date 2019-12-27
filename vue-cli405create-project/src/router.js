@@ -44,6 +44,21 @@ const router = new Router({
       component: () => import('./views/TransformTwo.vue')
     },
     {
+      path: '/string',
+      name: 'string',
+      component: () => import('./views/JsString.vue')
+    },
+    {
+      path: '/array',
+      name: 'array',
+      component: () => import('./views/JsArray.vue')
+    },
+    {
+      path: '/number',
+      name: 'number',
+      component: () => import('./views/JsNumber.vue')
+    },
+    {
       path: '/:projectId/aboutRoute',
       name: 'about',
       component: () => import('./views/About.vue')

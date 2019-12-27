@@ -22,6 +22,9 @@
       <el-button type="primary" @click="hrefComemonPage('swiperPage')">swiperDemo</el-button>
       <el-button type="primary" @click="hrefComemonPage('boxShadow')">css 边框阴影</el-button>
       <el-button type="primary" @click="hrefComemonPage('transformTwo')">transform 2D</el-button>
+      <el-button type="primary" @click="hrefComemonPage('string')">String</el-button>
+      <el-button type="primary" @click="hrefComemonPage('array')">Array</el-button>
+      <el-button type="primary" @click="hrefComemonPage('number')">Number</el-button>
     </div>
   </div>
 </template>
@@ -99,7 +102,6 @@ export default {
        * */
     },
     hrefComemonPage(routerName) {
-      console.log(name);
       this.$router.push({
         name: routerName
       });
