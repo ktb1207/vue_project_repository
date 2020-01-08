@@ -29,33 +29,20 @@
 </style>
 <template>
   <span class="box-img" @click="boxClick">
-    <i class="iconfont icon-xuanzhong" :class="disabled ? 'disabled':''" v-if="checkedStatus"></i>
-    <i
-      class="iconfont icon-fujiedianxuanzhong"
-      :class="disabled ? 'disabled':''"
-      v-else-if="banStatus"
-    ></i>
-    <i class="iconfont icon-weixuanzhong" :class="disabled ? 'disabled':''" v-else></i>
+    <i class="iconfont icon-xuanzhong" :class="disabled ? 'disabled':''" v-if="checkedStatus === 'all'"></i>
+    <i class="iconfont icon-weixuanzhong" :class="disabled ? 'disabled':''" v-else-if="checkedStatus === 'empty'"></i>
+    <i class="iconfont icon-fujiedianxuanzhong" :class="disabled ? 'disabled':''" v-else></i>
   </span>
 </template>
 <script>
 import './treeIcon/iconfont.css';
 export default {
-  name: 'BoxImg',
+  name: 'CheckAll',
   props: {
-    propValue: {
-      type: Object,
-      default() {
-        return {};
-      }
-    },
     checkedStatus: {
-      type: Boolean,
-      default: false
-    },
-    banStatus: {
-      type: Boolean,
-      default: false
+      // empty all concat
+      type: String,
+      default: 'empty'
     },
     disabled: {
       type: Boolean,
@@ -71,7 +58,11 @@ export default {
   methods: {
     boxClick() {
       if (!this.disabled) {
-        this.$emit('checkChange', this.propValue);
+        if (this.checkedStatus === 'empty' || this.checkedStatus === 'concat') {
+          this.$emit('allCheck', 'all');
+        } else {
+          this.$emit('allCheck', 'empty');
+        }
       }
     }
   }

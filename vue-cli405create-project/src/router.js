@@ -59,6 +59,11 @@ const router = new Router({
       component: () => import('./views/JsNumber.vue')
     },
     {
+      path: '/treeTable',
+      name: 'treeTable',
+      component: () => import('./views/TreeTable.vue')
+    },
+    {
       path: '/:projectId/aboutRoute',
       name: 'about',
       component: () => import('./views/About.vue')
