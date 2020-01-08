@@ -722,6 +722,7 @@ export default {
         return this.deepUpConcat(parentItem, status);
       }
     },
+    // 外部refs使用，获取树所有勾选节点
     getTreeAllCheck() {
       const arr = [];
       this.saveTreeData.forEach(item => {
