@@ -1,91 +1,90 @@
 <style lang="less">
-  .box-shadow{
-    height:auto;
-    .flex-row{
-      height:340px;
-      width:100%;
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: space-evenly;
-      align-items: stretch;
-      padding:24px;
-      .flex-item{
-        flex:1 1 auto;
-        border:1px solid #409EFF;
-        padding:24px;
-        & + .flex-item{
-          margin-left:24px;
-        }
-      }
-      .shadow-demo-one{
-        width:160px;
-        height:160px;
-        background-color: aqua;
-        box-shadow: 180px -24px 0px 0px #333333;
-      }
-      .shadow-demo-two{
-        width:160px;
-        height:160px;
-        background-color: aqua;
-        box-shadow: 180px -24px 0px -32px #333333;
-      }
-      .shadow-demo-three{
-        width:160px;
-        height:160px;
-        background-color: aqua;
-        box-shadow: 180px -24px 10px -32px #333333;
-      }
-      .shadow-demo-four{
-        width:160px;
-        height:160px;
-        background-color: #ffffff;
-        box-shadow: 0px 0px 4px 2px #e7e9f5;
-      }
-      .shadow-demo-five{
-        width:160px;
-        height:160px;
-        background-color: #ffffff;
-        box-shadow: 0px 4px 8px -4px #333333;
-      }
-      .shadow-demo-six{
-        width:160px;
-        height:160px;
-        background-color: #ffffff;
-        box-shadow: -4px 0px 8px -4px red,
-                    0px -4px 8px -4px green,
-                    4px 0px 8px -4px blue,
-                    0px 4px 8px -4px yellow;
-      }
-      .shadow-demo-seven{
-        width:160px;
-        height:160px;
-        background-color: #ffffff;
-        box-shadow: 0px 0px 0px 4px#ffffff,
-                    0px 0px 0px 0px #ffffff,
-                    8px 0px 10px -4px blue,
-                    0px 0px 0px 0px #ffffff;
-      }
-      .shadow-demo-eight{
-        width:160px;
-        height:160px;
-        background-color: #ffffff;
-        box-shadow: 0px 0px 0px 0px#ffffff,// 左
-                    0px 0px 0px 4px #ffffff,// 上
-                    0px 0px 0px 0px #ffffff, // 右
-                    0px 8px 10px -4px blue; // 下
+.box-shadow {
+  height: auto;
+  .flex-row {
+    height: 340px;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: stretch;
+    padding: 24px;
+    .flex-item {
+      flex: 1 1 auto;
+      border: 1px solid #409eff;
+      padding: 24px;
+      & + .flex-item {
+        margin-left: 24px;
       }
     }
+    .shadow-demo-one {
+      width: 160px;
+      height: 160px;
+      background-color: aqua;
+      box-shadow: 180px -24px 0px 0px #333333;
+    }
+    .shadow-demo-two {
+      width: 160px;
+      height: 160px;
+      background-color: aqua;
+      box-shadow: 180px -24px 0px -32px #333333;
+    }
+    .shadow-demo-three {
+      width: 160px;
+      height: 160px;
+      background-color: aqua;
+      box-shadow: 180px -24px 10px -32px #333333;
+    }
+    .shadow-demo-four {
+      width: 160px;
+      height: 160px;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 4px 2px #e7e9f5;
+    }
+    .shadow-demo-five {
+      width: 160px;
+      height: 160px;
+      background-color: #ffffff;
+      box-shadow: 0px 4px 8px -4px #333333;
+    }
+    .shadow-demo-six {
+      width: 160px;
+      height: 160px;
+      background-color: #ffffff;
+      box-shadow: -4px 0px 8px -4px red, 0px -4px 8px -4px green,
+        4px 0px 8px -4px blue, 0px 4px 8px -4px yellow;
+    }
+    .shadow-demo-seven {
+      width: 160px;
+      height: 160px;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 0px 4px#ffffff, 0px 0px 0px 0px #ffffff,
+        8px 0px 10px -4px blue, 0px 0px 0px 0px #ffffff;
+    }
+    .shadow-demo-eight {
+      width: 160px;
+      height: 160px;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 0px 0px#ffffff,
+        // 左
+          0px 0px 0px 4px #ffffff,
+        // 上
+          0px 0px 0px 0px #ffffff,
+        // 右
+          0px 8px 10px -4px blue; // 下
+    }
   }
+}
 </style>
 <template>
   <div class="box-shadow">
     <back-home></back-home>
     <div class="header">
-      <el-button type="primary">box-shadow：水平阴影位置 垂直阴影位置 模糊距离 阴影尺寸 阴影颜色 outset/inset</el-button> <br/>
-      <el-button type="primary">offset-x 设置水平偏移量，如果是负值则阴影位于元素左边,正值在元素右边</el-button> <br/>
-      <el-button type="primary">offset-y 设置垂直偏移量，如果是负值则阴影位于元素上面,正值在元素下边</el-button> <br/>
-      <el-button type="primary">blur-radius: 这是第三个 length 值。值越大，模糊面积越大，阴影就越大越淡。 不能为负值。默认为0,此时阴影边缘锐利</el-button><br/>
-      <el-button type="primary">spread-radius : 这是第四个 length 值。取正值时，阴影扩大；取负值时，阴影收缩。默认为0，此时阴影与元素同样大。</el-button><br/>
+      <el-button type="primary">box-shadow：水平阴影位置 垂直阴影位置 模糊距离 阴影尺寸 阴影颜色 outset/inset</el-button> <br />
+      <el-button type="primary">offset-x 设置水平偏移量，如果是负值则阴影位于元素左边,正值在元素右边</el-button> <br />
+      <el-button type="primary">offset-y 设置垂直偏移量，如果是负值则阴影位于元素上面,正值在元素下边</el-button> <br />
+      <el-button type="primary">blur-radius: 这是第三个 length 值。值越大，模糊面积越大，阴影就越大越淡。 不能为负值。默认为0,此时阴影边缘锐利</el-button><br />
+      <el-button type="primary">spread-radius : 这是第四个 length 值。取正值时，阴影扩大；取负值时，阴影收缩。默认为0，此时阴影与元素同样大。</el-button><br />
     </div>
     <div class="flex-row">
       <div class="flex-item">
@@ -180,8 +179,7 @@ export default {
   name: 'boxShadow',
   props: {},
   data() {
-    return {
-    };
+    return {};
   },
   computed: {},
   components: {

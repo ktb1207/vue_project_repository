@@ -1,7 +1,7 @@
 //启动项目时自动打开浏览器的插件
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const OpenBrowserPlugin = require ('open-browser-webpack-plugin');
 //打包前自动清空dist目录的插件
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CleanWebpackPlugin = require ('clean-webpack-plugin');
 //端口号
 const theDefaultPort = 8082;
 //登录状态
@@ -17,12 +17,6 @@ module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   // 将构建好的文件输出到哪里
   outputDir: './dist/vue-cli310-project', // 打包文件名自行修改
-
-  // 是否在保存的时候使用 `eslint-loader` 进行检查。
-  // 有效的值：`ture` | `false` | `"error"`
-  // 当设置为 `"error"` 时，检查出的错误会触发编译失败。
-  lintOnSave: false,
-
   // 使用带有浏览器内编译器的完整构建版本
   // 查阅 https://cn.vuejs.org/v2/guide/installation.html#运行时-编译器-vs-只包含运行时
   // compiler: false,
@@ -34,18 +28,17 @@ module.exports = {
     if (process.env.NODE_ENV === 'production') {
       // 为生产环境修改配置...
       return {
-        plugins: [new CleanWebpackPlugin(['dist'])]
+        plugins: [new CleanWebpackPlugin (['dist'])],
       };
     }
     return {
       plugins: [
-        new OpenBrowserPlugin({
-          url:
-            'http://localhost:' +
+        new OpenBrowserPlugin ({
+          url: 'http://localhost:' +
             theDefaultPort +
-            '/resources/web/5d/index.html#/home'
-        })
-      ]
+            '/resources/web/5d/index.html#/home',
+        }),
+      ],
     };
     // 为开发环境修改配置...
   },
@@ -76,12 +69,12 @@ module.exports = {
     // modules:false,
     // 默认情况下，只有 *.module.[ext] 结尾的文件才会被视作 CSS Modules 模块。
     // 设置为 false 后你就可以去掉文件名中的 .module 并将所有的 *.(css|scss|sass|less|styl(us)?) 文件视为 CSS Modules 模块。
-    requireModuleExtension: true
+    requireModuleExtension: true,
   },
 
   // 在生产环境下为 Babel 和 TypeScript 使用 `thread-loader`
   // 在多核机器下会默认开启。
-  parallel: require('os').cpus().length > 1,
+  parallel: require ('os').cpus ().length > 1,
 
   // 是否使用 `autoDLLPlugin` 分割供应的包？
   // 也可以是一个在 DLL 包中引入的依赖的显性的数组。
@@ -109,8 +102,8 @@ module.exports = {
         secure: false, // if you want to verify the SSL Certs,如果是https接口，需要配置这个参数
         changeOrigin: true, // 默认false，是否需要改变原始主机头为目标URL。如果接口跨域，需要进行这个参数配置
         headers: {
-          Authorization: `Bearer ${loginToken}`
-        }
+          Authorization: `Bearer ${loginToken}`,
+        },
       },
       '/bim5d_pbs/api/pbs': {
         //target: "http://10.129.27.53/index.php/apiManagementPro/Mock/simple/4BsHmNLac10eca951b0be0844ad9ea9dc4413ed495597b2?uri=",
@@ -120,21 +113,25 @@ module.exports = {
         secure: false, // if you want to verify the SSL Certs,如果是https接口，需要配置这个参数
         changeOrigin: true, // 默认false，是否需要改变原始主机头为目标URL。如果接口跨域，需要进行这个参数配置
         headers: {
-          Authorization: `Bearer ${loginToken}`
-        }
-      }
+          Authorization: `Bearer ${loginToken}`,
+        },
+      },
     }, // string | Object
     overlay: {
       warnings: false, // 警告浏览器不显示
-      errors: true // 错误提示浏览器显示错误
+      errors: true, // 错误提示浏览器显示错误
     },
-    before: app => {}
+    before: app => {},
   },
 
   // 三方插件的选项
   pluginOptions: {
     // ...
   },
+  // 是否在保存的时候使用 `eslint-loader` 进行检查。
+  // 有效的值：`ture` | `false` | `"error"`
+  // 当设置为 `"error"` 时，检查出的错误会触发编译失败。
+  lintOnSave: false,
   // 是否在开发环境下通过 eslint-loader
-  lintOnSave: process.env.NODE_ENV !== 'production'
+  // lintOnSave: process.env.NODE_ENV !== 'production'
 };

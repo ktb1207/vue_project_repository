@@ -39,121 +39,103 @@
 -->
 
 <style lang="less">
-  @basic-font: #383838;
-  @color-font: #383838;
-  @border-color: #c3e0f5;
-  @head-bg: #d7ebf9;
-  .tree-wrp {
+@basic-font: #383838;
+@color-font: #383838;
+@border-color: #c3e0f5;
+@head-bg: #d7ebf9;
+.tree-wrp {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  div {
+    box-sizing: border-box;
+  }
+  .el-checkbox-group {
+    height: 100%;
+    width: 100%;
+  }
+  .define-table {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    position: relative;
-    div {
-      box-sizing: border-box;
-    }
-    .el-checkbox-group {
-      height: 100%;
-      width: 100%;
-    }
-    .define-table {
+    font-size: 14px;
+    .define-body {
       width: 100%;
       height: 100%;
-      font-size: 14px;
-      .define-body {
+      display: inline-block;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      color: @basic-font;
+      .define-header-row {
+        top: 0;
+        left: 0;
+        z-index: 4;
         width: 100%;
-        height: 100%;
-        display: inline-block;
-        overflow-y: hidden;
-        overflow-x: hidden;
-        color: @basic-font;
-        .define-header-row {
-          top: 0;
-          left: 0;
-          z-index: 4;
-          width: 100%;
-          white-space: nowrap;
-          line-height: 42px;
-          font-weight: normal;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          justify-content: flex-start;
-          background-color: @head-bg;
-          .define-cell:last-child {
-            border-right: none;
-          }
-        }
-        .define-body-content {
-          height: calc(100% - 42px);
-          width: 100%;
-          overflow-y: auto;
-          .bottom-content {
-            border-bottom: 1px solid @border-color;
-          }
-        }
-        .define-header-bottom-border {
-          border-bottom: 1px solid @border-color;
-        }
-        .define-body-row {
-          white-space: nowrap;
-          line-height: 38px;
-          font-weight: normal;
-          color: @color-font;
-          border-top: 1px solid @border-color;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          justify-content: flex-start;
-          .define-cell:last-child {
-            border-right: none;
-          }
-          .text-more {
-            overflow-x: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
+        white-space: nowrap;
+        line-height: 42px;
+        font-weight: normal;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        background-color: @head-bg;
+        .define-cell:last-child {
+          border-right: none;
         }
       }
-
-      .define-cell {
-        display: inline-block;
-        padding: 0 8px;
-        vertical-align: middle;
-        box-sizing: border-box;
-        border-right: 1px solid @border-color;
-        text-align: center;
-        margin: 0;
-        flex: 0 0 auto;
-
-        .node-row-span {
-          display: block;
-          width: 100%;
-          height: 100%;
-          box-sizing: border-box;
-          overflow: hidden;
+      .define-body-content {
+        height: calc(100% - 42px);
+        width: 100%;
+        overflow-y: auto;
+        .bottom-content {
+          border-bottom: 1px solid @border-color;
+        }
+      }
+      .define-header-bottom-border {
+        border-bottom: 1px solid @border-color;
+      }
+      .define-body-row {
+        white-space: nowrap;
+        line-height: 38px;
+        font-weight: normal;
+        color: @color-font;
+        border-top: 1px solid @border-color;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        .define-cell:last-child {
+          border-right: none;
+        }
+        .text-more {
+          overflow-x: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          .input-wrp-span {
-            display: inline-block;
-            width: 100%;
-            .table-input {
-              display: inline-block;
-              box-sizing: border-box;
-              width: 100%;
-              height: 28px;
-              border: none;
-              background-color: #ffffff;
-              &:focus {
-                border: none;
-                outline: none;
-                background-color: #ffffff;
-              }
-            }
-          }
         }
-        .text-div {
-          height: 100%;
-          overflow: hidden;
+      }
+    }
+
+    .define-cell {
+      display: inline-block;
+      padding: 0 8px;
+      vertical-align: middle;
+      box-sizing: border-box;
+      border-right: 1px solid @border-color;
+      text-align: center;
+      margin: 0;
+      flex: 0 0 auto;
+
+      .node-row-span {
+        display: block;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        .input-wrp-span {
+          display: inline-block;
+          width: 100%;
           .table-input {
             display: inline-block;
             box-sizing: border-box;
@@ -167,90 +149,104 @@
               background-color: #ffffff;
             }
           }
-          .text-no-edit-wrp {
-            position: relative;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        }
+      }
+      .text-div {
+        height: 100%;
+        overflow: hidden;
+        .table-input {
+          display: inline-block;
+          box-sizing: border-box;
+          width: 100%;
+          height: 28px;
+          border: none;
+          background-color: #ffffff;
+          &:focus {
+            border: none;
+            outline: none;
+            background-color: #ffffff;
           }
+        }
+        .text-no-edit-wrp {
+          position: relative;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
     }
-    .tree-content .define-cell .el-checkbox {
-      .el-checkbox__input.is-disabled .el-checkbox__inner {
-        background-color: #dddddd;
-        border-color: #dddddd;
-      }
+  }
+  .tree-content .define-cell .el-checkbox {
+    .el-checkbox__input.is-disabled .el-checkbox__inner {
+      background-color: #dddddd;
+      border-color: #dddddd;
     }
   }
-  .tree-table {
-    min-width: 100%;
-    table-layout: fixed;
-    word-wrap: break-word;
-    word-break: break-all;
-    thead {
-      font-size: 14px;
-      color: @basic-font;
-      font-weight: 700;
-      tr {
-        line-height: 40px;
-      }
-    }
-    tbody {
-      font-size: 14px;
-      color: @color-font;
-      background-color: #ffffff;
-      tr {
-        line-height: 36px;
-      }
-    }
-    td {
-      padding: 0 8px;
-      border: 1px solid #e7e7e7;
-      word-break: keep-all;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .el-checkbox__input.is-checked .el-checkbox__inner {
-      background-color: #ffffff !important;
-      &::after {
-        border-color: #0190fe;
-      }
+}
+.tree-table {
+  min-width: 100%;
+  table-layout: fixed;
+  word-wrap: break-word;
+  word-break: break-all;
+  thead {
+    font-size: 14px;
+    color: @basic-font;
+    font-weight: 700;
+    tr {
+      line-height: 40px;
     }
   }
+  tbody {
+    font-size: 14px;
+    color: @color-font;
+    background-color: #ffffff;
+    tr {
+      line-height: 36px;
+    }
+  }
+  td {
+    padding: 0 8px;
+    border: 1px solid #e7e7e7;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .el-checkbox__input.is-checked .el-checkbox__inner {
+    background-color: #ffffff !important;
+    &::after {
+      border-color: #0190fe;
+    }
+  }
+}
 </style>
 <template>
-  <div class="tree-wrp" :class="customTreeClass">
+  <div class="tree-wrp"
+    :class="customTreeClass">
     <div class="define-table">
       <div class="define-body">
-        <div
-          class="define-header-row"
+        <div class="define-header-row"
           :class="{'define-header-bottom-border':!existData}"
-          :style="{'padding-right':scrollWidthPx}"
-        >
-          <div
-            class="define-cell"
+          :style="{'padding-right':scrollWidthPx}">
+          <div class="define-cell"
             v-for="(item,index) in columns"
             :key="index+'c'"
-            :style="{width:item.width,textAlign:item.align,flexGrow:item.grow}"
-          >
+            :style="{width:item.width,textAlign:item.align,flexGrow:item.grow}">
             <span v-if="item.type=='selection'">
-              <check-all
-                :checked-status="allCheckStatus"
+              <check-all :checked-status="allCheckStatus"
                 :disabled="!existData"
-                @allCheck="checkAllMethod"
-              ></check-all>
+                @allCheck="checkAllMethod"></check-all>
             </span>
             <span v-else>
               {{item.title}}
             </span>
           </div>
         </div>
-        <div v-if="existData" class="define-body-content" :ref="this.uniqueRef">
+        <div v-if="existData"
+          class="define-body-content"
+          :ref="this.uniqueRef">
           <div class="bottom-content">
-            <tree-content
-              v-for="item in formaterTreeData"
+            <tree-content v-for="item in formaterTreeData"
               :key="item.id+'c'"
               :content-obj="item"
               :content-col="columns"
@@ -262,8 +258,7 @@
               @childUpdated="childUpdateMethods"
               @checkItem="checkDataChange"
               @cellBlur="tableCellBlur"
-              @childChange="childChangeMethod"
-            ></tree-content>
+              @childChange="childChangeMethod"></tree-content>
           </div>
         </div>
         <no-data v-else></no-data>
@@ -790,7 +785,7 @@ export default {
         });
       }
     },
-    findTreeEvery (treeArr) {
+    findTreeEvery(treeArr) {
       for (const i in treeArr) {
         if (treeArr[i].checked) {
           // 下级节点和子节点
@@ -849,7 +844,7 @@ function findTreeList(treeArr, id) {
       }
       if (obj.id === id) {
         // 找到跳出
-        console.log('找到了');
+        // console.log('找到了');
         findObj = obj;
         break;
       } else {

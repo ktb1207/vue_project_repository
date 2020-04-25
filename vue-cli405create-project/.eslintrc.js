@@ -2,7 +2,7 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    browser: true
+    browser: true,
   },
   extends: ['plugin:vue/essential', '@vue/standard', 'eslint:recommended'],
   rules: {
@@ -24,6 +24,8 @@ module.exports = {
     'no-undef': 2, // 禁用未声明的变量
     'no-unused-vars': 2, // 禁止未使用过的变量
     'no-empty-function': 0, // 关闭禁止空函数
+    'prefer-const': 'off',
+    'func-call-spacing': 'always',
     // 要求
     'require-await': 2, // 禁止使用不带 await 表达式的 async 函数
     'default-case': 2, // switch语句最后必须有default
@@ -36,23 +38,23 @@ module.exports = {
     'block-spacing': [1, 'always'], // 强制在代码块中开括号前和闭括号后有空格
     'brace-style': [1, '1tbs'], // 强制在代码块中使用一致的大括号风格
     'comma-dangle': [1, 'never'], //  (默认) 禁用拖尾逗号
-    camelcase: [1, { properties: 'always' }], // 强制使用骆驼拼写法命名约定
+    camelcase: [1, {properties: 'always'}], // 强制使用骆驼拼写法命名约定
 
     // 忽略
     'vars-on-top': 0, // 所有的 var 声明出现在它们所在的作用域顶部
     'space-before-function-paren': [0, 'always'], // function的左括号之前使用一致的空格
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
   },
   overrides: [
     {
       files: ['**/__tests__/*.{j,t}s?(x)'],
       env: {
-        mocha: true
-      }
-    }
-  ]
+        mocha: true,
+      },
+    },
+  ],
 };

@@ -1,38 +1,61 @@
-<style lang="less">
-  .home-page{
-    height:auto;
-    padding:4px 14px;
-    .explan{
-      color:red;
-    }
-    .menus-button-wrp{
-      height:auto;
+﻿<style lang="less">
+.home-page {
+  height: auto;
+  padding: 4px 14px;
+  .explan {
+    color: red;
+  }
+  .menus-button-wrp {
+    height: auto;
+    .el-button {
+      margin-bottom: 10px;
     }
   }
+}
 </style>
 <template>
   <div class="home-page">
-    <h2 class="explan">
-      此示例工程用于VUE的学习和知识梳理总结
-    </h2>
+    <h2 class="explan">此示例工程用于VUE的学习和知识梳理总结</h2>
     <div class="menus-button-wrp">
-      <el-button type="primary" @click="hrefParams">路由params传参</el-button>
-      <el-button type="primary" @click="hrefQuery">路由query传参</el-button>
-      <el-button type="primary" @click="routerParams">路由中定义参数</el-button>
-      <el-button type="primary" @click="hrefComemonPage('treeTable')">treeTable</el-button>
-      <el-button type="primary" @click="hrefComemonPage('swiperPage')">swiperDemo</el-button>
-      <el-button type="primary" @click="hrefComemonPage('boxShadow')">css 边框阴影</el-button>
-      <el-button type="primary" @click="hrefComemonPage('transformTwo')">transform 2D</el-button>
-      <el-button type="primary" @click="hrefComemonPage('string')">String</el-button>
-      <el-button type="primary" @click="hrefComemonPage('array')">Array</el-button>
-      <el-button type="primary" @click="hrefComemonPage('number')">Number</el-button>
+      <el-button type="primary"
+        @click="hrefParams">路由params传参</el-button>
+      <el-button type="primary"
+        @click="hrefQuery">路由query传参</el-button>
+      <el-button type="primary"
+        @click="routerParams">路由中定义参数</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('treeTable')">treeTable</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('virtualScroll')">长列表虚拟滚动</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('swiperPage')">swiperDemo</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('boxShadow')">css 边框阴影</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('transformTwo')">transform 2D</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('string')">String</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('array')">Array</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('number')">Number</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('computedMethod')">js算法</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('aboutVue')">vue核心总结</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('sourceCode')">vue源码解析理解</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('webpack')">webpack优化</el-button>
+      <el-button type="primary"
+        @click="hrefComemonPage('uploadFile')">多文件上传组件</el-button>
     </div>
   </div>
 </template>
 <script>
 // @ is an alias to /src
 export default {
-  name: 'home',
+  name: '',
   props: {},
   data() {
     return {};
@@ -52,7 +75,8 @@ export default {
       this.$router.push({
         name: 'paramsPage',
         params: {
-          value: '我是页面params传参的参数值，刷新页面将看不到我呦，不信你试试？'
+          value:
+            '我是页面params传参的参数值，刷新页面将看不到我呦，不信你试试？'
         }
       });
       /**

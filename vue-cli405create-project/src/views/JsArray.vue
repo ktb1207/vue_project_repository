@@ -110,13 +110,13 @@
           <p> <i>替换</i>：splice(index,1,item) </p>
         </li>
         <li>
-          <p> <i>concat()</i>：方法通过合并（连接）现有数组来 <i>创建一个新数组</i> </p>
+          <p> <i>concat()</i>：方法通过合并（连接）现有数组来 <i>创建一个新数组----可以达到深度复制数组</i> </p>
           <p> <i>注</i>： </p>
           <p>concat() 方法不会更改现有数组。它总是返回一个新数组。var myChildren = myGirls.concat(myBoys);   // 连接 myGirls 和 myBoys</p>
           <p>concat() 方法可以使用任意数量的数组参数：var myChildren = arr1.concat(arr2, arr3);   // 将arr1、arr2 与 arr3 连接在一起</p>
         </li>
         <li>
-          <p> <i>slice(start,end)</i>: 提取数组元素</p>
+          <p> <i>slice(start,end)</i>: 提取数组元素 <i>创建一个新数组----可以达到深度复制数组</i></p>
           <p> <i>注</i>： </p>
           <p>slice() 方法创建新数组。它不会从源数组中删除任何元素</p>
           <p>slice() 可接受两个参数;该方法会从开始参数选取元素，直到结束参数（不包括）为止。</p>
