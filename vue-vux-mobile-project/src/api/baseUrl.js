@@ -1,7 +1,6 @@
-// const serviceUrl = 'https://xmgl.glodon.com'
-const serviceUrl = 'https://xmgl-test.glodon.com';
-const allUrl = `${serviceUrl}/bim5d_pbs/api/v1`;
-const pbsBaseUrl = '/bim5d_pbs/api/pbs/v1';
-const pbsMatrixUrl = '/bim5d_pbs/api/matrix-system/v1';
+const serviceUrl = 'http://www.baidu.com/';
+const allUrl = `${serviceUrl}/version/v1`;
+const BaseUrl = '/name/vb';
+const MatrixUrl = '/name/va';
 
-export { allUrl, serviceUrl, pbsBaseUrl, pbsMatrixUrl };
+export { allUrl, serviceUrl, BaseUrl, MatrixUrl };

@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require ('clean-webpack-plugin');
 //端口号
 const theDefaultPort = 8082;
 //登录状态
-const loginToken = 'cn-2708c8fa-3e4a-4a12-ba26-e5d875dc7986';
+const loginToken = 'cn-00000000';
 module.exports = {
   // 项目部署的基础路径
   // 我们默认假设你的应用将会部署在域名的根部，
@@ -94,22 +94,16 @@ module.exports = {
     hotOnly: false,
     // 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/cli-service.md#配置代理
     proxy: {
-      '/bim5d_pbs/api': {
-        //target: "http://10.129.27.53/index.php/apiManagementPro/Mock/simple/4BsHmNLac10eca951b0be0844ad9ea9dc4413ed495597b2?uri=",
-        target: 'https://xmgl-test.glodon.com',
-        // target: "https://wangl-bn-p1.grandsoft.com.cn",
-        // target: "https://zhongct-p1.grandsoft.com.cn",
+      '/kmc/api': {
+        target: 'http://www.baidu.com',
         secure: false, // if you want to verify the SSL Certs,如果是https接口，需要配置这个参数
         changeOrigin: true, // 默认false，是否需要改变原始主机头为目标URL。如果接口跨域，需要进行这个参数配置
         headers: {
           Authorization: `Bearer ${loginToken}`,
         },
       },
-      '/bim5d_pbs/api/pbs': {
-        //target: "http://10.129.27.53/index.php/apiManagementPro/Mock/simple/4BsHmNLac10eca951b0be0844ad9ea9dc4413ed495597b2?uri=",
-        target: 'https://xmgl-test.glodon.com',
-        // target: "https://wangl-bn-p1.grandsoft.com.cn",
-        // target: "https://zhongct-p1.grandsoft.com.cn",
+      '/kmd/api/abk': {
+        target: 'http://www.baidu.com',
         secure: false, // if you want to verify the SSL Certs,如果是https接口，需要配置这个参数
         changeOrigin: true, // 默认false，是否需要改变原始主机头为目标URL。如果接口跨域，需要进行这个参数配置
         headers: {

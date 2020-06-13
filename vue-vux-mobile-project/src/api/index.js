@@ -5,10 +5,10 @@
  * @Last Modified by: 孔团兵
  */
 // 基础路径
-import { pbsBaseUrl } from './baseUrl.js';
+import { BaseUrl } from './baseUrl.js';
 const api = {
   // 获取分部分项列表
   drawShareData: (projectId, shareId) =>
-    `${pbsBaseUrl}/projects/${projectId}/quantityMakeRecord/${shareId}/shareView`
+    `${BaseUrl}/projects/${projectId}/quantityMakeRecord/${shareId}/shareView`
 };
 export default api;

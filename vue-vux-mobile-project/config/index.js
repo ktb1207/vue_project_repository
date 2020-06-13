@@ -10,14 +10,14 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/bim5d_pbs/api': {
-        target: 'https://xmgl-test.glodon.com',
+      '/apiName/api': {
+        target: 'http://www.baidu.com',
         secure: false,
         changeOrigin: true
       },
 
-      '/cloudt': {
-        target: 'http://bim5d-platform.glodon.com',
+      '/abcName': {
+        target: 'http://www.baidu.com',
         changeOrigin: true
       }
     },

@@ -8,11 +8,9 @@
 const baseUrl = '/api';
 const apiVersion = '/v1';
 const api = {
-  // 埋点
-  reqTJ: (projectId, code) => `${baseUrl}/v1/projects/${projectId}/tj/${code}`,
   // 获取分部分项列表
   getTreeData: projectId =>
-    `${baseUrl}/v1/projects/${projectId}/dict/partAndKinds/list`
+    `${baseUrl}/v1/pname/${projectId}/dict/kkkkkkkkk`
 };
 
 export function url(name, _store, params = {}) {
