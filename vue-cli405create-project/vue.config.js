@@ -36,7 +36,7 @@ module.exports = {
         new OpenBrowserPlugin ({
           url: 'http://localhost:' +
             theDefaultPort +
-            '/resources/web/5d/index.html#/home',
+            '/resources/webApp/index.html#/home',
         }),
       ],
     };

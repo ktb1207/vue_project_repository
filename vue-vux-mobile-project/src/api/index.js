@@ -6,9 +6,5 @@
  */
 // 基础路径
 import { BaseUrl } from './baseUrl.js';
-const api = {
-  // 获取分部分项列表
-  drawShareData: (projectId, shareId) =>
-    `${BaseUrl}/projects/${projectId}/quantityMakeRecord/${shareId}/shareView`
-};
+const api = {}
 export default api;
