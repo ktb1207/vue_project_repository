@@ -21,11 +21,15 @@
       <p>方法一、根据数组sort排序，结果：{{demoThreeResultOne}}</p>
       <p>方法二、结果：{{demoThreeResultTwo}}</p>
     </div>
+    <div>
+      <button @click="buttonTest(sleepTime)">button click</button>
+    </div>
   </div>
 </template>
 
 <script>
 import BackHome from '../components/BackHome';
+import Sleep from '../utils/sleep.js';
 export default {
   name: 'computedMethod',
   props: {},
@@ -45,7 +49,8 @@ export default {
       demoThreeResultOne: [],
       demoThreeResultTwo: [],
       maopaotestArr: [6, 1, 2, 3, 9, 8, 7, 1],
-      charuTestArr: [6, 1, 2, 3, 9, 8, 7, 1]
+      charuTestArr: [6, 1, 2, 3, 9, 8, 7, 1],
+      sleepTime:5000
     };
   },
   computed: {},
@@ -224,7 +229,18 @@ export default {
       }
       console.log('结果：' + arr);
       return arr;
-    }
+    },
+    buttonTest (delay) {
+      const sleep = new Sleep()
+      sleep.promise(delay).then(res => {
+        console.log(res)
+      }).catch(error => {
+        console.log(error)
+      })
+      setTimeout(() => {
+        sleep.abort()
+      },3000)
+    },
   },
   created() {},
   mounted() {
