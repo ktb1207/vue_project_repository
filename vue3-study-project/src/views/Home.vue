@@ -44,6 +44,33 @@
         <p>vue3中的核心api都支持了tree-shaking，这些api都是通过包引入的方式而不是直接在实例化时就注入，只会对使用到的功能或特性进行打包（按需打包）</p>
         <p>如：vue.nextTick,vue.set,vue.delete等全局api都需要按需引入使用</p>
       </li>
+      <li>
+        <h6>Composition API: 组合API(类似React Hooks)</h6>
+      </li>
+      <li>
+        <h6>Better TypeScript support：更优秀的 Ts 支持</h6>
+      </li>
+      <li>
+        <h6>Custom Renderer API：暴露了自定义渲染API</h6>
+        <p><i>待后期继续了解。。。</i></p>
+      </li>
+      <li>
+        <h6>更先进的组件：Fragment, Teleport, Suspense</h6>
+        <ol>
+          <li>
+            <h6>Fragment</h6>
+            <p>vue2.0里template只支持单一根节点，在vue3.0里可以使用多个根节点,或者使用Fragment 空标签</p>
+          </li>
+          <li>
+            <h6>Teleport</h6>
+            <p>Teleport 提供了一种干净的方法，允许我们控制在 DOM 中哪个父节点下呈现 HTML</p>
+          </li>
+          <li>
+            <h6>Suspense</h6>
+            <p>它们允许我们的应用程序在等待异步组件时渲染一些后备内容，可以让我们创建一个平滑的用户体验。主要在定义异步组件(defineAsyncComponent)结合使用</p>
+          </li>
+        </ol>
+      </li>
     </ul>
   </div>
 </template>
