@@ -46,6 +46,15 @@
       </li>
       <li>
         <h6>Composition API: 组合API(类似React Hooks)</h6>
+        <p><i>有哪些优势？</i></p>
+        <ol>
+          <li>vue2.0中options api主要存在--数据和业务逻辑分散，不利于管理维护</li>
+          <li>vue3.0中Componsition api可以抽离业务逻辑，利于之后的管理和维护</li>
+          <li>
+            <p><i>理解Componsition api的本质</i></p>
+            <p>Composition API的本质就是在运行的时候将暴露出去的数据注入到option api中，如将数据注入到data中，将方法注入到methods中。</p>
+          </li>
+        </ol>
       </li>
       <li>
         <h6>Better TypeScript support：更优秀的 Ts 支持</h6>
