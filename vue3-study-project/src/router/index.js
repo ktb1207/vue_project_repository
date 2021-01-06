@@ -23,6 +23,16 @@ const routes = [
     component: () => import('../views/Ref.vue')
   },
   {
+    path: '/isReactiveAndRef',
+    name: 'IsReactiveAndRef',
+    component: () => import('../views/IsReactiveAndIsRef.vue')
+  },
+  {
+    path: '/notRecursion',
+    name: 'NotRecursion',
+    component: () => import('../views/NotRecursion.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
