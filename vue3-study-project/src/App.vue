@@ -6,6 +6,7 @@
     <router-link to="/ref">ref</router-link> |
     <router-link to="/isReactiveAndRef">isRef和isReactive</router-link> |
     <router-link to="/notRecursion">非递归监听</router-link> |
+    <router-link to="/toRef">toRef</router-link> |
     <router-link to="/about">About</router-link>
   </div>
   <router-view />

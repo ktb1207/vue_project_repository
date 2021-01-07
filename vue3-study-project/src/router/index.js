@@ -33,6 +33,11 @@ const routes = [
     component: () => import('../views/NotRecursion.vue')
   },
   {
+    path: '/toRef',
+    name: 'ToRef',
+    component: () => import('../views/ToRef.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting

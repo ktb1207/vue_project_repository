@@ -73,6 +73,11 @@
         <p> let state = ref(obj)</p>
         <p>let obj2 = toRaw(state.value)</p>
       </li>
+      <li>
+        <p><i>markRaw</i></p>
+        <p>作用：markRaw标记某个数据永远不会被追踪</p>
+        <p>markRaw标记过的数据，reactive或者ref无法将该数据包装proxy响应式数据</p>
+      </li>
     </ul>
     <p class="indent-left"></p>
     <p class="indent-left"></p>
