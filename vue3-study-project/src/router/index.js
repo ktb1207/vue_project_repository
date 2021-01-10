@@ -38,6 +38,11 @@ const routes = [
     component: () => import('../views/ToRef.vue')
   },
   {
+    path: '/readonly',
+    name: 'Readonly',
+    component: () => import('../views/Readonly.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
