@@ -62,8 +62,7 @@ Vue.prototype.$mount = function () {
          return this;
        }
      } else if (el) {
-       // // 如果既没有提供 render 函数，又没有 template 选项，就使用 el 选项
-       // 如果只存在 el 选项时, 并没有 template 选项. el 既作为挂载点, 也作为模版
+       // 如果既没有提供 render 函数，又没有 template 选项，就使用 el 选项，el 既作为挂载点, 也作为模版
        template = getOuterHTML(el);
      }
      // 获得模板字符串后，编译模板为render函数
