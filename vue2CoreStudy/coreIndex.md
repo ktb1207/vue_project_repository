@@ -261,3 +261,123 @@ export function del (target: Array<any> | Object, key: any) {
   ob.dep.notify()
 }
 ```
+
+##### 6. nextTick
+
+- 定义位置：src\core\util\next-tick.js
+
+```
+
+export function nextTick (cb?: Function, ctx?: Object) {
+  let _resolve
+  callbacks.push(() => {
+    if (cb) {
+      try {
+        cb.call(ctx)
+      } catch (e) {
+        handleError(e, ctx, 'nextTick')
+      }
+    } else if (_resolve) {
+      _resolve(ctx)
+    }
+  })
+  if (!pending) {
+    // pending来标记异步任务是否被调用
+    pending = true
+    timerFunc()
+  }
+  // $flow-disable-line
+  if (!cb && typeof Promise !== 'undefined') {
+    return new Promise(resolve => {
+      _resolve = resolve
+    })
+  }
+}
+```
+
+- 异步调用函数实现方法 timerFunc
+
+```
+let timerFunc
+// 判断是否原生支持Promise
+if (typeof Promise !== 'undefined' && isNative(Promise)) {
+  const p = Promise.resolve()
+  timerFunc = () => {
+    // 如果原生支持Promise 用Promise执行flushCallbacks
+    p.then(flushCallbacks)
+    // In problematic UIWebViews, Promise.then doesn't completely break, but
+    // it can get stuck in a weird state where callbacks are pushed into the
+    // microtask queue but the queue isn't being flushed, until the browser
+    // needs to do some other work, e.g. handle a timer. Therefore we can
+    // "force" the microtask queue to be flushed by adding an empty timer.
+    if (isIOS) setTimeout(noop)
+  }
+  isUsingMicroTask = true
+  // 判断是否原生支持MutationObserver
+} else if (!isIE && typeof MutationObserver !== 'undefined' && (
+  isNative(MutationObserver) ||
+  // PhantomJS and iOS 7.x
+  MutationObserver.toString() === '[object MutationObserverConstructor]'
+)) {
+  // Use MutationObserver where native Promise is not available,
+  // e.g. PhantomJS, iOS7, Android 4.4
+  // (#6466 MutationObserver is unreliable in IE11)
+  // 如果原生支持MutationObserver 用MutationObserver执行flushCallbacks
+  let counter = 1
+  const observer = new MutationObserver(flushCallbacks)
+  const textNode = document.createTextNode(String(counter))
+  observer.observe(textNode, {
+    characterData: true
+  })
+  timerFunc = () => {
+    counter = (counter + 1) % 2
+    textNode.data = String(counter)
+  }
+  isUsingMicroTask = true
+  // 判断是否原生支持setImmediate
+} else if (typeof setImmediate !== 'undefined' && isNative(setImmediate)) {
+  // Fallback to setImmediate.
+  // Technically it leverages the (macro) task queue,
+  // but it is still a better choice than setTimeout.
+  timerFunc = () => {
+    // 如果原生支持setImmediate  用setImmediate执行flushCallbacks
+    setImmediate(flushCallbacks)
+  }
+  // 都不支持的情况下使用setTimeout 0
+} else {
+  // Fallback to setTimeout.
+  timerFunc = () => {
+    setTimeout(flushCallbacks, 0)
+  }
+}
+```
+
+- 说明：
+
+  - 检测运行环境的支持情况，使用不同的异步方法
+  - 优先级依次是 Promise、MutationObserver、setImmediate 和 setTimeout。
+  - 这是根据运行效率来做优先级处理
+  - 总的来说，Event Loop 分为宏任务以及微任务，宏任务耗费的时间是大于微任务的，所以优先使用微任务
+  - Promise 属于微任务，而 setTimeout 就属于宏任务
+
+- 执行 flushCallbacks
+
+```
+function flushCallbacks () {
+  // pending来标记异步任务是否被调用
+  // 也就是说在同一个tick内只调用一次timerFunc函数，这样就不会开启多个异步任务
+  pending = false
+  // 使用slice()方法复制callbacks数组
+  const copies = callbacks.slice(0)
+  // callbacks数组清空
+  callbacks.length = 0
+  // 依次调用callbacks数组里面的方法
+  for (let i = 0; i < copies.length; i++) {
+    copies[i]()
+  }
+}
+```
+
+- 说明：
+  - 依次调用 callbacks 数组里面的方法
+  - 使用 slice()方法复制 callbacks 数组并把 callbacks 数组清空
