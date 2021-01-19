@@ -3,20 +3,34 @@
 ---
 
 ##### 1. vue\src\platforms\web\runtime\index.js
+依赖：【3】
 
-作用
+作用:
 
-- 1.定义`$mount`方法：`Vue.prototype.$mount=function(){}`
+- 1.注册平台特性方法
+```
+Vue.config.mustUseProp = mustUseProp; // 表单组件 input,textarea,option,select,progress
+Vue.config.isReservedTag = isReservedTag; // html元素或者svg元素
+Vue.config.isReservedAttr = isReservedAttr; // style class属性
+Vue.config.getTagNamespace = getTagNamespace; // svg / math
+Vue.config.isUnknownElement = isUnknownElement; // 是否是未知的html元素，
+```
+- 2.浏览器平台注册directives和components
+```
+extend(Vue.options.directives, platformDirectives);
+extend(Vue.options.components, platformComponents);
+```
+- 3.定义`$mount`方法：`Vue.prototype.$mount=function(){}`
 - 内部依赖执行`mountComponent()`
   - 文件位置：vue\src\core\instance\lifecycle.js
   - 作用：
     `const vnode = vm._render();`执行`vm._render()`，根据 render 返回 vnode
     `vm._update(vnode, hydrating);`执行`vm_update()`,根据 vnode 渲染真实 dom
-- 2.挂载原型方法 _patch_：`Vue.prototype.__patch__ = inBrowser ? patch : noop;`
+- 4.挂载原型方法 _patch_：`Vue.prototype.__patch__ = inBrowser ? patch : noop;`
 
 ##### 2. vue\src\platforms\web\entry-runtime-with-compiler.js
-
-作用
+依赖：【1】
+作用:
 
 - 重写`$mount`: `Vue.prototype.$mount = function () {}`
 - 重写原因：运行时定义`Vue.prototype.$mount`不包含编译器
@@ -24,8 +38,45 @@
   `options.render`不存在，依据 template 和 el 调用`compileToFunctions`创建 render 函数
   `options.render`存在，直接调用运行版本的 `$mount` 函数
 
-##### 3. vue\src\core\instance\index.js
+##### 3.vue\src\core\index.js
+依赖：【4】
+作用:
+- 1.初始化全局qpi:`initGlobalAPI(Vue)`;
+- 2.添加vue版本信息:`Vue.version = "__VERSION__"`
 
+重点说明：`initGlobalAPI(Vue)`
+- 1.注册内部辅助函数
+```
+  Vue.util = {
+    warn,
+    extend,
+    mergeOptions,
+    defineReactive,
+  };
+```
+- 2.Vue实例添加set,delete,nextTick方法
+```
+  Vue.set = set;
+  Vue.delete = del;
+  Vue.nextTick = nextTick;
+```
+- 3.初始化Vue.options属性为空对象
+```
+Vue.options = Object.create(null);
+```
+
+- 4.扩展options.components属性，加入内建组件
+```
+extend(Vue.options.components, builtInComponents);
+```
+
+- 5.初始化Vue.use()方法:`initUse(Vue)`;
+- 6.初始化Vue.mixin()方法：`initMixin(Vue)`，其实质通过执行mergeOptions:`this.options = mergeOptions(this.options, mixin)`;
+- 7.初始化Vue.extend()方法：`initExtend(Vue)`;
+
+
+##### 4. vue\src\core\instance\index.js
+依赖：【5，6，7，8，9】
 作用
 
 - 1.定义 Vue 构造函数
@@ -46,7 +97,7 @@ lifecycleMixin(Vue); // 实现_update/$forceUpdate/$destory三个方法
 renderMixin(Vue); // 实现_render/$nextTick方法
 ```
 
-##### 4. vue\src\core\instance\init.js
+##### 5. vue\src\core\instance\init.js
 
 作用
 
@@ -62,7 +113,7 @@ renderMixin(Vue); // 实现_render/$nextTick方法
 - 8.`initProvide(vm)`: 初始化 provide
 - 9.`callHook(vm, 'created')`: created 生命钩子的回调
 
-##### 5. vue\src\core\instance\state.js
+##### 6. vue\src\core\instance\state.js
 
 作用
 
@@ -70,7 +121,7 @@ renderMixin(Vue); // 实现_render/$nextTick方法
 - 2.定义原型方法`$delete`,` Vue.prototype.$delete = del`;
 - 3.定义原型方法`$watch`,`Vue.prototype.$watch = function(){}`;
 
-##### 6. vue\src\core\instance\events.js
+##### 7. vue\src\core\instance\events.js
 
 作用
 -1.定义`$on`,`Vue.prototype.$on= function(){}`;
@@ -78,7 +129,7 @@ renderMixin(Vue); // 实现_render/$nextTick方法
 -1.定义`$off`,`Vue.prototype.$off= function(){}`;
 -1.定义`$emit`,`Vue.prototype.$emit= function(){}`;
 
-##### 7. vue\src\core\instance\lifecycle.js
+##### 8. vue\src\core\instance\lifecycle.js
 
 作用
 
@@ -86,7 +137,7 @@ renderMixin(Vue); // 实现_render/$nextTick方法
 - 2.定义`$forceUpdate`,`Vue.prototype.$forceUpdate = function(){}`;
 - 2.定义`$destroy`,`Vue.prototype.$destroy = function(){}`;
 
-##### 8. vue\src\core\instance\render.js
+##### 9. vue\src\core\instance\render.js
 
 作用
 
