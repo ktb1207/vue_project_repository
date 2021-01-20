@@ -2,7 +2,9 @@
 
 ---
 
-1.定义位置：vue\src\core\instance\render.js 2.注册位置：vue\src\core\instance\index.js 3.作用：执行 compile 生成的 render 函数，然后得到返回的 vnode 节点
+1.定义位置：vue\src\core\instance\render.js 
+2.注册位置：vue\src\core\instance\index.js 
+3.作用：执行 compile 生成的 render 函数，然后得到返回的 vnode 节点
 
 ```
 renderMixin(Vue)

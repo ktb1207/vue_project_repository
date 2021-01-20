@@ -1,30 +1,8 @@
-/* @flow */
-
-import config from '../config'
-import VNode, { createEmptyVNode } from './vnode'
-import { createComponent } from './create-component'
-import { traverse } from '../observer/traverse'
-
-import {
-  warn,
-  isDef,
-  isUndef,
-  isTrue,
-  isObject,
-  isPrimitive,
-  resolveAsset
-} from '../util/index'
-
-import {
-  normalizeChildren,
-  simpleNormalizeChildren
-} from './helpers/index'
-
-const SIMPLE_NORMALIZE = 1
-const ALWAYS_NORMALIZE = 2
-
-// wrapper function for providing a more flexible interface
-// without getting yelled at by flow
+### 关于vue中的createElement的分析
+---
+1.定义位置：vue\src\core\vdom\create-element.js
+源码如下
+```
 export function createElement (
   context: Component, // vm实例
   tag: any, // vnode的tag标签
@@ -63,6 +41,7 @@ export function _createElement (
       'Always create fresh vnode data objects in each render!',
       context
     )
+    // 创建一个文本vnode
     return createEmptyVNode()
   }
   // object syntax in v-bind
@@ -146,36 +125,10 @@ export function _createElement (
     if (isDef(data)) registerDeepBindings(data)
     return vnode
   } else {
+    // 创建一个文本vnode
     return createEmptyVNode()
   }
 }
-
-function applyNS (vnode, ns, force) {
-  vnode.ns = ns
-  if (vnode.tag === 'foreignObject') {
-    // use default namespace inside foreignObject
-    ns = undefined
-    force = true
-  }
-  if (isDef(vnode.children)) {
-    for (let i = 0, l = vnode.children.length; i < l; i++) {
-      const child = vnode.children[i]
-      if (isDef(child.tag) && (
-        isUndef(child.ns) || (isTrue(force) && child.tag !== 'svg'))) {
-        applyNS(child, ns, force)
-      }
-    }
-  }
-}
-
-// ref #5318
-// necessary to ensure parent re-render when deep bindings like :style and
-// :class are used on slot nodes
-function registerDeepBindings (data) {
-  if (isObject(data.style)) {
-    traverse(data.style)
-  }
-  if (isObject(data.class)) {
-    traverse(data.class)
-  }
-}
+```
+总结：
+- createElement函数主要是通过对children进行扁平化处理之后通过对标签（tag）的判断，使用VNode类来生成vnode，并将其返回
