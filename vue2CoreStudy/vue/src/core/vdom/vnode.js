@@ -1,23 +1,23 @@
 /* @flow */
 
 export default class VNode {
-  tag: string | void;
-  data: VNodeData | void;
-  children: ?Array<VNode>;
-  text: string | void;
-  elm: Node | void;
-  ns: string | void;
-  context: Component | void; // rendered in this component's scope
-  key: string | number | void;
-  componentOptions: VNodeComponentOptions | void;
-  componentInstance: Component | void; // component instance
-  parent: VNode | void; // component placeholder node
+  tag: string | void; // 当前节点标签名
+  data: VNodeData | void; // 当前节点数据
+  children: ?Array<VNode>; // 当前节点的子节点
+  text: string | void; // 当前节点的文本
+  elm: Node | void; // 对应真实dom节点
+  ns: string | void; // 当前节点的命名空间
+  context: Component | void; // 当前节点的编译作用域
+  key: string | number | void; // 节点标志
+  componentOptions: VNodeComponentOptions | void; // 组件options选项
+  componentInstance: Component | void; // 当前节点对应的组件实例
+  parent: VNode | void; // 当前节点的父节点
 
   // strictly internal
-  raw: boolean; // contains raw HTML? (server only)
-  isStatic: boolean; // hoisted static node
-  isRootInsert: boolean; // necessary for enter transition check
-  isComment: boolean; // empty comment placeholder?
+  raw: boolean; // contains raw HTML? (server only) 是否原生html
+  isStatic: boolean; // hoisted static node 是否是静态节点
+  isRootInsert: boolean; // necessary for enter transition check 是否作为根节点插入
+  isComment: boolean; // empty comment placeholder?是否为注释节点
   isCloned: boolean; // is a cloned node?
   isOnce: boolean; // is a v-once node?
   asyncFactory: Function | void; // async component factory function
