@@ -408,15 +408,18 @@ export function createPatchFunction (backend) {
   }
 
   function updateChildren (parentElm, oldCh, newCh, insertedVnodeQueue, removeOnly) {
-    let oldStartIdx = 0
-    let newStartIdx = 0
-    let oldEndIdx = oldCh.length - 1
-    let oldStartVnode = oldCh[0]
-    let oldEndVnode = oldCh[oldEndIdx]
-    let newEndIdx = newCh.length - 1
-    let newStartVnode = newCh[0]
-    let newEndVnode = newCh[newEndIdx]
-    let oldKeyToIdx, idxInOld, vnodeToMove, refElm
+    let oldStartIdx = 0 // 表示当前正在处理的旧起始节点序号
+    let newStartIdx = 0 // 表示当前正在处理的新起始节点序号
+    let oldEndIdx = oldCh.length - 1 // 表示当前正在处理的旧结尾节点序号
+    let oldStartVnode = oldCh[0] // 表示当前正在处理的旧起始节点
+    let oldEndVnode = oldCh[oldEndIdx] // 示当前正在处理的旧结尾节点
+    let newEndIdx = newCh.length - 1 // 表示当前正在处理的新结尾节点序号
+    let newStartVnode = newCh[0] // 表示当前正在处理的新起始节点
+    let newEndVnode = newCh[newEndIdx] // 表示当前正在处理的新结尾节点
+    let oldKeyToIdx, // 尚未处理的旧节点key值映射
+      idxInOld, // 与新节点key值相同的旧节点序号
+      vnodeToMove, // 与新节点key值相同的旧节点
+      refElm // 指向当前正在处理的新结尾节点的后一个节点（已处理）的DOM元素
 
     // removeOnly is a special flag used only by <transition-group>
     // to ensure removed elements stay in correct relative positions

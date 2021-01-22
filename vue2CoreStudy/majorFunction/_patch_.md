@@ -165,7 +165,6 @@ Vue.prototype.__patch__ = patch
 
 ### 核心作用函数
 
----
 
 ##### 1.判断节点不存在 isUndef()
 
@@ -203,6 +202,7 @@ function sameVnode (a, b) {
   )
 }
 ```
+---
 
 ##### 2.patchVnode 源码
 
@@ -311,7 +311,7 @@ function sameVnode (a, b) {
 
 - oldVnode 跟 vnode 都是静态节点，且具有相同的 key 并且当 vnode 是克隆节点或是 v-once 指令控制的节点，把 oldVnode.elm 和 oldVnode.child 都复制到 vnode 上
 
-##### 4.vnode 不是文本节点或注释节点情况
+##### 4.vnode 不是文本节点或注释节点情况-（元素节点）
 
 - ##### 4.1 如果 vnode 的 children 和 oldVnode 的 children 都存在，且不完全相等，则调用 updateChildren 更新子节点
 - ##### 4.2 如果只有 vnode 存在子节点，调用 addVnodes 添加这些子节点
@@ -321,3 +321,10 @@ function sameVnode (a, b) {
 ##### 5. vnode 是文本节点或注释节点
 
 - ##### 如果 vnode 是文本节点或注释节点，并且 vnode.text 和 oldVnode.text 不相等，则更新 oldVnode 的文本内容为 vnode.text
+
+---
+
+### 3.updateChildren源码
+
+
+
