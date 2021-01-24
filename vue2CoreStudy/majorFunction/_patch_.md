@@ -150,6 +150,8 @@ Vue.prototype.__patch__ = patch
 ##### 3.当新 vnode 和旧 oldVnode 都存在情况下
 
 - 3.1 首先判断旧节点是否是真实 dom 元素
+  首次渲染：`vm.__patch__(vm.$el, vnode, hydrating, false /* removeOnly */);`,旧节点传入参数为真是 dom 节点
+  更新渲染：`vm.__patch__(prevVnode, vnode);`,旧节点为 vnode
 
   - 如果 oldVnode 不是真实节点,并且 vnode 和 oldVnode 是同一节点时，说明是需要比较新旧节点，则调用 patchVnode 进行 patch。
   - 如果 oldVnode 是真实节点时，调用 hydrate 方法，将 Virtural DOM 与真实 DOM 进行映射，然后将 oldVnode 设置为对应的 Virtual DOM
@@ -164,7 +166,6 @@ Vue.prototype.__patch__ = patch
 当 vnode 和 oldVnode 都存在、oldVnode 不是真实节点并且 vnode 和 oldVnode 是同一节点时，才会调用 patchVnode 进行 patch。
 
 ### 核心作用函数
-
 
 ##### 1.判断节点不存在 isUndef()
 
@@ -202,6 +203,7 @@ function sameVnode (a, b) {
   )
 }
 ```
+
 ---
 
 ##### 2.patchVnode 源码
@@ -324,7 +326,265 @@ function sameVnode (a, b) {
 
 ---
 
-### 3.updateChildren源码
+### 3.updateChildren 源码
 
+说明：
+在 patchVnode 过程中，如果 vnode 的 children 和 oldVnode 的 children 都存在，且不完全相等，则调用 updateChildren 更新子节点
 
+```
+  function updateChildren(
+    parentElm,
+    oldCh,
+    newCh,
+    insertedVnodeQueue,
+    removeOnly
+  ) {
+    let oldStartIdx = 0; // 表示当前正在处理的旧起始节点序号
+    let newStartIdx = 0; // 表示当前正在处理的新起始节点序号
+    let oldEndIdx = oldCh.length - 1; // 表示当前正在处理的旧结尾节点序号
+    let oldStartVnode = oldCh[0]; // 表示当前正在处理的旧起始节点
+    let oldEndVnode = oldCh[oldEndIdx]; // 表示当前正在处理的旧结尾节点
+    let newEndIdx = newCh.length - 1; // 表示当前正在处理的新结尾节点序号
+    let newStartVnode = newCh[0]; // 示当前正在处理的新起始节点
+    let newEndVnode = newCh[newEndIdx]; // 表示当前正在处理的新结尾节点
+    let oldKeyToIdx, // 尚未处理的旧节点key值映射
+      idxInOld, // 与新节点key值相同的旧节点序号
+      vnodeToMove, // 与新节点key值相同的旧节点
+      refElm; // 指向当前正在处理的新结尾节点的后一个节点（已处理）的DOM元素
 
+    // removeOnly is a special flag used only by <transition-group>
+    // to ensure removed elements stay in correct relative positions
+    // during leaving transitions
+    const canMove = !removeOnly;
+
+    if (process.env.NODE_ENV !== "production") {
+      checkDuplicateKeys(newCh);
+    }
+
+    while (oldStartIdx <= oldEndIdx && newStartIdx <= newEndIdx) {
+      if (isUndef(oldStartVnode)) {
+        // 旧起始节点undefined, 旧起始节点右边移动一位
+        oldStartVnode = oldCh[++oldStartIdx]; // Vnode has been moved left
+      } else if (isUndef(oldEndVnode)) {
+        // 旧结尾节点undefined,旧结尾节点左边移动一位
+        oldEndVnode = oldCh[--oldEndIdx];
+      } else if (sameVnode(oldStartVnode, newStartVnode)) {
+        // 新旧子节点的起始节点相同，patchVnode更新dom内容
+        patchVnode(
+          oldStartVnode,
+          newStartVnode,
+          insertedVnodeQueue,
+          newCh,
+          newStartIdx
+        );
+        // 旧起始节点右边移动一位
+        oldStartVnode = oldCh[++oldStartIdx];
+        // 新起始节点右边移动一位
+        newStartVnode = newCh[++newStartIdx];
+      } else if (sameVnode(oldEndVnode, newEndVnode)) {
+        // 新旧子节点的结尾节点相同，patchVnode更新dom内容
+        patchVnode(
+          oldEndVnode,
+          newEndVnode,
+          insertedVnodeQueue,
+          newCh,
+          newEndIdx
+        );
+        // 旧结尾节点左边移动一位
+        oldEndVnode = oldCh[--oldEndIdx];
+        // 新结尾节点右边移动一位
+        newEndVnode = newCh[--newEndIdx];
+      } else if (sameVnode(oldStartVnode, newEndVnode)) {
+        // Vnode moved right
+        // 旧起始节点和新结尾节点相同，patchVnode更新dom内容
+        patchVnode(
+          oldStartVnode,
+          newEndVnode,
+          insertedVnodeQueue,
+          newCh,
+          newEndIdx
+        );
+        // 将旧起始节点DOM添加到旧结尾节点DOM前面
+        canMove &&
+          nodeOps.insertBefore(
+            parentElm,
+            oldStartVnode.elm,
+            nodeOps.nextSibling(oldEndVnode.elm)
+          );
+        // 旧起始节点右边移动一位
+        oldStartVnode = oldCh[++oldStartIdx];
+        // 新结尾节点左边移动一位
+        newEndVnode = newCh[--newEndIdx];
+      } else if (sameVnode(oldEndVnode, newStartVnode)) {
+        // Vnode moved left
+        // 旧结尾节点和新起始节点相同，patchVnode更新dom内容
+        patchVnode(
+          oldEndVnode,
+          newStartVnode,
+          insertedVnodeQueue,
+          newCh,
+          newStartIdx
+        );
+        // 将旧结尾节点DOM添加到旧起始节点DOM前面
+        canMove &&
+          nodeOps.insertBefore(parentElm, oldEndVnode.elm, oldStartVnode.elm);
+        // 旧结尾节点左边移动一位
+        oldEndVnode = oldCh[--oldEndIdx];
+        // 新起始节点右边移动一位
+        newStartVnode = newCh[++newStartIdx];
+      } else {
+        // 其他情况
+
+        if (isUndef(oldKeyToIdx))
+          // 缓存尚未处理的旧节点key值
+          oldKeyToIdx = createKeyToOldIdx(oldCh, oldStartIdx, oldEndIdx);
+          // 寻找新起始节点key值在未处理旧节点相同key值节点
+        idxInOld = isDef(newStartVnode.key)
+          ? oldKeyToIdx[newStartVnode.key]
+          : findIdxInOld(newStartVnode, oldCh, oldStartIdx, oldEndIdx);
+        // 未处理的旧节点中不存在与新起始节点相同的节点
+        if (isUndef(idxInOld)) {
+          // New element
+          // 创建新节点DOM并添加到旧起始节点DOM的前面
+          createElm(
+            newStartVnode,
+            insertedVnodeQueue,
+            parentElm,
+            oldStartVnode.elm,
+            false,
+            newCh,
+            newStartIdx
+          );
+        } else {
+          // 旧节点中存在与新起始节点key相同的节点
+
+          // 缓存与新节点key值相同的旧节点
+          vnodeToMove = oldCh[idxInOld];
+          if (sameVnode(vnodeToMove, newStartVnode)) {
+            // 未处理旧节点和新起始节点是相同节点
+            patchVnode(
+              vnodeToMove,
+              newStartVnode,
+              insertedVnodeQueue,
+              newCh,
+              newStartIdx
+            );
+            // 将相同的旧节点置为undefined
+            oldCh[idxInOld] = undefined;
+            // 将相同的旧节点DOM添加到旧起始节点DOM前面
+            canMove &&
+              nodeOps.insertBefore(
+                parentElm,
+                vnodeToMove.elm,
+                oldStartVnode.elm
+              );
+          } else {
+            // key相同,但标签类型不同的节点
+            // same key but different element. treat as new element
+            // 创建新节点DOM并添加到旧起始节点DOM的前面
+            createElm(
+              newStartVnode,
+              insertedVnodeQueue,
+              parentElm,
+              oldStartVnode.elm,
+              false,
+              newCh,
+              newStartIdx
+            );
+          }
+        }
+        // // 新起始节点右边移动一位
+        newStartVnode = newCh[++newStartIdx];
+      }
+    }
+    // 循环结束
+    if (oldStartIdx > oldEndIdx) {
+      // 旧节点遍历完
+      // 把剩余未处理新节点DOM添加到上一个新结尾节点DOM前面（从新起始节点到新结尾节点，都未处理过）
+      refElm = isUndef(newCh[newEndIdx + 1]) ? null : newCh[newEndIdx + 1].elm;
+      addVnodes(
+        parentElm,
+        refElm,
+        newCh,
+        newStartIdx,
+        newEndIdx,
+        insertedVnodeQueue
+      );
+    } else if (newStartIdx > newEndIdx) {
+      // 新节点遍历完
+      // 移除旧起始和结尾节点以及他们之间的节点的DOM(从旧起始节点到旧结尾节点，可能存在处理过的节点，但处理过已被置为undefined)
+      removeVnodes(oldCh, oldStartIdx, oldEndIdx);
+    }
+  }
+```
+
+### 总结
+
+- updateChildren 按照新旧 vnode 进行由两侧向中间的比对，以新节点 vnode 为主导，此过程并不改变旧节点 vnode 排序
+- 将新旧 vnode 分别标记起始和结尾对比位置标识
+
+#### 1.首先判断新旧节点的起始序号不大于结尾序号(循环未结束)
+
+##### 1.1 判断旧起始节点是否存在
+
+- 旧起始节点不存在，则旧起始节点向右移动一位
+
+##### 1.2 判断旧结尾节点是否存在
+
+- 旧结尾节点不存在，则旧结尾节点向左移动一位
+
+##### 1.3 判断新旧节点的起始位置节点是否相同(sameVnode)
+
+- 新旧节点起始位置节点相同，调用 patchVnode 以新节点为准更新旧节点内容
+- 旧起始节点右边移动一位
+- 新起始节点右边移动一位
+
+##### 1.4 判断新旧节点的结束位置节点是否相同(sameVnode)
+
+- 新旧节点结束位置节点相同，调用 patchVnode 以新节点为准更新旧节点内容
+- 旧结尾节点左边移动一位
+- 新结尾节点左边移动一位
+
+##### 1.5 判断旧起始节点和新结束节点是否相同(sameVnode)
+
+- 旧起始节点和新结束节点相同，调用 patchVnode 以新节点为准更新旧节点内容
+- 将旧起始节点 DOM 添加到旧结尾节点 DOM 前面
+- 旧起始节点右边移动一位
+- 新结尾节点左边移动一位
+
+##### 1.6 判断旧结尾节点和新起始节点是否相同(sameVnode)
+
+- 旧结尾节点和新起始节点相同，调用 patchVnode 以新节点为准更新旧节点内容
+- 将旧结尾节点 DOM 添加到旧起始节点 DOM 前面
+- 旧结尾节点左边移动一位
+- 新起始节点右边移动一位
+
+##### 1.7 在新旧起始和结束特殊位置对比过后处理中间节点情况
+
+a:缓存尚未处理的旧节点 key 值;
+b:寻找新起始节点 key 值在未处理旧节点相同 key 值节点
+
+##### 1.7.1 未处理的旧节点中不存在与新起始节点相同的节点
+
+- 创建新节点 DOM 并添加到旧起始节点 DOM 的前面
+
+##### 1.7.2 旧节点中存在与新起始节点 key 相同的节点,判断新旧节点是否相同(sameVnode)
+
+- ##### 1.7.2.1 未处理旧节点和新起始节点是相同节点
+  - 调用 patchVnode 以新节点为准更新旧节点内容
+  - 将相同的旧节点置为 undefined
+  - 将相同的旧节点 DOM 添加到旧起始节点 DOM 前面
+- ##### 1.7.2.2 未处理旧节点和新起始节点 key 值相同，但是标签类型不同(不是相同节点)
+  - 创建新节点 DOM 并添加到旧起始节点 DOM 的前面
+
+##### 1.7.3 在判断执行完 1.7.1 和 1.7.2 之后，新起始节点右边移动一位
+
+#### 2.循环结束
+
+##### 2.1 判断如果旧节点遍历结束(oldStartIdx > oldEndIdx)
+
+- 把剩余未处理新节点 DOM 添加到上一个新结尾节点 DOM 前面(从新起始节点到新结尾节点，都未处理过)
+
+##### 2.2 判断如果新节点遍历结束(newStartIdx > newEndIdx)
+
+- 移除旧起始和结尾节点以及他们之间的节点的 DOM(从旧起始节点到旧结尾节点，可能存在处理过的节点，但处理过已被置为 undefined)
