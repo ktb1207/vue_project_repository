@@ -49,13 +49,21 @@ export function initMixin (Vue: Class<Component>) {
     }
     // expose real self
     vm._self = vm
+    // 生命周期相关变量初始化
     initLifecycle(vm)
+    // 事件监听初始化
     initEvents(vm)
+    // 编译 render 初始化
     initRender(vm)
+    // 触发beforeCreate 生命钩子的回调
     callHook(vm, 'beforeCreate')
+    // 把 inject 的成员注入到 vm 上
     initInjections(vm) // resolve injections before data/props
+    // 初始化 props,methods,data,computed,watch,
     initState(vm)
+    // 初始化 provide
     initProvide(vm) // resolve provide after data/props
+    // 触发created生命钩子
     callHook(vm, 'created')
 
     /* istanbul ignore if */
