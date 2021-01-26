@@ -51,8 +51,10 @@ export function initState(vm: Component) {
   if (opts.props) initProps(vm, opts.props);
   if (opts.methods) initMethods(vm, opts.methods);
   if (opts.data) {
+    // options data存在，初始化data
     initData(vm);
   } else {
+    // options data不存在，初始化data为空对象
     observe((vm._data = {}), true /* asRootData */);
   }
   if (opts.computed) initComputed(vm, opts.computed);
@@ -120,7 +122,10 @@ function initProps(vm: Component, propsOptions: Object) {
 }
 
 function initData(vm: Component) {
+  // 获取$options里的data
   let data = vm.$options.data;
+  // 判断data是不是个方法，因为data在创建Vue实例的时候可以传入对象也可以传入方法
+  // 传入的data是个方法，则执行该方法获取真实的data
   data = vm._data = typeof data === "function" ? getData(data, vm) : data || {};
   if (!isPlainObject(data)) {
     data = {};
@@ -139,6 +144,7 @@ function initData(vm: Component) {
   while (i--) {
     const key = keys[i];
     if (process.env.NODE_ENV !== "production") {
+      // 判断data key不能与methods key重名
       if (methods && hasOwn(methods, key)) {
         warn(
           `Method "${key}" has already been defined as a data property.`,
@@ -146,6 +152,7 @@ function initData(vm: Component) {
         );
       }
     }
+    // // 判断data key不能与props key重名
     if (props && hasOwn(props, key)) {
       process.env.NODE_ENV !== "production" &&
         warn(
@@ -154,10 +161,12 @@ function initData(vm: Component) {
           vm
         );
     } else if (!isReserved(key)) {
+      // 则将data[key]使用proxy代理到vm上,方便使用this.key访问data
       proxy(vm, `_data`, key);
     }
   }
   // observe data
+  // 使用observe方法将整个data变为可响应的
   observe(data, true /* asRootData */);
 }
 

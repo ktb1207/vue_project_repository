@@ -14,18 +14,20 @@ initState(vm)
 
 ```
 export function initState (vm: Component) {
-  vm._watchers = []
-  const opts = vm.$options
-  if (opts.props) initProps(vm, opts.props)
-  if (opts.methods) initMethods(vm, opts.methods)
+  vm._watchers = [];
+  const opts = vm.$options;
+  if (opts.props) initProps(vm, opts.props);
+  if (opts.methods) initMethods(vm, opts.methods);
   if (opts.data) {
-    initData(vm)
+    // options data存在，初始化data
+    initData(vm);
   } else {
-    observe(vm._data = {}, true /* asRootData */)
+    // options data不存在，初始化data为空对象
+    observe((vm._data = {}), true /* asRootData */);
   }
-  if (opts.computed) initComputed(vm, opts.computed)
+  if (opts.computed) initComputed(vm, opts.computed);
   if (opts.watch && opts.watch !== nativeWatch) {
-    initWatch(vm, opts.watch)
+    initWatch(vm, opts.watch);
   }
 }
 ```
@@ -150,3 +152,64 @@ function initMethods (vm: Component, methods: Object) {
 - 再检查 methods key 不能与 props key 重复
 - 其次检查 methods key 命名规范不能以$或\_开头
 - 最后把每个 methods[key]绑定到 vm 上，并将 methods[key]的 this 指向 vm
+
+#### 3. initData
+```
+
+function initData(vm: Component) {
+  // 获取$options里的data
+  let data = vm.$options.data;
+  // 判断data是不是个方法，因为data在创建Vue实例的时候可以传入对象也可以传入方法
+  // 传入的data是个方法，则执行该方法获取真实的data
+  data = vm._data = typeof data === "function" ? getData(data, vm) : data || {};
+  if (!isPlainObject(data)) {
+    data = {};
+    process.env.NODE_ENV !== "production" &&
+      warn(
+        "data functions should return an object:\n" +
+          "https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function",
+        vm
+      );
+  }
+  // proxy data on instance
+  const keys = Object.keys(data);
+  const props = vm.$options.props;
+  const methods = vm.$options.methods;
+  let i = keys.length;
+  while (i--) {
+    const key = keys[i];
+    if (process.env.NODE_ENV !== "production") {
+      // 判断data key不能与methods key重名
+      if (methods && hasOwn(methods, key)) {
+        warn(
+          `Method "${key}" has already been defined as a data property.`,
+          vm
+        );
+      }
+    }
+    // // 判断data key不能与props key重名
+    if (props && hasOwn(props, key)) {
+      process.env.NODE_ENV !== "production" &&
+        warn(
+          `The data property "${key}" is already declared as a prop. ` +
+            `Use prop default value instead.`,
+          vm
+        );
+    } else if (!isReserved(key)) {
+      // 则将data[key]使用proxy代理到vm上,方便使用this.key访问data
+      proxy(vm, `_data`, key);
+    }
+  }
+  // observe data
+  // 使用observe方法将整个data变为可响应的
+  observe(data, true /* asRootData */);
+}
+```
+说明：
+- 首先获取options里面data
+- 判断data是否为function,如果是function则执行function获取data,否则获取options属性data
+- 判断data key值不能与methods key值重名
+- 判断data key值不能与props key值重名
+- 则将data[key]使用proxy代理到vm上,方便使用this.key访问data
+- 使用observe方法将整个data变为可响应的
+
