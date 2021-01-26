@@ -187,12 +187,14 @@ const computedWatcherOptions = { lazy: true };
 
 function initComputed(vm: Component, computed: Object) {
   // $flow-disable-line
+  // 定义空对象存放Watcher实例对象
   const watchers = (vm._computedWatchers = Object.create(null));
   // computed properties are just getters during SSR
   const isSSR = isServerRendering();
 
   for (const key in computed) {
     const userDef = computed[key];
+    // 处理computed为函数和指定get/set对象
     const getter = typeof userDef === "function" ? userDef : userDef.get;
     if (process.env.NODE_ENV !== "production" && getter == null) {
       warn(`Getter is missing for computed property "${key}".`, vm);
@@ -200,6 +202,15 @@ function initComputed(vm: Component, computed: Object) {
 
     if (!isSSR) {
       // create internal watcher for the computed property.
+      // 为每一个计算属性定义一个Watcher观察者对象
+      // 这个对象是lazy的，不会立即就去执行计算（即get方法）
+      // 等到用的时候才会去计算
+      // 这个时候就会去读取这个计算属性依赖的可观察属性的值来计算
+      // 读取的时候就会把这些依赖添加进这个计算watcher里
+      // 所以当依赖变化时，通知到他的所有订阅watcher
+      // 计算watcher接到依赖发生变化了，不会立即计算新值，而是标记dirty为true
+      // 读取这个计算属性的时候，发现dirty为true，就是说数据已经不是最新的了，需要重新计算
+      // 然后才去计算，否则直接取上一次计算的值value
       watchers[key] = new Watcher(
         vm,
         getter || noop,
@@ -214,6 +225,7 @@ function initComputed(vm: Component, computed: Object) {
     if (!(key in vm)) {
       defineComputed(vm, key, userDef);
     } else if (process.env.NODE_ENV !== "production") {
+      // computed key 不能与data或props key 重名
       if (key in vm.$data) {
         warn(`The computed property "${key}" is already defined in data.`, vm);
       } else if (vm.$options.props && key in vm.$options.props) {
@@ -317,9 +329,11 @@ function initWatch(vm: Component, watch: Object) {
     const handler = watch[key];
     if (Array.isArray(handler)) {
       for (let i = 0; i < handler.length; i++) {
+        // 为每个watch属性创建一个观察者对象
         createWatcher(vm, key, handler[i]);
       }
     } else {
+      // 为每个watch属性创建一个观察者对象
       createWatcher(vm, key, handler);
     }
   }

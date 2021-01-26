@@ -154,6 +154,7 @@ function initMethods (vm: Component, methods: Object) {
 - 最后把每个 methods[key]绑定到 vm 上，并将 methods[key]的 this 指向 vm
 
 #### 3. initData
+
 ```
 
 function initData(vm: Component) {
@@ -205,11 +206,106 @@ function initData(vm: Component) {
   observe(data, true /* asRootData */);
 }
 ```
-说明：
-- 首先获取options里面data
-- 判断data是否为function,如果是function则执行function获取data,否则获取options属性data
-- 判断data key值不能与methods key值重名
-- 判断data key值不能与props key值重名
-- 则将data[key]使用proxy代理到vm上,方便使用this.key访问data
-- 使用observe方法将整个data变为可响应的
 
+说明：
+
+- 首先获取 options 里面 data
+- 判断 data 是否为 function,如果是 function 则执行 function 获取 data,否则获取 options 属性 data
+- 判断 data key 值不能与 methods key 值重名
+- 判断 data key 值不能与 props key 值重名
+- 则将 data[key]使用 proxy 代理到 vm 上,方便使用 this.key 访问 data
+- 使用 observe 方法将整个 data 变为可响应的
+
+#### 4. initComputed
+
+```
+function initComputed(vm: Component, computed: Object) {
+  // $flow-disable-line
+  // 定义空对象存放Watcher实例对象
+  const watchers = (vm._computedWatchers = Object.create(null));
+  // computed properties are just getters during SSR
+  const isSSR = isServerRendering();
+
+  for (const key in computed) {
+    const userDef = computed[key];
+    // 处理computed为函数和指定get/set对象
+    const getter = typeof userDef === "function" ? userDef : userDef.get;
+    if (process.env.NODE_ENV !== "production" && getter == null) {
+      warn(`Getter is missing for computed property "${key}".`, vm);
+    }
+
+    if (!isSSR) {
+      // create internal watcher for the computed property.
+      // 为每一个计算属性定义一个Watcher观察者对象
+      // 这个对象是lazy的，不会立即就去执行计算（即get方法）
+      // 等到用的时候才会去计算
+      // 这个时候就会去读取这个计算属性依赖的可观察属性的值来计算
+      // 读取的时候就会把这些依赖添加进这个计算watcher里
+      // 所以当依赖变化时，通知到他的所有订阅watcher
+      // 计算watcher接到依赖发生变化了，不会立即计算新值，而是标记dirty为true
+      // 读取这个计算属性的时候，发现dirty为true，就是说数据已经不是最新的了，需要重新计算
+      // 然后才去计算，否则直接取上一次计算的值value
+      watchers[key] = new Watcher(
+        vm,
+        getter || noop,
+        noop,
+        computedWatcherOptions
+      );
+    }
+
+    // component-defined computed properties are already defined on the
+    // component prototype. We only need to define computed properties defined
+    // at instantiation here.
+    if (!(key in vm)) {
+      defineComputed(vm, key, userDef);
+    } else if (process.env.NODE_ENV !== "production") {
+      // computed key 不能与data或props key 重名
+      if (key in vm.$data) {
+        warn(`The computed property "${key}" is already defined in data.`, vm);
+      } else if (vm.$options.props && key in vm.$options.props) {
+        warn(
+          `The computed property "${key}" is already defined as a prop.`,
+          vm
+        );
+      }
+    }
+  }
+}
+```
+
+说明：
+
+- 首先定义了一个空对象存放创建的 Watcher 对象实例
+- 循环处理 computed 每一个 key
+- 判断生命 computed 是否为 function 或者对象声明 get/set, 并获取 getter
+- 为每一个计算属性定义一个 Watcher 观察着对象
+- 检测 computed key 不能与 data 或者 props key 重名
+- 使用 defineComputed 方法将 userDef 放到 vm 实例上，让我们可以直接通过 this 调用
+
+#### 5. initWatch
+
+```
+function initWatch(vm: Component, watch: Object) {
+  for (const key in watch) {
+    const handler = watch[key];
+    if (Array.isArray(handler)) {
+      for (let i = 0; i < handler.length; i++) {
+        // 为每个watch属性创建一个观察者对象
+        createWatcher(vm, key, handler[i]);
+      }
+    } else {
+      // 为每个watch属性创建一个观察者对象
+      createWatcher(vm, key, handler);
+    }
+  }
+}
+```
+
+说明：
+
+- 初始化 watch，就是为每个 watch 属性创建一个观察者对象
+- createWatcher 其实质还是通过`new Watcher()`创建观察者对象
+- 调用相关 data/prop 属性的 get 方法
+- get 方法又会在他的观察者列表里加上该 watcher
+- 一旦这些依赖属性值变化就会通知该 watcher 执行 update 方法
+- 也就是 watch 属性的 handler 方法
