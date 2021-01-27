@@ -1,6 +1,8 @@
-### 关于vue的响应式系统重要的函数observe()
+### 关于 vue 的响应式系统重要的函数 observe()
+
 - 定义位置：vue\src\core\observer\index.js
 - 调用位置：vue\src\core\instance\state.js
+
 ```
 export function initState(vm: Component) {
   vm._watchers = [];
@@ -20,7 +22,9 @@ export function initState(vm: Component) {
   }
 }
 ```
+
 ---
+
 #### 1.observe
 
 ```
@@ -36,7 +40,7 @@ export function observe(value: any, asRootData: ?boolean): Observer | void {
     ob = value.__ob__;
     // 为什么会有这个判断呢？
     // 每个数据对象被观测后都会在该对象上定义一个__ob__属性,
-    // 这个判断是为了防止重复观测一个对象。 
+    // 这个判断是为了防止重复观测一个对象。
   } else if (
     shouldObserve &&
     !isServerRendering() && // 判断是否是服务端渲染,只有当不是服务端渲染的时候才会进行观测
@@ -52,12 +56,15 @@ export function observe(value: any, asRootData: ?boolean): Observer | void {
   return ob;
 }
 ```
-说明：
-- observe观察的如果不是对象或者是Vnode，不做处理直接返回，即只能观察对象数据(object/array)
-- 判断数据对象是否包含__ob__属性,防止重复观观测
-- 返回ob实例
 
-#### 2. Observe类
+说明：
+
+- observe 观察的如果不是对象或者是 Vnode，不做处理直接返回，即只能观察对象数据(object/array)
+- 判断数据对象是否包含**ob**属性,防止重复观观测
+- 返回 ob 实例
+
+#### 2. Observe 类
+
 ```
 export class Observer {
   value: any;
@@ -111,12 +118,15 @@ export class Observer {
   }
 }
 ```
+
 说明：
+
 - 初始化依赖收集容器`this.dep = new Dep()`
-- 观测对象添加__ob__属性，它的值就是当前Observer实例对象
-- 调用defineReactive进行对象属性访问和修改劫持
+- 观测对象添加**ob**属性，它的值就是当前 Observer 实例对象
+- 调用 defineReactive 进行对象属性访问和修改劫持
 
 #### 3. defineReactive
+
 ```
 export function defineReactive(
   obj: Object,
@@ -167,7 +177,7 @@ export function defineReactive(
       // 首先也是获取原来的属性值
       const value = getter ? getter.call(obj) : val;
       /* eslint-disable no-self-compare */
-      // 新旧值相等，就可以直接返回不用接下来的操作了 
+      // 新旧值相等，就可以直接返回不用接下来的操作了
       // newVal !== newVal && value !== value 这个比较主要处理NaN NaN === NaN // false
       if (newVal === value || (newVal !== newVal && value !== value)) {
         return;
@@ -192,8 +202,28 @@ export function defineReactive(
   });
 }
 ```
+
 说明：
+
 - 判断观测对象是否是可配置
-- 观测对象属性值如果为object则调用observe递归进行观测
-- get函数进行返回属性值和在这里进行收集依赖
-- set函数主要是设置属性值和触发依赖。
+- 观测对象属性值如果为 object 则调用 observe 递归进行观测
+- get 函数进行返回属性值和在这里进行收集依赖
+- set 函数主要是设置属性值和触发依赖。
+
+---
+
+### 关于对 vue 双向数据绑定的总结：
+
+- ##### Vue 的双向数据绑定是采用的数据劫持和发布者-订阅者模式
+- ##### 数据劫持是通过 Object.defineProperty
+- ##### Observer 类用来监视数据的，也就是发布者
+- ##### Dep 类存储了一些与 Watcher 有关的东西，起到了一个收集器的作用
+- ##### Watcher 就是订阅者
+
+---
+
+- 钩子函数 beforeCreate 和 created 之间会调用 initState,初始化 methods，data，props 等；
+- 在初始化 data 时，会完成数据代理，vm.xx = vm.\_data.xx = vm.data.xx，之后会调用 observe 方法，初始化一个 Observer 实例，所谓发布者；
+- 初始化 Observer 实例会对 data 的每个属性设置 setter/getter，同时每个属性都会初始化一个 Dep 实例，用来收集订阅者(Watcher)；
+- 模板编译中会对指令{{}}数据绑定初始化 Watcher 实例，初始化时会调用 get 方法，触发对应属性的 getter 将自身添加到对应属性的对应的 Dep 实例 dep 的 subs 数组中
+- 属性的值变化的时候，触发 setter，调用属性对应的 Dep 实例 dep 的 notify（）方法，notify 方法会去遍历 subs 数组中存放的 Watcher 实例，通知每个实例调用 update 对数据变化做出反应
