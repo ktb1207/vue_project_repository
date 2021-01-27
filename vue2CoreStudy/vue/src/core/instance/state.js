@@ -34,6 +34,13 @@ const sharedPropertyDefinition = {
   get: noop,
   set: noop,
 };
+/**
+* proxy函数作用
+* proxy函数通过Object.defineProperty在实例对象vm上定义了与key数据字段相同的访问器属性
+* 代理的值是vm.sourceKey上对应的属性值
+* 当访问this.key时，实际访问的是this.sourceKey.key的值
+*
+*/
 
 export function proxy(target: Object, sourceKey: string, key: string) {
   sharedPropertyDefinition.get = function proxyGetter() {
@@ -163,6 +170,9 @@ function initData(vm: Component) {
     } else if (!isReserved(key)) {
       // 则将data[key]使用proxy代理到vm上,方便使用this.key访问data
       proxy(vm, `_data`, key);
+      // proxy函数通过Object.defineProperty在实例对象vm上定义了与data数据字段相同的访问器属性
+      // 代理的值是vm._data上对应的属性值
+      // 当访问this.a时，实际访问的是this._data.a的值
     }
   }
   // observe data

@@ -197,6 +197,8 @@ function initData(vm: Component) {
           vm
         );
     } else if (!isReserved(key)) {
+      // isReserved()函数的作用是判断一个字符串是否以 $ 或者 _ 开头
+      // 因为Vue内部的变量是以$或_开头，防止冲突
       // 则将data[key]使用proxy代理到vm上,方便使用this.key访问data
       proxy(vm, `_data`, key);
     }
