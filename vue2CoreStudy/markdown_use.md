@@ -43,3 +43,25 @@ function add (a,b) {
   return a + b;
 }
 ```
+
+```js
+// 这是js代码块
+function add (a,b) {
+  return a + b;
+}
+```
+
+```css
+// css代码块
+.class{
+  font-size:14px;
+  color:red;
+}
+```
+
+```html
+<!-- 这是html代码块 -->
+<div>
+  <p>p段落</p>
+</div>
+```

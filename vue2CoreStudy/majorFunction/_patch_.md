@@ -32,7 +32,7 @@ Vue.prototype.__patch__ = patch
     } else {
       // 新旧节点，同时存在
 
-      const isRealElement = isDef(oldVnode.nodeType) // 获取旧节点是否是真实dom
+      const isRealElement = isDef(oldVnode.nodeType) // 获取旧节点元素属性
       if (!isRealElement && sameVnode(oldVnode, vnode)) {
         // 旧节点不是真实dom元素并且和新节点相似
         // 执行patchVnode 修改现有节点（旧）
