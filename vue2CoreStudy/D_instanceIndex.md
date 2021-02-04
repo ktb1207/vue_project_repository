@@ -25,10 +25,10 @@ function Vue (options) {
 // 实例方法的初始化
 
 initMixin(Vue) // 混入_init()
-stateMixin(Vue) // 实现$set/$delete/$watch方法
-eventsMixin(Vue) // 实现$emit/$on/$off/$once四个方法
-lifecycleMixin(Vue) // 实现_update/$forceUpdate/$destory三个方法
-renderMixin(Vue) // 实现_render/$nextTick方法
+stateMixin(Vue) // 定义数据相关的方法$set/$delete/$watch方法
+eventsMixin(Vue) // 定义事件相关的方法$emit/$on/$off/$once四个方法
+lifecycleMixin(Vue) // 定义_update，及生命周期相关的$forceUpdate/$destory三个方法
+renderMixin(Vue) // 定义$nextTick方法，_render将render函数转为vnode
 
 export default Vue
 ```
@@ -41,9 +41,9 @@ export default Vue
 - 作用：
   - 1.  定义\_init 方法
   - 2.  merge options
-  - 3.  生命周期相关变量初始化:initLifecycle(vm)
-  - 4.  事件监听初始化:initEvents(vm)
-  - 5.  编译 render 初始化:initRender(vm)
+  - 3.  生命周期相关变量初始化:initLifecycle(vm)，主要作用是确认组件的父子关系和初始化某些实例属性
+  - 4.  事件监听初始化:initEvents(vm)，主要作用是将父组件在使用 v-on 或@注册的自定义事件添加到子组件的事件中心中
+  - 5.  编译 render 初始化:initRender(vm)，主要作用是挂载可以将 render 函数转为 vnode 的方法
   - 6.  beforeCreate 生命钩子的回调
   - 7.  把 inject 的成员注入到 vm 上: initInjections(vm)
   - 8.  初始化 vm 的 \_props/methods/\_data/computed/watch: initState(vm)
