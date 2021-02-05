@@ -24,7 +24,16 @@ module.exports = {
 
   // 调整内部的 webpack 配置。
   // 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/webpack.md
-  chainWebpack: () => {},
+  chainWebpack: (config) => {
+    config.module
+      .rule('eslint')
+      .use('eslint-loader')
+      .loader('eslint-loader')
+      .tap((options) => {
+        options.fix = true;
+        return options;
+      });
+  },
   configureWebpack: (config) => {
     if (process.env.NODE_ENV !== 'development') {
       // 为生产环境修改配置...
