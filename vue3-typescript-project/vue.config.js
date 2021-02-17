@@ -4,7 +4,7 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 //端口号
 const theDefaultPort = 8089;
-const theDefaultRouter = '/';
+const theDefaultRouter = '/home';
 //登录状态
 const loginToken = 'cn-2708c8fa-3e4a-4a12-ba26-e5d875dc7986';
 module.exports = {
@@ -100,6 +100,7 @@ module.exports = {
     port: theDefaultPort,
     https: false,
     hotOnly: false,
+    hot: true,
     // 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/cli-service.md#配置代理
     proxy: {
       '/api': {
