@@ -16,51 +16,73 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onUpdated, reactive, nextTick, watch } from 'vue';
+import { delayAdd } from './delayAdd';
 export default defineComponent({
   name: 'HappyYear',
   setup() {
-    const leftTextArr = ['牛', '气', '冲', '天', '步', '步', '高'];
-    const rightTextArr = ['人', '和', '家', '顺', '年', '年', '好'];
+    const leftTextArr: Array<string> = ['牛', '气', '冲', '天', '步', '步', '高'];
+    const rightTextArr: Array<string> = ['人', '和', '家', '顺', '年', '年', '好'];
     const reactiveLeftTextArr = reactive<Array<string>>([]);
     const reactiveRightTextArr = reactive<Array<string>>([]);
     let leftStep = 0;
     let rightStep = 0;
-    const showRightText = () => {
-      if (rightStep > rightTextArr.length - 1) return;
-      const clearRightTimeOut = setTimeout(() => {
+    /**
+     * @description：右侧添加文字
+     */
+    const showRightText = async () => {
+      if (rightStep > rightTextArr.length - 1) {
+        // 右侧文字显示完毕
+        // 清空左右侧文字，重新添加显示
+        console.log('执行完毕');
+        nextTick(() => {
+          setTimeout(() => {
+            reactiveLeftTextArr.splice(0, reactiveLeftTextArr.length);
+            leftStep = 0;
+          }, 2000);
+        });
+      }
+      await delayAdd(rightStep, rightTextArr).then((res) => {
         reactiveRightTextArr.push(rightTextArr[rightStep]);
         rightStep += 1;
-        if (rightStep >= leftTextArr.length - 1) clearTimeout(clearRightTimeOut);
-      }, 600);
+      });
     };
-
-    const showLeftText = () => {
+    /**
+     * @description：左侧添加文字
+     */
+    const showLeftText = async () => {
       if (leftStep > leftTextArr.length - 1) {
+        // 左侧文字添加完毕，执行右侧文字添加
+        reactiveRightTextArr.splice(0, reactiveRightTextArr.length);
+        rightStep = 0;
         showRightText();
         return;
       }
-      const clearLeftTimeOut = setTimeout(() => {
-        reactiveLeftTextArr.push(leftTextArr[leftStep]);
+      await delayAdd(leftStep, leftTextArr).then((res) => {
+        reactiveLeftTextArr.push(res);
         leftStep += 1;
-        if (leftStep >= leftTextArr.length - 1) clearTimeout(clearLeftTimeOut);
-      }, 600);
+      });
     };
-
+    /**
+     * @description：左侧文字变化更新
+     */
     watch(reactiveLeftTextArr, () => {
       nextTick(() => {
         showLeftText();
       });
     });
+    /**
+     * @description:右侧文字变化更新
+     */
     watch(reactiveRightTextArr, () => {
       nextTick(() => {
         showRightText();
       });
     });
+    /**
+     * @description: 初始化执行左边
+     */
     onMounted(() => {
       showLeftText();
-    });
-    onUpdated(() => {
-      console.log('更新了');
     });
     return { reactiveLeftTextArr, reactiveRightTextArr };
   }

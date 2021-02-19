@@ -45,7 +45,7 @@ module.exports = {
       return {
         plugins: [
           new OpenBrowserPlugin({
-            url: 'http://localhost:' + theDefaultPort + theDefaultRouter
+            url: 'http://localhost:' + theDefaultPort + '/index.html#' + theDefaultRouter
           })
         ]
       };
