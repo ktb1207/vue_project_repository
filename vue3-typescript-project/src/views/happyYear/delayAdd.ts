@@ -1,4 +1,4 @@
-export function delayAdd(index: number, item: Array<string>, delayNum: number = 600): Promise<string> {
+export function delayAdd(index: number, item: Array<string>, delayNum: number = 800): Promise<string> {
   return new Promise((resolve) => {
     const timeOut = setTimeout(() => {
       resolve(item[index]);
