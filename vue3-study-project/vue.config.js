@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require ('clean-webpack-plugin');
 //端口号
 const theDefaultPort = 8089;
 const theDefultUrl = '/resources/web/dist';
-const theDefaultRouter = '/'
+const theDefaultRouter = '/';
 //登录状态
 const loginToken = 'cn-2708c8fa-3e4a-4a12-ba26-e5d875dc7986';
 module.exports = {
@@ -26,7 +26,7 @@ module.exports = {
   // 调整内部的 webpack 配置。
   // 查阅 https://github.com/vuejs/vue-doc-zh-cn/vue-cli/webpack.md
   chainWebpack: () => {},
-  configureWebpack: config => {
+  configureWebpack: () => {
     if (process.env.NODE_ENV !== 'development') {
       // 为生产环境修改配置...
       return {
@@ -125,7 +125,7 @@ module.exports = {
       warnings: false, // 警告浏览器不显示
       errors: true, // 错误提示浏览器显示错误
     },
-    before: app => {},
+    before: () => {},
   },
 
   // 三方插件的选项
