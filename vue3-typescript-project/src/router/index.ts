@@ -15,7 +15,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/happyYear',
     name: 'HappyYear',
-    component: () => import('../views/happyYear/HappyYear.vue')
+    component: () => import('@/views/happyYear/HappyYear.vue')
+  },
+  {
+    path: '/coordinate',
+    name: 'Coordinate',
+    component: () => import('@/views/Coordinate.vue')
   },
   {
     path: '/about',
