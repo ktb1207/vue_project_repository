@@ -8,7 +8,6 @@ const router = createRouter({
 
 router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: NavigationGuardNext): void => {
   const loginTag: string | null = util.getToken();
-  console.log(to);
   if (to.matched.length === 0) {
     // 路由不存在
     next('/notFound');

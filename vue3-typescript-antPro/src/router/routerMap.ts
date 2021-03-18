@@ -36,5 +36,14 @@ export const routerMap: Array<RouteRecordRaw> = [
       title: '404',
       requireLogin: false
     }
+  },
+  {
+    path: '/403',
+    name: 'Forbidden',
+    component: () => import('../views/Forbid.vue'),
+    meta: {
+      title: '403',
+      requireLogin: false
+    }
   }
 ];

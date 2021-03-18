@@ -25,6 +25,8 @@
 <script lang="ts">
 import { defineComponent, reactive, UnwrapRef } from 'vue';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+import { mainStorekey } from '@/store/index';
 import { Form, Input, Button } from 'ant-design-vue';
 import { UserOutlined, LockOutlined } from '@ant-design/icons-vue';
 import { ValidateErrorEntity } from 'ant-design-vue/es/form/interface';
@@ -45,6 +47,8 @@ export default defineComponent({
   setup() {
     // router
     const router = useRouter();
+    // sotre
+    const store = useStore(mainStorekey);
     const formState: UnwrapRef<FormState> = reactive({
       user: '',
       password: ''
@@ -52,14 +56,20 @@ export default defineComponent({
     const handleFinish = (values: FormState) => {
       console.log(values);
       console.log(formState);
-      util.setToken(formState.user + formState.password);
-      router.push({
-        name: 'Home'
-      });
+      console.log(store);
+      store.dispatch('showLoading', 'body');
+      setTimeout(() => {
+        store.dispatch('hideLoading');
+      }, 2000);
+      // util.setToken(formState.user + formState.password);
+      // router.push({
+      //   name: 'Home'
+      // });
     };
     const handleFinishFailed = (errors: ValidateErrorEntity<FormState>) => {
       console.log(errors);
     };
+
     return {
       formState,
       handleFinish,

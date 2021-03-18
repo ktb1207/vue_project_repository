@@ -19,6 +19,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off', // 允许空function
     '@typescript-eslint/no-var-requires': 'off', // 允许require引入
     '@typescript-eslint/no-explicit-any': 'off', // 允许ts泛型any
+    '@typescript-eslint/no-unused-vars': 'off', // 允许空var
     semi: ['error', 'always'], // 在语句末尾使用分号
     quotes: ['error', 'single'], // 单引号
     indent: ['error', 2, { SwitchCase: 1 }], // 2空格缩进
