@@ -54,17 +54,15 @@ export default defineComponent({
       password: ''
     });
     const handleFinish = (values: FormState) => {
-      console.log(values);
-      console.log(formState);
-      console.log(store);
+      // console.log(values);
       store.dispatch('showLoading', 'body');
       setTimeout(() => {
         store.dispatch('hideLoading');
+        util.setToken(formState.user + formState.password);
+        router.push({
+          name: 'Home'
+        });
       }, 2000);
-      // util.setToken(formState.user + formState.password);
-      // router.push({
-      //   name: 'Home'
-      // });
     };
     const handleFinishFailed = (errors: ValidateErrorEntity<FormState>) => {
       console.log(errors);
