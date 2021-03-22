@@ -1,6 +1,8 @@
 <template>
-  <div class="root-router-page">
-    <KTable :columns="columnsData" :rowData="bodyData"></KTable>
+  <div class="root-router-page home-page">
+    <div class="table-wrp">
+      <KTable :columns="columnsData" :rowData="bodyData"></KTable>
+    </div>
   </div>
 </template>
 
@@ -43,10 +45,20 @@ export default defineComponent({
       {
         name: '张三',
         classify: '三二班',
-        num: 80
+        num: 801234567890012345
       },
       {
         name: '李四',
+        classify: '四二班',
+        num: 77
+      },
+      {
+        name: '1111',
+        classify: '四二班',
+        num: 77
+      },
+      {
+        name: '222',
         classify: '四二班',
         num: 77
       }
@@ -58,3 +70,13 @@ export default defineComponent({
   }
 });
 </script>
+
+<style lang="scss">
+.home-page {
+  padding: 24px;
+  .table-wrp {
+    height: 80px;
+    overflow: auto;
+  }
+}
+</style>
