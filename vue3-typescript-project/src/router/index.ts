@@ -23,6 +23,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/Coordinate.vue')
   },
   {
+    path: '/kTable',
+    name: 'KTable',
+    component: () => import('@/views/KTable.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
