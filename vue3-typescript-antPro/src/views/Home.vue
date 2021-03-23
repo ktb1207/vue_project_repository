@@ -3,6 +3,13 @@
     <div class="table-wrp">
       <KTable :columns="columnsData" :rowData="bodyData"></KTable>
     </div>
+
+    <div class="test-wrp">
+      <div class="flex-one">1</div>
+      <div class="flex-one">2</div>
+      <div class="flex-one">3</div>
+      <div class="flex-two">skdhfskhfsdskjdhfskdjhfkdsjfskjhfskjdhkjfdhkshfd</div>
+    </div>
   </div>
 </template>
 
@@ -21,12 +28,14 @@ const tableColumns: Array<ColumnItem> = [
   {
     label: '名称',
     prop: 'name',
-    width: '160'
+    width: '660px',
+    align: 'center'
   },
   {
     label: '班级',
     prop: 'classify',
-    width: '160'
+    width: '160px',
+    align: 'right'
   },
   {
     label: '分数',
@@ -75,8 +84,27 @@ export default defineComponent({
 .home-page {
   padding: 24px;
   .table-wrp {
-    height: 80px;
+    height: 160px;
     overflow: auto;
+  }
+
+  .test-wrp {
+    height: 32px;
+    background-color: chartreuse;
+    display: flex;
+    overflow: auto;
+    .flex-one {
+      flex: 0 0 150px;
+      width: 0;
+      background-color: chocolate;
+      margin-left: 5px;
+    }
+    .flex-two {
+      flex: 1 1 auto;
+      width: 0;
+      background-color: cornflowerblue;
+      margin-right: 5px;
+    }
   }
 }
 </style>

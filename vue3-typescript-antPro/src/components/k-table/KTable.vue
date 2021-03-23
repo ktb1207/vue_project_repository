@@ -1,46 +1,46 @@
 <template>
-  <div class="table-layout">
-    <!-- 表头表格 -->
-    <table ref="tableDom" class="k-table-header">
-      <thead>
-        <tr>
-          <td
-            class="header-td"
-            draggable="true"
-            v-for="(item, index) in tableColumns"
-            :key="item.prop"
-            :width="item.width ? item.width : 'auto'"
-            @dragstart="onDragStart(index)"
-            @dragover="onDragOver($event)"
-            @drop="onDrop($event, index)"
+  <div class="k-table-wrp">
+    <div class="k-table-layout">
+      <!-- 固定表头 -->
+      <div class="table-header" ref="tableDom">
+        <div
+          class="k-td"
+          draggable="true"
+          v-for="(item, index) in tableColumns"
+          :key="item.prop"
+          @dragstart="onDragStart(index)"
+          @dragover="onDragOver($event)"
+          @drop="onDrop($event, index)"
+          :style="{
+            flex: item.width ? `0 0 ${item.width}` : '1 1 auto',
+            textAlign: item.align ? item.align : 'left'
+          }"
+        >
+          {{ item.label }}
+          <span
+            class="resize-span"
+            @mousedown="resizeStart($event)"
+            @mouseup="resizeEnd($event)"
+            v-show="index < tableColumns.length - 1"
+          ></span>
+        </div>
+      </div>
+      <!-- 滚动表体 -->
+      <!-- <div class="table-body">
+        <div class="k-tr" v-for="(item, index) in rowData" :key="index">
+          <div
+            class="k-td"
+            v-for="col in tableColumns"
+            :key="col.prop"
+            :style="{ flex: col.width ? `0 0 ${col.width}` : '1 1 auto', textAlign: col.align ? col.align : 'left' }"
           >
-            {{ item.label }}
-            <span
-              class="resize-span"
-              @mousedown="resizeStart($event)"
-              @mouseup="resizeEnd($event)"
-              v-show="index < tableColumns.length - 1"
-            ></span>
-          </td>
-        </tr>
-      </thead>
-    </table>
-    <!-- 表格内容 -->
-    <div class="auto-table">
-      <table class="k-table-body">
-        <thead>
-          <tr>
-            <td v-for="item in tableColumns" :key="item.prop" :width="item.width ? item.width : 'auto'"></td>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(item, index) in rowData" :key="index">
-            <td v-for="col in tableColumns" :key="col.prop">{{ item[col.prop] }}</td>
-          </tr>
-        </tbody>
-      </table>
+            {{ item[col.prop] }}
+          </div>
+        </div>
+      </div> -->
+      <!-- 拖拽线 -->
+      <div class="resize-line"></div>
     </div>
-    <div class="resize-line"></div>
   </div>
 </template>
 
@@ -58,6 +58,8 @@ export type ColumnItem = {
   prop: string;
   // 单元列宽
   width?: string;
+  // 单元格对齐方式
+  align?: string;
 };
 
 interface Props {
@@ -103,7 +105,7 @@ export default defineComponent({
         const preIndex = Math.min(inx1, inx2);
         const preWidth = tableColumns.value[preIndex].width;
         tableColumns.value[nowEndIndex].width = preWidth;
-        tableColumns.value[preIndex].width = 'auto';
+        delete tableColumns.value[preIndex].width;
       }
       tableColumns.value.splice(inx1, 1, ...tableColumns.value.splice(inx2, 1, tableColumns.value[inx1]));
     }
@@ -142,6 +144,11 @@ export default defineComponent({
       nextTick(() => {
         console.log(((tableDom.value as unknown) as HTMLTableElement).firstChild);
       });
+      // const tableDomRef = (tableDom.value as unknown) as HTMLTableElement;
+      // tableDomRef.addEventListener('mousemove', (e: MouseEvent) => {
+      //   console.log(e.offsetX);
+      //   console.log((e.target as HTMLTableElement).scrollWidth);
+      // });
     });
     return {
       tableColumns,
@@ -157,45 +164,60 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-$headerHeight: 32px;
+<style lang="scss" scoped>
+$headerHeight: 38px;
+$bodyRowHeight: 32px;
 $borderColor: #565656;
-.table-layout {
+div {
+  box-sizing: border-box;
+}
+.k-table-wrp {
   width: 100%;
   height: 100%;
-  overflow-x: auto;
+  overflow-x: auto; // 横向滚动
   overflow-y: hidden;
+  position: relative;
+}
+.k-table-layout {
+  height: 100%;
+  overflow-y: hidden;
+  position: relative;
+  border: 1px solid $borderColor;
+  padding-bottom: 8px; // 消除底部边框重合
   display: flex;
   flex-direction: column;
-  position: relative;
-  // header
-  .k-table-header {
+  align-items: stretch;
+
+  .table-header {
     flex: 0 0 auto;
-    width: 100%;
-    position: relative;
-    table-layout: fixed;
-    .header-td {
-      position: relative;
+    height: 0;
+    height: $headerHeight;
+    border-bottom: 1px solid $borderColor;
+    white-space: nowrap;
+    display: inline-block;
+    .k-td {
+      display: inline-block;
+      width: 320px;
       cursor: move;
+      line-height: $headerHeight;
+      position: relative;
       .resize-span {
         display: inline-block;
         position: absolute;
+        top: 0;
         right: 0;
-        top: 0px;
-        bottom: 0px;
-        width: 6px;
+        bottom: 0;
+        width: 3px;
         background-color: blue;
         cursor: col-resize;
         z-index: 4;
       }
     }
   }
-  // body
-  .auto-table {
+  .table-body {
     flex: 1 1 auto;
-    overflow-y: auto;
-    border-bottom: 1px solid $borderColor;
-    padding-bottom: 2px;
+    height: 0;
+    overflow-y: auto; // 垂直方向滚动
     &::-webkit-scrollbar {
       /*滚动条整体样式*/
       width: 6px; /*高宽分别对应横竖滚动条的尺寸*/
@@ -213,41 +235,30 @@ $borderColor: #565656;
       border-radius: 6px;
       background: #d4dde6;
     }
-    .k-table-body {
-      width: 100%;
+  }
+  .k-tr {
+    height: $bodyRowHeight;
+    border-bottom: 1px solid $borderColor;
+    .k-td {
+      line-height: $bodyRowHeight;
+    }
+  }
+  .k-tr {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    .k-td {
       position: relative;
-      table-layout: fixed;
-    }
-  }
-
-  // 边框线
-  .k-table-header,
-  .k-table-body {
-    tr {
-      border: 1px solid $borderColor;
-      td {
-        border-right: 1px solid $borderColor;
+      padding-left: 12px;
+      padding-right: 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      border-right: 1px solid $borderColor;
+      &:last-child {
+        border-right: none;
       }
     }
-  }
-  // 边框重叠消除
-  .k-table-body {
-    thead {
-      tr {
-        border: none;
-      }
-    }
-    tbody {
-      & > tr:first-child {
-        border-top: none;
-      }
-    }
-  }
-  // 单元格禁止换行，移除...
-  td {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
   // 拖拽线
   .resize-line {
