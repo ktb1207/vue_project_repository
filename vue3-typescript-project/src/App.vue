@@ -2,6 +2,7 @@
   <div id="nav">
     <router-link to="/">Home</router-link> | <router-link to="/happyYear">Happy Year</router-link> |
     <router-link to="/coordinate">坐标相关</router-link> | <router-link to="/kTable">固定表格表头</router-link> |
+    <router-link to="/hfunction">h函数</router-link> |
     <router-link to="/about">About</router-link>
   </div>
   <router-view />

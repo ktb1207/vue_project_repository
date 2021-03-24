@@ -28,6 +28,11 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('@/views/KTable.vue')
   },
   {
+    path: '/hfunction',
+    name: 'HFunction',
+    component: () => import('@/views/HFunction')
+  },
+  {
     path: '/about',
     name: 'About',
     // route level code-splitting
