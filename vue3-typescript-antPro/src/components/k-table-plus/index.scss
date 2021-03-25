@@ -1,0 +1,62 @@
+
+$headerHeight: 38px;
+$bodyRowHeight: 32px;
+$borderColor: #565656;
+
+div {
+  box-sizing: border-box;
+}
+
+.k-table-plus{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: relative;
+  .table-container {
+    table-layout: fixed;
+    width: 100%;
+    // header
+    .header-tr {
+      height: $headerHeight;
+      border: 1px solid red;
+      td {
+        position: relative;
+        cursor: move;
+      }
+    }
+    // body
+    .body-tr {
+      height: $bodyRowHeight;
+      background-color: bisque;
+      border: 1px solid gold;
+    }
+    td {
+      padding: 0 12px;
+      border-right: 1px solid #999;
+      white-space: nowrap;
+      word-break: break-all;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .resize-span {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 6px;
+    background-color: blue;
+    cursor: col-resize;
+  }
+  // 拖拽线
+  .resize-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1999px;
+    width: 1px;
+    background-color: rgb(94, 255, 0);
+    z-index: 2;
+  }
+}

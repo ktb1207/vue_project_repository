@@ -3,12 +3,16 @@
     <div class="table-wrp">
       <KTable :columns="columnsData" :rowData="bodyData"></KTable>
     </div>
-
     <div class="test-wrp">
-      <div class="flex-one">1</div>
-      <div class="flex-one">2</div>
-      <div class="flex-one">3</div>
-      <div class="flex-two">skdhfskhfsdskjdhfskdjhfkdsjfskjhfskjdhkjfdhkshfd</div>
+      <KTablePlus :rowData="bodyData">
+        <KColumnPlus label="名称" prop="name"></KColumnPlus>
+        <KColumnPlus label="班级" prop="classify"></KColumnPlus>
+        <KColumnPlus label="分数" prop="num">
+          <template #default="scope">
+            <button @click="hTestClick(scope)">button</button>
+          </template>
+        </KColumnPlus>
+      </KTablePlus>
     </div>
   </div>
 </template>
@@ -16,35 +20,46 @@
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
 import useAuthority from '@/utils/authority';
-
 import KTable from '@/components/k-table/KTable.vue';
 import { ColumnItem } from '@/components/k-table/KTable.vue';
+
+import KTablePlus from '@/components/k-table-plus/KTablePlus';
+import KColumnPlus from '@/components/k-table-plus/KColumnPlus';
 type tableRowItem = {
   name: string;
   classify: string;
   num: number;
 };
+const testFunction = () => {
+  console.log('click');
+};
 const tableColumns: Array<ColumnItem> = [
   {
     label: '名称',
     prop: 'name',
-    width: '660px',
-    align: 'center'
+    width: '100px',
+    align: 'center',
+    render: () => {
+      return `<button onclick="${testFunction()}">button</button>`;
+    }
   },
   {
     label: '班级',
     prop: 'classify',
-    width: '160px',
+    width: '400px',
     align: 'right'
   },
   {
     label: '分数',
-    prop: 'num'
+    prop: 'num',
+    width: '100px'
   }
 ];
 export default defineComponent({
   components: {
-    KTable
+    KTable,
+    KTablePlus,
+    KColumnPlus
   },
   setup() {
     // 页面范文权限
@@ -72,9 +87,13 @@ export default defineComponent({
         num: 77
       }
     ]);
+    const hTestClick = (scope: any) => {
+      console.log(scope);
+    };
     return {
       columnsData,
-      bodyData
+      bodyData,
+      hTestClick
     };
   }
 });
@@ -84,27 +103,12 @@ export default defineComponent({
 .home-page {
   padding: 24px;
   .table-wrp {
-    height: 160px;
+    width: 900px;
     overflow: auto;
   }
-
   .test-wrp {
-    height: 32px;
-    background-color: chartreuse;
-    display: flex;
-    overflow: auto;
-    .flex-one {
-      flex: 0 0 150px;
-      width: 0;
-      background-color: chocolate;
-      margin-left: 5px;
-    }
-    .flex-two {
-      flex: 1 1 auto;
-      width: 0;
-      background-color: cornflowerblue;
-      margin-right: 5px;
-    }
+    margin: 30px auto;
+    width: 600px;
   }
 }
 </style>
