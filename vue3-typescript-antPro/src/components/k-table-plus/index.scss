@@ -19,6 +19,7 @@ div {
     .header-tr {
       height: $headerHeight;
       border: 1px solid red;
+      background-color: #fff;
       td {
         position: relative;
         cursor: move;

@@ -5,7 +5,7 @@
     </div>
     <div class="test-wrp">
       <KTablePlus :rowData="bodyData">
-        <KColumnPlus label="名称" prop="name"></KColumnPlus>
+        <KColumnPlus label="名称" prop="name" width="180px" align="center"></KColumnPlus>
         <KColumnPlus label="班级" prop="classify"></KColumnPlus>
         <KColumnPlus label="分数" prop="num">
           <template #default="scope">
