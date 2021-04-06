@@ -1,13 +1,13 @@
 <template>
   <div class="root-router-page home-page">
     <div class="table-wrp">
-      <KTable :columns="columnsData" :rowData="bodyData"></KTable>
+      <!-- <KTable :columns="columnsData" :rowData="bodyData"></KTable> -->
     </div>
     <div class="test-wrp">
       <KTablePlus :rowData="bodyData">
-        <KColumnPlus label="名称" prop="name" width="180px" align="center"></KColumnPlus>
-        <KColumnPlus label="班级" prop="classify"></KColumnPlus>
-        <KColumnPlus label="分数" prop="num">
+        <KColumnPlus label="名称" prop="name" width="100px" align="center"></KColumnPlus>
+        <KColumnPlus label="班级" prop="classify" width="700px"></KColumnPlus>
+        <KColumnPlus label="分数" prop="num" width="100px">
           <template #default="scope">
             <button @click="hTestClick(scope)">button</button>
           </template>
@@ -20,7 +20,7 @@
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
 import useAuthority from '@/utils/authority';
-import KTable from '@/components/k-table/KTable.vue';
+// import KTable from '@/components/k-table/KTable.vue';
 import { ColumnItem } from '@/components/k-table/KTable.vue';
 
 import KTablePlus from '@/components/k-table-plus/KTablePlus';
@@ -57,7 +57,7 @@ const tableColumns: Array<ColumnItem> = [
 ];
 export default defineComponent({
   components: {
-    KTable,
+    // KTable,
     KTablePlus,
     KColumnPlus
   },
@@ -107,8 +107,8 @@ export default defineComponent({
     overflow: auto;
   }
   .test-wrp {
-    margin: 30px auto;
-    width: 600px;
+    width: 900px;
+    padding-left: 60px;
   }
 }
 </style>
