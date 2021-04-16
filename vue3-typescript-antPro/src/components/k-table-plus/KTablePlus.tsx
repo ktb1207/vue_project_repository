@@ -138,12 +138,6 @@ export default defineComponent({
       }
       // 标注线移动
       resizeLineLeft.value = moveLineEndPoint;
-      // 最小宽度限制50
-      // const minLeft = resizeState.value.originalTdLeftPoint + 50;
-      // 实时移动差值
-      // const proxyLeft = resizeState.value.relativeTableLeft + deltaLeft;
-      // 标注线最终位置
-      // const moveLineEndPoint = Math.max(minLeft, proxyLeft);
       // 标注线开始到结束位置差值,+ 变大 - 变小
       const moveLineDiffByEndAndStart = moveLineEndPoint - resizeState.value.relativeTableLeft;
       resizeState.value.endReviseTdWidth = resizeState.value.originalTdWidth + moveLineDiffByEndAndStart;
