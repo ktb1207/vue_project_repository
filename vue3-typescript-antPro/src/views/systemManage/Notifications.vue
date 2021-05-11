@@ -1,5 +1,5 @@
 <template>
   <div>
-    <button>button</button>
+    通知公告
   </div>
 </template>

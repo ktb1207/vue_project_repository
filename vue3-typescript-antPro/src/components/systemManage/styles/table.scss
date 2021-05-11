@@ -1,0 +1,18 @@
+.el-checkbox__inner:hover {
+  border-color: #d30102;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: #d30102;
+  border-color: #d30102;
+}
+
+
+.el-checkbox__input.is-focus .el-checkbox__inner {
+    border-color: #d30102;
+}
+
+// .el-table--enable-row-hover .el-table__body tr:hover>td {
+//     background-color: #ffb9b5;
+// }

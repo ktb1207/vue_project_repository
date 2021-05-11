@@ -1,0 +1,65 @@
+[   
+    {
+        "id": 101,
+        "dictId": "10001",
+        "dictName": "字典1",
+        "dictType": "type1",
+        "dictRemark": "备注1",
+        "createDate": "2021-04-20",
+        "dictStatus": "1"
+    },
+    {
+        "id": 102,
+        "dictId": "10002",
+        "dictName": "字典2",
+        "dictType": "type2",
+        "dictRemark": "备注2",
+        "createDate": "2021-04-22",
+        "dictStatus": "1"
+    },
+    {
+        "id": 103,
+        "dictId": "10003",
+        "dictName": "字典3",
+        "dictType": "type3",
+        "dictRemark": "备注3",
+        "createDate": "2021-04-25",
+        "dictStatus": "2"
+    },
+    {
+        "id": 104,
+        "dictId": "10004",
+        "dictName": "字典4",
+        "dictType": "type4",
+        "dictRemark": "备注4",
+        "createDate": "2021-04-26",
+        "dictStatus": "2"
+    },
+    {
+        "id": 105,
+        "dictId": "10005",
+        "dictName": "字典5",
+        "dictType": "type5",
+        "dictRemark": "备注5",
+        "createDate": "2021-04-28",
+        "dictStatus": "3"
+    },
+    {
+        "id": 106,
+        "dictId": "10006",
+        "dictName": "字典6",
+        "dictType": "type6",
+        "dictRemark": "备注6",
+        "createDate": "2021-04-30",
+        "dictStatus": "3"
+    },
+    {
+        "id": 107,
+        "dictId": "10007",
+        "dictName": "字典7",
+        "dictType": "type7",
+        "dictRemark": "备注7",
+        "createDate": "2021-04-30",
+        "dictStatus": "1"
+    }
+]

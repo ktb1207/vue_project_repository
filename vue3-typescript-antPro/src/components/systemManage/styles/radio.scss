@@ -1,0 +1,12 @@
+.el-radio__input.is-checked .el-radio__inner {
+  border-color: #d30102;
+  background: #d30102;
+}
+
+.el-radio__inner:hover {
+  border-color: #f78989;
+}
+
+.el-radio__input.is-checked+.el-radio__label {
+  color: #d30102;
+}

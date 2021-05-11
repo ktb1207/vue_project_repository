@@ -1,0 +1,64 @@
+.el-button {
+  border-radius: 2px;
+  border: 1px solid #d8d8d8;
+}
+
+.el-button--primary {
+  color: #fff;
+  background-color: #d30102;
+  border-color: #d30102;
+}
+
+.el-button--primary:hover {
+  color: #fff;
+  border-color: #F56C6C;
+  background-color: #F56C6C;
+}
+
+.el-button--danger {
+  color: #fff;
+  background-color: #d30102;
+  border-color: #d30102;
+}
+
+.el-button--danger:focus,
+.el-button--danger:hover {
+  background: #f78989;
+  border-color: #f78989;
+  color: #FFF;
+}
+
+.el-button--info {
+  color: #666666;
+  background-color: #E7E8F2;
+  border-color: #D8D8D8;
+}
+
+.el-button--text {
+  color: #606266;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.el-button--text:focus,
+.el-button--text:hover {
+  color: #d30102;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.el-popconfirm__main {
+  margin-bottom: 5px;
+}
+
+.el-button.is-plain:focus,
+.el-button.is-plain:hover {
+  background: #FFF;
+  border-color: #d30102;
+  color: #d30102;
+}
+
+.el-time-panel__btn.confirm {
+  font-weight: 800;
+  color: #d30102;
+}

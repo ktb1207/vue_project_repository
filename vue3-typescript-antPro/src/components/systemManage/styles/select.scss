@@ -1,0 +1,25 @@
+.el-select .el-input.is-focus .el-input__inner {
+  border-color: #d30102;
+}
+
+.el-input__inner {
+  border-radius: 2px;
+  border: 1px solid #d8d8d8;
+}
+
+.el-select:hover .el-input__inner {
+  border-color: #d30102;
+}
+
+.el-select .el-input__inner:focus {
+  border-color: #d30102;
+}
+
+.el-select-dropdown {
+  border-radius: 2px;
+}
+
+.el-select-dropdown__item.selected {
+  color: #d30102;
+  font-weight: 700;
+}
