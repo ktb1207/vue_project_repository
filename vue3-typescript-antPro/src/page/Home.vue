@@ -1,12 +1,14 @@
 <template>
   <div class="root-router-page home-page">
     <div class="table-wrp">
-      <!-- <KTable :columns="columnsData" :rowData="bodyData"></KTable> -->
+      <el-button type="primary" @click="hrefSystem('autoWaring')">自动预警</el-button>
+      <el-button type="primary" @click="hrefSystem('riskTip')">风险提示</el-button>
     </div>
     <div class="test-wrp">
-      <KTablePlus :rowData="bodyData">
+      <KTablePlus :rowData="bodyData" unique-key="id" @CheckChange="checkChange">
+        <KColumnPlus label="selection" width="40px" align="center"></KColumnPlus>
         <KColumnPlus label="名称" prop="name" width="100px" align="center"></KColumnPlus>
-        <KColumnPlus label="班级" prop="classify" width="700px"></KColumnPlus>
+        <KColumnPlus label="班级" prop="classify" width="300px"></KColumnPlus>
         <KColumnPlus label="分数" prop="num" width="100px">
           <template #default="scope">
             <button @click="hTestClick(scope)">button</button>
@@ -19,81 +21,69 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue';
+import { useRouter } from 'vue-router';
 import useAuthority from '@/utils/authority';
-// import KTable from '@/components/k-table/KTable.vue';
-import { ColumnItem } from '@/components/k-table/KTable.vue';
-
 import KTablePlus from '@/components/k-table-plus/KTablePlus';
 import KColumnPlus from '@/components/k-table-plus/KColumnPlus';
 type tableRowItem = {
+  id: number;
   name: string;
   classify: string;
   num: number;
 };
-const testFunction = () => {
-  console.log('click');
-};
-const tableColumns: Array<ColumnItem> = [
-  {
-    label: '名称',
-    prop: 'name',
-    width: '100px',
-    align: 'center',
-    render: () => {
-      return `<button onclick="${testFunction()}">button</button>`;
-    }
-  },
-  {
-    label: '班级',
-    prop: 'classify',
-    width: '400px',
-    align: 'right'
-  },
-  {
-    label: '分数',
-    prop: 'num',
-    width: '100px'
-  }
-];
+
 export default defineComponent({
   components: {
-    // KTable,
     KTablePlus,
     KColumnPlus
   },
   setup() {
     // 页面范文权限
     useAuthority('A');
-    const columnsData = reactive(tableColumns);
     const bodyData = reactive<Array<tableRowItem>>([
       {
+        id: 1,
         name: '张三',
         classify: '三二班',
         num: 801234567890012345
       },
       {
+        id: 2,
         name: '李四',
         classify: '四二班',
         num: 77
       },
       {
+        id: 3,
         name: '1111',
         classify: '四二班',
         num: 77
       },
       {
+        id: 4,
         name: '222',
         classify: '四二班',
         num: 77
       }
     ]);
+    // 表格勾选
+    const checkChange = (arr: Array<any>) => {
+      console.log(arr);
+    };
     const hTestClick = (scope: any) => {
       console.log(scope);
     };
+    const router = useRouter();
+    // 跳转平台
+    const hrefSystem = (paramsStr: string) => {
+      console.log(paramsStr);
+      router.push({ name: 'PlatformClassify', params: { classifyType: paramsStr } });
+    };
     return {
-      columnsData,
       bodyData,
-      hTestClick
+      hTestClick,
+      hrefSystem,
+      checkChange
     };
   }
 });
@@ -107,7 +97,9 @@ export default defineComponent({
     overflow: auto;
   }
   .test-wrp {
+    padding-top: 24px;
     width: 900px;
+    height: 300px;
     padding-left: 60px;
   }
 }

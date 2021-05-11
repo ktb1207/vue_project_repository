@@ -1,0 +1,23 @@
+@import './variable.scss';
+
+.el-dropdown__popper{
+  top: 50px !important;
+}
+
+// button
+.el-button--primary{
+  background-color: $yellowColor;
+  border-color: $yellowColor;
+  &:hover{
+    background-color: $easyYellowColor;
+    border-color: $easyYellowColor;
+  }
+}
+.el-button--default{
+  &:hover{
+    color: $easyYellowColor;
+    border-color: #ddd;
+    background-color: #fff;
+  }
+}
+

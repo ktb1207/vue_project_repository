@@ -1,0 +1,87 @@
+[{
+        "id": 101,
+        "deptId": "101",
+        "partName": "部门1",
+        "fullName": "全称1",
+        "location": "地区1",
+        "mail": "xxx@cnpc.com.cn",
+        "phone": "xxxx-xxxxxxxx",
+        "sort": 1,
+        "status": "1",
+        "createDate": "2021-04-20",
+        "isRoot": true
+    },
+    {
+        "id": 102,
+        "deptId": "102",
+        "partName": "部门2",
+        "fullName": "全称2",
+        "location": "地区2",
+        "mail": "xxx@cnpc.com.cn",
+        "phone": "xxxx-xxxxxxxx",
+        "sort": 1,
+        "status": "2",
+        "createDate": "2021-04-21"
+    },
+    {
+        "id": 103,
+        "deptId": "103",
+        "partName": "部门3",
+        "fullName": "全称3",
+        "location": "地区3",
+        "mail": "xxx@cnpc.com.cn",
+        "phone": "xxxx-xxxxxxxx",
+        "sort": 2,
+        "status": "3",
+        "createDate": "2021-04-22",
+        "children": [{
+                "id": 104,
+                "deptId": "104",
+                "partName": "部门3-1",
+                "fullName": "全称4",
+                "location": "地区3",
+                "mail": "xxx@cnpc.com.cn",
+                "phone": "xxxx-xxxxxxxx",
+                "sort": 3,
+                "status": "3",
+                "createDate": "2021-04-20"
+            },
+            {
+                "id": 105,
+                "deptId": "105",
+                "partName": "部门3-2",
+                "fullName": "全称5",
+                "location": "地区3",
+                "mail": "xxx@cnpc.com.cn",
+                "phone": "xxxx-xxxxxxxx",
+                "sort": 3,
+                "status": "3",
+                "createDate": "2021-04-25"
+            }
+        ]
+    },
+    {
+        "id": 106,
+        "deptId": "106",
+        "partName": "部门4",
+        "fullName": "全称6",
+        "location": "地区4",
+        "mail": "xxx@cnpc.com.cn",
+        "phone": "xxxx-xxxxxxxx",
+        "sort": 1,
+        "status": "2",
+        "createDate": "2021-04-23"
+    },
+    {
+        "id": 107,
+        "deptId": "107",
+        "partName": "部门5",
+        "fullName": "全称7",
+        "location": "地区5",
+        "mail": "xxx@cnpc.com.cn",
+        "phone": "xxxx-xxxxxxxx",
+        "sort": 1,
+        "status": "1",
+        "createDate": "2021-04-23"
+    }
+]

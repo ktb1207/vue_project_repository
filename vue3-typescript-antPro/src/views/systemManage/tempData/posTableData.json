@@ -1,0 +1,58 @@
+[   
+    {
+        "id": 101,
+        "posId": "10001",
+        "posName": "岗位1",
+        "posRank": 1,
+        "createDate": "2021-04-22",
+        "posStatus": "1"
+    },
+    {
+        "id": 102,
+        "posId": "10002",
+        "posName": "岗位2",
+        "posRank": 2,
+        "createDate": "2021-04-28",
+        "posStatus": "1"
+    },
+    {
+        "id": 103,
+        "posId": "10003",
+        "posName": "岗位3",
+        "posRank": 3,
+        "createDate": "2021-04-22",
+        "posStatus": "2"
+    },
+    {
+        "id": 104,
+        "posId": "10004",
+        "posName": "岗位4",
+        "posRank": 4,
+        "createDate": "2021-04-26",
+        "posStatus": "1"
+    },
+    {
+        "id": 105,
+        "posId": "10005",
+        "posName": "岗位5",
+        "posRank": 5,
+        "createDate": "2021-04-25",
+        "posStatus": "2"
+    },
+    {
+        "id": 106,
+        "posId": "10006",
+        "posName": "岗位6",
+        "posRank": 6,
+        "createDate": "2021-04-20",
+        "posStatus": "2"
+    },
+    {
+        "id": 107,
+        "posId": "10007",
+        "posName": "岗位7",
+        "posRank": 7,
+        "createDate": "2021-04-30",
+        "posStatus": "1"
+    }
+]

@@ -1,0 +1,65 @@
+[   
+    {
+        "id": 101,
+        "roleId": "10001",
+        "roleName": "角色1",
+        "authStr": "字符1",
+        "roleRank": 1,
+        "createDate": "2021-04-29",
+        "roleStatus": "1"
+    },
+    {
+        "id": 102,
+        "roleId": "10002",
+        "roleName": "角色2",
+        "authStr": "字符2",
+        "roleRank": 2,
+        "createDate": "2021-04-20",
+        "roleStatus": "2"
+    },
+    {
+        "id": 103,
+        "roleId": "10003",
+        "roleName": "角色3",
+        "authStr": "字符3",
+        "roleRank": 3,
+        "createDate": "2021-04-30",
+        "roleStatus": "3"
+    },
+    {
+        "id": 104,
+        "roleId": "10004",
+        "roleName": "角色4",
+        "authStr": "字符4",
+        "roleRank": 4,
+        "createDate": "2021-04-25",
+        "roleStatus": "1"
+    },
+    {
+        "id": 105,
+        "roleId": "10005",
+        "roleName": "角色5",
+        "authStr": "字符5",
+        "roleRank": 5,
+        "createDate": "2021-04-26",
+        "roleStatus": "2"
+    },
+    {
+        "id": 106,
+        "roleId": "10006",
+        "roleName": "角色6",
+        "authStr": "字符6",
+        "roleRank": 6,
+        "createDate": "2021-04-22",
+        "roleStatus": "3"
+    },
+    {
+        "id": 107,
+        "roleId": "10007",
+        "roleName": "角色7",
+        "authStr": "字符7",
+        "roleRank": 7,
+        "createDate": "2021-04-28",
+        "roleStatus": "1"
+    }
+]

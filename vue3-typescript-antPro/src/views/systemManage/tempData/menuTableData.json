@@ -1,0 +1,149 @@
+[{
+        "id": 101,
+        "menuName": "物资采购",
+        "menuIcon": "caigouguanli",
+        "authMark": "标识1",
+        "roleRank": 1,
+        "route": "/purchase",
+        "createDate": "2021-04-18",
+        "menuStatus": "2",
+        "isRoot": false,
+        "children": [
+            {
+                "id": 140,
+                "menuName": "采购管理",
+                "menuIcon": "",
+                "authMark": "标识1",
+                "roleRank": 1,
+                "route": "/purchase/manage",
+                "createDate": "2021-04-18",
+                "menuStatus": "3",
+                "isRoot": false
+            }
+        ]
+    },
+    {
+        "id": 102,
+        "menuName": "油品销售",
+        "menuIcon": "youqitong_huaban1",
+        "authMark": "标识2",
+        "roleRank": 2,
+        "route": "/sale",
+        "createDate": "2021-04-19",
+        "menuStatus": "2",
+        "isRoot": false,
+        "children": [
+            {
+                "id": 141,
+                "menuName": "油品批发",
+                "menuIcon": "",
+                "authMark": "标识2",
+                "roleRank": 2,
+                "route": "/sale/oil",
+                "createDate": "2021-04-19",
+                "menuStatus": "3",
+                "isRoot": false
+            }
+        ]
+    },
+    {
+        "id": 103,
+        "menuName": "系统管理",
+        "menuIcon": "shezhi",
+        "authMark": "标识3",
+        "roleRank": 3,
+        "route": "/sysManage",
+        "createDate": "2021-04-20",
+        "menuStatus": "1",
+        "isRoot": false,
+        "children": [{
+                "id": 104,
+                "menuName": "组织机构管理",
+                "menuIcon": "",
+                "authMark": "标识3",
+                "roleRank": 3,
+                "route": "/sysManage/organ",
+                "createDate": "2021-04-22",
+                "menuStatus": "1",
+                "isRoot": false
+            },
+            {
+                "id": 105,
+                "menuName": "用户管理",
+                "menuIcon": "",
+                "authMark": "标识3",
+                "roleRank": 3,
+                "route": "/sysManage/user",
+                "createDate": "2021-04-22",
+                "menuStatus": "1",
+                "isRoot": false
+            }, {
+                "id": 106,
+                "menuName": "角色管理",
+                "menuIcon": "",
+                "authMark": "标识3",
+                "roleRank": 3,
+                "route": "/sysManage/role",
+                "createDate": "2021-04-22",
+                "menuStatus": "1",
+                "isRoot": false
+            },
+            {
+                "id": 107,
+                "menuName": "岗位管理",
+                "menuIcon": "",
+                "authMark": "标识3",
+                "roleRank": 3,
+                "route": "/sysManage/position",
+                "createDate": "2021-04-22",
+                "menuStatus": "1",
+                "isRoot": false
+            },
+            {
+                "id": 108,
+                "menuName": "字典管理",
+                "menuIcon": "",
+                "authMark": "标识3",
+                "roleRank": 3,
+                "route": "/sysManage/dict",
+                "createDate": "2021-04-22",
+                "menuStatus": "1",
+                "isRoot": false
+            }
+        ]
+    },
+    {
+        "id": 109,
+        "menuName": "日志管理",
+        "menuIcon": "baobiaoguanli",
+        "authMark": "标识4",
+        "roleRank": 4,
+        "route": "/logs",
+        "createDate": "2021-04-23",
+        "menuStatus": "1",
+        "isRoot": false,
+        "children": [{
+            "id": 110,
+            "menuName": "操作日志",
+            "menuIcon": "",
+            "authMark": "标识4",
+            "roleRank": 4,
+            "route": "/logs/operate",
+            "createDate": "2021-04-25",
+            "menuStatus": "1",
+            "isRoot": false
+        },
+        {
+            "id": 111,
+            "menuName": "登录日志",
+            "menuIcon": "",
+            "authMark": "标识4",
+            "roleRank": 4,
+            "route": "/logs/login",
+            "createDate": "2021-04-25",
+            "menuStatus": "1",
+            "isRoot": false
+        }
+    ]
+    }
+]

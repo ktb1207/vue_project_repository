@@ -15,8 +15,14 @@ import {
   renderSlot
 } from 'vue';
 
+import KCheckbox from '../k-checkbox/KCheckbox';
+
 interface Props {
+  // 表单数据
   rowData: Array<any>;
+  // 表单数据唯一标识字段
+  uniqueKey: string;
+  onCheckChange?: (arr: Array<any>) => {};
 }
 
 type tdInfo = {
@@ -28,11 +34,20 @@ type tdInfo = {
 
 export default defineComponent({
   name: 'KTablePlus',
+  emits: ['CheckChange'],
   props: {
     rowData: {
       type: Array as PropType<Array<any>>,
       default: () => []
+    },
+    uniqueKey: {
+      type: String,
+      required: true,
+      default: 'id'
     }
+  },
+  components: {
+    KCheckbox
   },
   setup(props: Props, context: SetupContext) {
     const bodyData = toRef(props, 'rowData');
@@ -138,6 +153,12 @@ export default defineComponent({
       }
       // 标注线移动
       resizeLineLeft.value = moveLineEndPoint;
+      // 最小宽度限制50
+      // const minLeft = resizeState.value.originalTdLeftPoint + 50;
+      // 实时移动差值
+      // const proxyLeft = resizeState.value.relativeTableLeft + deltaLeft;
+      // 标注线最终位置
+      // const moveLineEndPoint = Math.max(minLeft, proxyLeft);
       // 标注线开始到结束位置差值,+ 变大 - 变小
       const moveLineDiffByEndAndStart = moveLineEndPoint - resizeState.value.relativeTableLeft;
       resizeState.value.endReviseTdWidth = resizeState.value.originalTdWidth + moveLineDiffByEndAndStart;
@@ -174,6 +195,48 @@ export default defineComponent({
       document.addEventListener('mousemove', handelResizeMouseMove);
       document.addEventListener('mouseup', handelResizeMouseUp);
     };
+    // 选中状态
+    const columnCheckStatus = ref<'checked' | 'unChecked' | 'halfChecked'>('unChecked');
+    // 唯一数据标识符
+    const uniqueDataKey = toRef(props, 'uniqueKey');
+    const nowCheckArr = reactive<Array<any>>([]);
+    // 选中所有切换
+    const checkAll = (val: boolean) => {
+      console.log('全选事件：' + val);
+      // 全部清空
+      nowCheckArr.splice(0, nowCheckArr.length);
+      if (val) {
+        bodyData.value.forEach((item) => {
+          nowCheckArr.push(item[uniqueDataKey.value]);
+        });
+      }
+      context.emit('CheckChange', nowCheckArr);
+    };
+    // 单一行选中
+    const preCheck = (status: boolean, item: any) => {
+      if (status) {
+        if (!nowCheckArr.includes(item[uniqueDataKey.value])) {
+          // 添加
+          nowCheckArr.push(item[uniqueDataKey.value]);
+        }
+      } else {
+        const findIndex = nowCheckArr.findIndex((value) => {
+          return value === item[uniqueDataKey.value];
+        });
+        if (findIndex > -1) {
+          //删除
+          nowCheckArr.splice(findIndex, 1);
+        }
+      }
+      if (nowCheckArr.length === 0) {
+        columnCheckStatus.value = 'unChecked';
+      } else if (nowCheckArr.length === bodyData.value.length) {
+        columnCheckStatus.value = 'checked';
+      } else {
+        columnCheckStatus.value = 'halfChecked';
+      }
+      context.emit('CheckChange', nowCheckArr);
+    };
     onMounted(() => {
       // 固定表头记录表格垂直滚动
       const scrollDom = (kTablePlusScroll.value as unknown) as HTMLDivElement;
@@ -192,13 +255,29 @@ export default defineComponent({
       onDragStart,
       onDragOver,
       onDrop,
-      handleResizeMouseDown
+      handleResizeMouseDown,
+      columnCheckStatus,
+      nowCheckArr,
+      uniqueDataKey,
+      checkAll,
+      preCheck
     };
   },
   render() {
     console.log('render update');
     const slotIndexArr = this.columnIndex;
+    const checkArr = this.nowCheckArr;
     const columnSlot = renderSlot(this.context.slots, 'default').children as Array<VNode>;
+
+    const renderBodyContentOrCheckbox = (item: any, props: any) => {
+      if (props.label === 'selection') {
+        const checkAllStr = checkArr.includes(item[this.uniqueDataKey]) ? 'checked' : 'unChecked';
+        return (
+          <KCheckbox checkStatus={checkAllStr} onCheckChange={(val: boolean) => this.preCheck(val, item)}></KCheckbox>
+        );
+      }
+      return item[props.prop ? props.prop : ''];
+    };
     // 构造body td内容
     const createBodyTdContent = (rowItem: any) => {
       return slotIndexArr.map((num: number, index: number) => {
@@ -222,7 +301,8 @@ export default defineComponent({
               textAlign: (col.props as any).align ? (col.props as any).align : (col.type as any).props.align.default
             }}
           >
-            {rowItem[(col.props as any).prop ? (col.props as any).prop : '']}
+            {/* {rowItem[(col.props as any).prop ? (col.props as any).prop : '']} */}
+            {renderBodyContentOrCheckbox(rowItem, col.props)}
           </td>
         );
       });
@@ -242,7 +322,13 @@ export default defineComponent({
           onDragover={(e) => this.onDragOver(e)}
           onDrop={(e) => this.onDrop(e, index)}
         >
-          {item}
+          {
+            <item
+              disabled={this.bodyData.length === 0}
+              checkStatus={this.columnCheckStatus}
+              onAllChecked={this.checkAll}
+            />
+          }
           {index < slotIndexArr.length - 1 && (
             <span class="resize-span" onMousedown={(e) => this.handleResizeMouseDown(e, index)}></span>
           )}
@@ -251,7 +337,13 @@ export default defineComponent({
     });
     // 构造body tr
     const bodyTr = this.bodyData.map((row, index) => {
-      return <tr key={index}>{createBodyTdContent(row)}</tr>;
+      return (
+        <>
+          <tr class="body-tr" key={index}>
+            {createBodyTdContent(row)}
+          </tr>
+        </>
+      );
     });
     const dragResieLineLeft = this.resizeLineLeft + 'px';
     return (
@@ -260,10 +352,11 @@ export default defineComponent({
           <thead style={this.theadStyle}>
             <tr class="header-tr">{headTd}</tr>
           </thead>
-          <tbody class="body-tr">{bodyTr}</tbody>
+          <tbody>{bodyTr}</tbody>
         </table>
         {/* 拖拽线 */}
         <div class="resize-line" style={{ left: dragResieLineLeft }}></div>
+        {this.bodyData.length === 0 && <div class="no-data-tip">暂无数据</div>}
       </div>
     );
   }
