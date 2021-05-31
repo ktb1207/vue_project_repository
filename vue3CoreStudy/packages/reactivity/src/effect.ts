@@ -1,3 +1,19 @@
+/**
+ * 文件说明：
+ * vue2的响应式原理，主要通过Object.defineproperty,Watcher,Deps[dep,dep]实现
+ *
+ * 为了解决vue2的问题，依赖收集（即添加观察者/通知观察者）模块单独出来，就是现在的effect
+ *
+ * 提供了三个函数主要函数：effect/track/trigger。
+ *
+ * effect是将传入的函数转化为reactiveEffect格式的函数
+ *
+ * track主要功能是将reactiveEffect添加为target[key]的观察者
+ *
+ * trigger主要功能是通知target[key]的观察者（将观察者队列函数一一取出来执行）
+ *
+ * */
+
 import { TrackOpTypes, TriggerOpTypes } from './operations'
 import { EMPTY_OBJ, isArray, isIntegerKey, isMap } from '@vue/shared'
 
@@ -51,7 +67,7 @@ export const MAP_KEY_ITERATE_KEY = Symbol(__DEV__ ? 'Map key iterate' : '')
 export function isEffect(fn: any): fn is ReactiveEffect {
   return fn && fn._isEffect === true
 }
-
+// effect是将传入的函数转化为reactiveEffect格式的函数
 export function effect<T = any>(
   fn: () => T,
   options: ReactiveEffectOptions = EMPTY_OBJ
@@ -137,11 +153,27 @@ export function resetTracking() {
   const last = trackStack.pop()
   shouldTrack = last === undefined ? true : last
 }
-
+// track主要功能是将reactiveEffect添加为target[key]的观察者
 export function track(target: object, type: TrackOpTypes, key: unknown) {
+  // activeEffect 为空，代表没有依赖，直接返回
   if (!shouldTrack || activeEffect === undefined) {
     return
   }
+  // targetMap 依赖管理中心，用于收集依赖和触发依赖
+  // targetMap 为每个 target 建立一个 map
+  // 每个 target 的 key 对应着一个 dep
+  // 然后用 dep 来收集依赖函数，当监听的 key 值发生变化时，触发 dep 中的依赖函数
+  // 类似于这样
+  // targetMap(weakmap) = {
+  //     target1(map): {
+  //       key1(dep): (fn1,fn2,fn3...)
+  //       key2(dep): (fn1,fn2,fn3...)
+  //     },
+  //     target2(map): {
+  //       key1(dep): (fn1,fn2,fn3...)
+  //       key2(dep): (fn1,fn2,fn3...)
+  //     },
+  // }
   let depsMap = targetMap.get(target)
   if (!depsMap) {
     targetMap.set(target, (depsMap = new Map()))
@@ -163,7 +195,8 @@ export function track(target: object, type: TrackOpTypes, key: unknown) {
     }
   }
 }
-
+// 触发依赖
+// trigger主要功能是通知target[key]的观察者（将观察者队列函数一一取出来执行）
 export function trigger(
   target: object,
   type: TriggerOpTypes,
@@ -175,6 +208,7 @@ export function trigger(
   const depsMap = targetMap.get(target)
   if (!depsMap) {
     // never been tracked
+    // 如果没有收集过依赖，直接返回
     return
   }
 
@@ -188,7 +222,7 @@ export function trigger(
       })
     }
   }
-
+  // 在值被清空前，往相应的队列添加 target 所有的依赖
   if (type === TriggerOpTypes.CLEAR) {
     // collection being cleared
     // trigger all effects for target

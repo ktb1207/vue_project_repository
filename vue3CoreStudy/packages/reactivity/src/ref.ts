@@ -4,8 +4,23 @@ import { isArray, isObject, hasChanged } from '@vue/shared'
 import { reactive, isProxy, toRaw, isReactive } from './reactive'
 import { CollectionTypes } from './collectionHandlers'
 
+/**
+ *
+ * ref由来
+ * a.Proxy也无法劫持基本数据,我们没法让基本数据类型,成为响应式的数据
+ * b.但是有时候，我们确实就是想一个数字、一个字符串是响应式的
+ *
+ * 那怎么办呢？只能通过创建一个对象，也即是源码中的Ref数据，然后将原始数据保存在Ref的属性value当中，再将它的引用返回给使用者。
+ *
+ * 既然是我们自己创造出来的对象，也就没必要使用Proxy再做代理了，直接劫持这个value的get/set即可
+ * 这就是ref函数与Ref类型的由来
+ *
+ * */
+
+// 声明唯一值
 declare const RefSymbol: unique symbol
 
+// 声明Ref接口
 export interface Ref<T = any> {
   value: T
   /**
@@ -13,6 +28,7 @@ export interface Ref<T = any> {
    * We need this to be in public d.ts but don't want it to show up in IDE
    * autocomplete, so we use a private Symbol instead.
    */
+  // 用此唯一key，来做Ref接口的一个描述符，让isRef函数做类型判断
   [RefSymbol]: true
   /**
    * @internal
@@ -29,12 +45,13 @@ export type ToRefs<T = any> = {
 
 const convert = <T extends unknown>(val: T): T =>
   isObject(val) ? reactive(val) : val
-
+// 判断是否是ref方法
 export function isRef<T>(r: Ref<T> | unknown): r is Ref<T>
 export function isRef(r: any): r is Ref {
+  // // 通过__v_isRef属性判断一个对象是否是ref对象
   return Boolean(r && r.__v_isRef === true)
 }
-
+// Ref是这样的一种数据结构：它有个key为Symbol的属性做类型标识，有个属性value用来存储数据。这个数据可以是任意的类型，唯独不能是被嵌套了Ref类型的类型。
 export function ref<T extends object>(value: T): ToRef<T>
 export function ref<T>(value: T): Ref<UnwrapRef<T>>
 export function ref<T = any>(): Ref<T | undefined>
@@ -51,24 +68,28 @@ export function shallowRef(value?: unknown) {
   return createRef(value, true)
 }
 
+// RefImpl 构造函数，这里也定义了get/set，没有任何Proxy相关的操作。
 class RefImpl<T> {
   private _value: T
-
+  // ref 标识
   public readonly __v_isRef = true
 
   constructor(private _rawValue: T, public readonly _shallow = false) {
+    // 如果是对象就value就是reactive(val)，否则就是自己
     this._value = _shallow ? _rawValue : convert(_rawValue)
   }
-
+  // 获取数据
   get value() {
+    // 依赖收集
     track(toRaw(this), TrackOpTypes.GET, 'value')
     return this._value
   }
-
+  // 设置新值
   set value(newVal) {
     if (hasChanged(toRaw(newVal), this._rawValue)) {
       this._rawValue = newVal
       this._value = this._shallow ? newVal : convert(newVal)
+      // 触发依赖
       trigger(toRaw(this), TriggerOpTypes.SET, 'value', newVal)
     }
   }
@@ -76,15 +97,17 @@ class RefImpl<T> {
 
 function createRef(rawValue: unknown, shallow = false) {
   if (isRef(rawValue)) {
+    // 已经是ref代理对象，返回原目标对象
     return rawValue
   }
+  //
   return new RefImpl(rawValue, shallow)
 }
 
 export function triggerRef(ref: Ref) {
   trigger(toRaw(ref), TriggerOpTypes.SET, 'value', __DEV__ ? ref.value : void 0)
 }
-
+// 如果参数是一个 ref，则返回内部值，否则返回参数本身
 export function unref<T>(ref: T): T extends Ref<infer V> ? V : T {
   return isRef(ref) ? (ref.value as any) : ref
 }
@@ -141,11 +164,12 @@ class CustomRefImpl<T> {
     this._set(newVal)
   }
 }
-
+// 创建一个自定义的 ref，并对其依赖项跟踪和更新触发进行显式控制。
+// 它需要一个工厂函数，该函数接收 track 和 trigger 函数作为参数，并且应该返回一个带有 get 和 set 的对象。
 export function customRef<T>(factory: CustomRefFactory<T>): Ref<T> {
   return new CustomRefImpl(factory) as any
 }
-
+// toRefs就是对数组或者对象的属性进行递归设置get/set
 export function toRefs<T extends object>(object: T): ToRefs<T> {
   if (__DEV__ && !isProxy(object)) {
     console.warn(`toRefs() expects a reactive object but received a plain one.`)
@@ -157,6 +181,8 @@ export function toRefs<T extends object>(object: T): ToRefs<T> {
   return ret
 }
 
+// toRef构造函数
+// toRef也是创建get/set进行拦截
 class ObjectRefImpl<T extends object, K extends keyof T> {
   public readonly __v_isRef = true
 
@@ -175,6 +201,7 @@ export function toRef<T extends object, K extends keyof T>(
   object: T,
   key: K
 ): ToRef<T[K]> {
+  // object[key] 如果是ref直接放回，否则创建ref
   return isRef(object[key])
     ? object[key]
     : (new ObjectRefImpl(object, key) as any)

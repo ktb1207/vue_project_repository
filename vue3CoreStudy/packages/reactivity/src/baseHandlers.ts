@@ -76,11 +76,15 @@ const arrayInstrumentations: Record<string, Function> = {}
 
 function createGetter(isReadonly = false, shallow = false) {
   return function get(target: Target, key: string | symbol, receiver: object) {
+    // target 是否是响应式对象
     if (key === ReactiveFlags.IS_REACTIVE) {
       return !isReadonly
+      // target 是否是只读对象
     } else if (key === ReactiveFlags.IS_READONLY) {
       return isReadonly
     } else if (
+      // 如果访问的 key 是 __v_raw，并且 receiver == target.__v_readonly || receiver == target.__v_reactive
+      // 则直接返回 target
       key === ReactiveFlags.RAW &&
       receiver ===
         (isReadonly
@@ -96,13 +100,13 @@ function createGetter(isReadonly = false, shallow = false) {
     }
 
     const targetIsArray = isArray(target)
-
+    // 如果 target 是数组并且 key 属于八个方法之一 ['includes', 'indexOf', 'lastIndexOf','push', 'pop', 'shift', 'unshift', 'splice']，即触发
     if (!isReadonly && targetIsArray && hasOwn(arrayInstrumentations, key)) {
       return Reflect.get(arrayInstrumentations, key, receiver)
     }
 
     const res = Reflect.get(target, key, receiver)
-
+    // 如果 key 是 symbol 并且属于 symbol 的内置方法之一，或者访问的是原型对象，直接返回结果，不收集依赖。
     if (
       isSymbol(key)
         ? builtInSymbols.has(key as symbol)
@@ -110,21 +114,21 @@ function createGetter(isReadonly = false, shallow = false) {
     ) {
       return res
     }
-
+    // 如果不是只读对象，收集依赖
     if (!isReadonly) {
       track(target, TrackOpTypes.GET, key)
     }
-
+    // 浅层响应立即返回，不递归调用 reactive()
     if (shallow) {
       return res
     }
-
+    // 如果是 ref 对象，则返回真正的值，即 ref.value，数组除外。
     if (isRef(res)) {
       // ref unwrapping - does not apply for Array + integer key.
       const shouldUnwrap = !targetIsArray || !isIntegerKey(key)
       return shouldUnwrap ? res.value : res
     }
-
+    // 由于 proxy 只能代理一层，所以 target[key] 的值如果是对象，就继续对其进行代理
     if (isObject(res)) {
       // Convert returned value into a proxy as well. we do the isObject check
       // here to avoid invalid value warning. Also need to lazy access readonly
@@ -166,8 +170,10 @@ function createSetter(shallow = false) {
     // don't trigger if target is something up in the prototype chain of original
     if (target === toRaw(receiver)) {
       if (!hadKey) {
+        // // 如果 target 没有 key，就代表是新增操作，需要触发依赖
         trigger(target, TriggerOpTypes.ADD, key, value)
       } else if (hasChanged(value, oldValue)) {
+        // // 如果新旧值不相等，才触发依赖
         trigger(target, TriggerOpTypes.SET, key, value, oldValue)
       }
     }

@@ -6,8 +6,10 @@ import { registerRuntimeCompiler, RenderFunction, warn } from '@vue/runtime-dom'
 import * as runtimeDom from '@vue/runtime-dom'
 import { isString, NOOP, generateCodeFrame, extend } from '@vue/shared'
 import { InternalRenderFunction } from 'packages/runtime-core/src/component'
-
+console.log('dev:' + __DEV__)
 if (__DEV__) {
+  // dev环境提示，生产环境引入生产包
+  // vue dev tool formatter
   initDev()
 }
 
@@ -83,7 +85,7 @@ function compileToFunction(
 
   return (compileCache[key] = render)
 }
-
+// 注册运行时编译函数
 registerRuntimeCompiler(compileToFunction)
 
 export { compileToFunction as compile }

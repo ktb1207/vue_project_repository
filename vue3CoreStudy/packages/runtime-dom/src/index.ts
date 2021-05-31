@@ -12,7 +12,9 @@ import {
   DeprecationTypes,
   compatUtils
 } from '@vue/runtime-core'
+// 疯转节点操作方法
 import { nodeOps } from './nodeOps'
+//
 import { patchProp, forcePatchProp } from './patchProp'
 // Importing from the compiler, will be tree-shaken in prod
 import { isFunction, isString, isHTMLTag, isSVGTag, extend } from '@vue/shared'
@@ -23,7 +25,7 @@ declare module '@vue/reactivity' {
     runtimeDOMBailTypes: Node | Window
   }
 }
-
+// 合并属性操作和节点操作
 const rendererOptions = extend({ patchProp, forcePatchProp }, nodeOps)
 
 // lazy create the renderer - this makes core renderer logic tree-shakable
@@ -31,8 +33,14 @@ const rendererOptions = extend({ patchProp, forcePatchProp }, nodeOps)
 let renderer: Renderer<Element> | HydrationRenderer
 
 let enabledHydration = false
-
+// ensureRenderer是一个单例模式的函数,
+// 调用该函数后返回一个renderer，若没有renderer则调用createRenderer来进行创建。
 function ensureRenderer() {
+  // 调用createRenderer方法创建render,传入rendererOptions（平台相关dom操作方法的封装）
+  // 那为什么要在runtime-dom中传入，runtime-core拆解??
+  // 是因为在Vue3中runtime-core和runtime-dom的拆分，runtime-core不应该关心实际的操作
+  // 这样当新平台要接入时（比如weex）就可以只实现属于自己平台的nodeOps
+  // 返回 render,hydrate, createApp: createAppAPI(render, hydrate)
   return renderer || (renderer = createRenderer<Node, Element>(rendererOptions))
 }
 
@@ -54,19 +62,23 @@ export const hydrate = ((...args) => {
 }) as RootHydrateFunction
 
 export const createApp = ((...args) => {
+  // ensureRenderer() 返回 render,hydrate,createApp三个方法
   const app = ensureRenderer().createApp(...args)
 
   if (__DEV__) {
     injectNativeTagCheck(app)
     injectCompilerOptionsCheck(app)
   }
-
+  // 保存app实例mount方法
   const { mount } = app
+  // 重写实例的mount方法；
   app.mount = (containerOrSelector: Element | ShadowRoot | string): any => {
+    // 调用normalizeContainer获取根元素容器
     const container = normalizeContainer(containerOrSelector)
     if (!container) return
 
     const component = app._component
+    // 渲染优先级：render > template > container.innerHTML
     if (!isFunction(component) && !component.render && !component.template) {
       // __UNSAFE__
       // Reason: potential execution of JS expressions in in-DOM template.
@@ -93,6 +105,7 @@ export const createApp = ((...args) => {
     const proxy = mount(container, false, container instanceof SVGElement)
     if (container instanceof Element) {
       container.removeAttribute('v-cloak')
+      // 挂载容器添加app属性标识
       container.setAttribute('data-v-app', '')
     }
     return proxy
@@ -166,7 +179,7 @@ function injectCompilerOptionsCheck(app: App) {
     })
   }
 }
-
+// 获取挂载容器
 function normalizeContainer(
   container: Element | ShadowRoot | string
 ): Element | null {
@@ -192,7 +205,9 @@ function normalizeContainer(
 }
 
 // SFC CSS utilities
+// css Modeule
 export { useCssModule } from './helpers/useCssModule'
+// css 变量
 export { useCssVars } from './helpers/useCssVars'
 
 // DOM-only components
@@ -203,6 +218,7 @@ export {
 } from './components/TransitionGroup'
 
 // **Internal** DOM-only runtime directive helpers
+// input checkbox radio select指令
 export {
   vModelText,
   vModelCheckbox,
@@ -211,6 +227,7 @@ export {
   vModelDynamic
 } from './directives/vModel'
 export { withModifiers, withKeys } from './directives/vOn'
+// v-show
 export { vShow } from './directives/vShow'
 
 // re-export everything from core

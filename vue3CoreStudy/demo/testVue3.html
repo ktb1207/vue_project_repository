@@ -8,13 +8,19 @@
   <script src="../packages/vue/dist/vue.global.js"></script>
 </head>
 <body>
-  <div id='app'></div>
+  <div id='app'>
+    <p>interHtml</p>
+  </div>
   <script>
     const { createApp } = Vue;
     const App = {
       template: `
         <button>{{message}}</button>
       `,
+      // tempalte: 'string',
+      render() {
+        return `<button>{{message}}</button>`
+      },
       data() {
         return {
           message: 'hello vue3!'

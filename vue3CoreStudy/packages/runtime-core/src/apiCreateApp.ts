@@ -157,10 +157,11 @@ export function createAppAPI<HostElement>(
       __DEV__ && warn(`root props passed to app.mount() must be an object.`)
       rootProps = null
     }
-
+    // appContext对象
     const context = createAppContext()
+    // 保存当前注册plugin
     const installedPlugins = new Set()
-
+    // 当前未挂载标识
     let isMounted = false
 
     const app: App = (context.app = {
@@ -183,14 +184,17 @@ export function createAppAPI<HostElement>(
           )
         }
       },
-
+      // 注册实例方法，app.use(plugin)
       use(plugin: Plugin, ...options: any[]) {
         if (installedPlugins.has(plugin)) {
+          // plugin 注册不能重复
           __DEV__ && warn(`Plugin has already been applied to target app.`)
         } else if (plugin && isFunction(plugin.install)) {
+          // plugin是一个对象，对象包含有install:function
           installedPlugins.add(plugin)
           plugin.install(app, ...options)
         } else if (isFunction(plugin)) {
+          // plugin 是一个function
           installedPlugins.add(plugin)
           plugin(app, ...options)
         } else if (__DEV__) {
@@ -201,8 +205,9 @@ export function createAppAPI<HostElement>(
         }
         return app
       },
-
+      // 注册实例方法app.mixin
       mixin(mixin: ComponentOptions) {
+        // mixin只能用于options api
         if (__FEATURE_OPTIONS_API__) {
           if (!context.mixins.includes(mixin)) {
             context.mixins.push(mixin)
@@ -222,11 +227,13 @@ export function createAppAPI<HostElement>(
         }
         return app
       },
-
+      // 注册实例方法app.component
       component(name: string, component?: Component): any {
         if (__DEV__) {
+          // 验证组件name,不能用html标签作为组件名称
           validateComponentName(name, context.config)
         }
+        // component 不能重复注册
         if (!component) {
           return context.components[name]
         }
@@ -236,7 +243,7 @@ export function createAppAPI<HostElement>(
         context.components[name] = component
         return app
       },
-
+      // 注册实例方法 app.directive
       directive(name: string, directive?: Directive) {
         if (__DEV__) {
           validateDirectiveName(name)
@@ -251,13 +258,14 @@ export function createAppAPI<HostElement>(
         context.directives[name] = directive
         return app
       },
-
+      // 注册app.mount()方法
       mount(
         rootContainer: HostElement,
         isHydrate?: boolean,
         isSVG?: boolean
       ): any {
         if (!isMounted) {
+          // 获取vnode
           const vnode = createVNode(
             rootComponent as ConcreteComponent,
             rootProps
@@ -276,8 +284,10 @@ export function createAppAPI<HostElement>(
           if (isHydrate && hydrate) {
             hydrate(vnode as VNode<Node, Element>, rootContainer as any)
           } else {
+            // vnode渲染真实dom
             render(vnode, rootContainer, isSVG)
           }
+          // 挂载标志位
           isMounted = true
           app._container = rootContainer
           // for devtools and telemetry
@@ -328,7 +338,7 @@ export function createAppAPI<HostElement>(
     if (__COMPAT__) {
       installAppCompatProperties(app, context, render)
     }
-
+    // 返回app实例
     return app
   }
 }
