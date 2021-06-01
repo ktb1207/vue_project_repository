@@ -58,9 +58,6 @@ export interface DebuggerEventExtraInfo {
   oldTarget?: Map<any, any> | Set<any>
 }
 
-const effectStack: ReactiveEffect[] = []
-let activeEffect: ReactiveEffect | undefined
-
 export const ITERATE_KEY = Symbol(__DEV__ ? 'iterate' : '')
 export const MAP_KEY_ITERATE_KEY = Symbol(__DEV__ ? 'Map key iterate' : '')
 
@@ -68,6 +65,36 @@ export function isEffect(fn: any): fn is ReactiveEffect {
   return fn && fn._isEffect === true
 }
 // effect是将传入的函数转化为reactiveEffect格式的函数
+/**
+ * effct使用示例
+ * import {reactive, effect, computed} from "@vue/reactivity";
+ * 
+ * const state = reactive({
+    name: "lihb",
+    age: 18,
+    arr: [1, 2, 3]
+  });
+ * 
+ * console.log(state); // 这里返回的是Proxy代理后的对象
+ * 
+ * effect(() => {
+    console.log("effect run");
+    console.log(state.name); // 每当name数据变化将会导致effect重新执行
+  });
+ * 
+ * state.name = "vue"; // 数据发生变化后会触发使用了该数据的effect重新执行
+ * 
+ * */
+
+/**
+ * effect函数作用：相当于watch
+ * 1.当我们修改数据的时候，能够触发传入effect的回调函数执行。
+ * 2.所谓响应式的effect，就是该effect在执行的时候会在取值之前将自己放入到effectStack收到栈顶，同时将自己标记为activeEffect，以便进行依赖收集与reactive进行关联。
+ *
+ * */
+
+const effectStack: ReactiveEffect[] = [] // 如果存在多个effect，则依次放入栈中
+let activeEffect: ReactiveEffect | undefined // // 存放当前执行的effect
 export function effect<T = any>(
   fn: () => T,
   options: ReactiveEffectOptions = EMPTY_OBJ
@@ -75,8 +102,9 @@ export function effect<T = any>(
   if (isEffect(fn)) {
     fn = fn.raw
   }
-  const effect = createReactiveEffect(fn, options)
+  const effect = createReactiveEffect(fn, options) // // 返回一个响应式的effect函数
   if (!options.lazy) {
+    // // 如果不是计算属性的effect，那么会立即执行该effect
     effect()
   }
   return effect
@@ -103,15 +131,21 @@ function createReactiveEffect<T = any>(
       return options.scheduler ? undefined : fn()
     }
     if (!effectStack.includes(effect)) {
+      // 防止不停的更改属性导致死循环
       cleanup(effect)
       try {
         enableTracking()
+        // 在取值之前将当前effect放到栈顶
         effectStack.push(effect)
+        // 并标记为activeEffect
         activeEffect = effect
+        // 执行effect的回调就是一个取值的过程
         return fn()
       } finally {
+        // 从effectStack栈顶将自己移除
         effectStack.pop()
         resetTracking()
+        // 将effectStack的栈顶元素标记为activeEffect
         activeEffect = effectStack[effectStack.length - 1]
       }
     }
@@ -121,7 +155,7 @@ function createReactiveEffect<T = any>(
   effect._isEffect = true
   effect.active = true
   effect.raw = fn
-  effect.deps = []
+  effect.deps = [] // 依赖了哪些属性，哪些属性变化了需要执行当前effect
   effect.options = options
   return effect
 }
@@ -174,16 +208,23 @@ export function track(target: object, type: TrackOpTypes, key: unknown) {
   //       key2(dep): (fn1,fn2,fn3...)
   //     },
   // }
+
+  // 根据target对象取出当前target对应的depsMap结构
   let depsMap = targetMap.get(target)
   if (!depsMap) {
+    // 第一次收集依赖可能不存在
     targetMap.set(target, (depsMap = new Map()))
   }
+  // 根据key取出对应的用于存储依赖的Set集合
   let dep = depsMap.get(key)
   if (!dep) {
+    // 第一次可能不存在
     depsMap.set(key, (dep = new Set()))
   }
   if (!dep.has(activeEffect)) {
+    // 将当前effect放到依赖集合中
     dep.add(activeEffect)
+    // 一个effect可能使用到了多个key，所以会有多个dep依赖集合
     activeEffect.deps.push(dep)
     if (__DEV__ && activeEffect.options.onTrack) {
       activeEffect.options.onTrack({
@@ -195,11 +236,23 @@ export function track(target: object, type: TrackOpTypes, key: unknown) {
     }
   }
 }
-// 触发依赖
+
+// 数据发生变化的时候，触发依赖的effect执行
 // trigger主要功能是通知target[key]的观察者（将观察者队列函数一一取出来执行）
+/**
+ * 说明：
+ * 1.触发依赖更新，当修改值的时候，也是通过target对象从全局的WeakMap对象中取出对应的depMap对象，然后根据修改的key取出对应的dep依赖集合，并遍历该集合中的所有effect，并执行effect。
+ *
+ * 2.每次effect执行，都会重新将当前effect放到栈顶
+ *
+ * 3.然后执行effect回调再次取值的时候，再一次执行track收集依赖
+ *
+ * 4.不过第二次track的时候，对应的依赖集合中已经存在当前effect了，所以不会再次将当前effect添加进去了
+ * */
+
 export function trigger(
   target: object,
-  type: TriggerOpTypes,
+  type: TriggerOpTypes, // set add delete clear
   key?: unknown,
   newValue?: unknown,
   oldValue?: unknown,
@@ -211,8 +264,8 @@ export function trigger(
     // 如果没有收集过依赖，直接返回
     return
   }
-
-  const effects = new Set<ReactiveEffect>()
+  // // 存储依赖的effect
+  const effects = new Set<ReactiveEffect>() // [fn1,fn2,fn3]
   const add = (effectsToAdd: Set<ReactiveEffect> | undefined) => {
     if (effectsToAdd) {
       effectsToAdd.forEach(effect => {
