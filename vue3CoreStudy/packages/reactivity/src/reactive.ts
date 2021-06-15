@@ -182,10 +182,10 @@ export function shallowReadonly<T extends object>(
 
 function createReactiveObject(
   target: Target,
-  isReadonly: boolean,
-  baseHandlers: ProxyHandler<any>,
+  isReadonly: boolean, // reactive false
+  baseHandlers: ProxyHandler<any>, // reactive mutableHandlers
   collectionHandlers: ProxyHandler<any>,
-  proxyMap: WeakMap<Target, any>
+  proxyMap: WeakMap<Target, any> // reactive reactiveMap
 ) {
   if (!isObject(target)) {
     // 如果不是对象，即不是Object,Array,Map,Set,WeakMap,WeakSet类型的，就不可以代理，直接返回

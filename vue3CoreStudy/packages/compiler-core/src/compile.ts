@@ -79,11 +79,12 @@ export function baseCompile(
   if (options.scopeId && !isModuleMode) {
     onError(createCompilerError(ErrorCodes.X_SCOPE_ID_NOT_SUPPORTED))
   }
-
+  // 解析 html，转化为 ast
   const ast = isString(template) ? baseParse(template, options) : template
   const [nodeTransforms, directiveTransforms] = getBaseTransformPreset(
     prefixIdentifiers
   )
+  // 优化 ast，标记静态节点
   transform(
     ast,
     extend({}, options, {
@@ -99,7 +100,7 @@ export function baseCompile(
       )
     })
   )
-
+  // 将 ast 转化为可执行代码
   return generate(
     ast,
     extend({}, options, {

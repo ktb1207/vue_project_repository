@@ -310,7 +310,7 @@ export function createTransformContext(
 
   return context
 }
-
+// 计算 PatchFlag
 export function transform(root: RootNode, options: TransformOptions) {
   const context = createTransformContext(root, options)
   traverseNode(root, context)
@@ -414,6 +414,7 @@ export function traverseNode(
   const { nodeTransforms } = context
   const exitFns = []
   for (let i = 0; i < nodeTransforms.length; i++) {
+    // Transform 会返回一个退出函数，在处理完所有的子节点后再执行
     const onExit = nodeTransforms[i](node, context)
     if (onExit) {
       if (isArray(onExit)) {

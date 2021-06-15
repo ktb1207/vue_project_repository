@@ -76,11 +76,11 @@ const arrayInstrumentations: Record<string, Function> = {}
 
 function createGetter(isReadonly = false, shallow = false) {
   return function get(target: Target, key: string | symbol, receiver: object) {
-    // target 是否是响应式对象
+    // 访问 __v_isReactive
     if (key === ReactiveFlags.IS_REACTIVE) {
       return !isReadonly
-      // target 是否是只读对象
     } else if (key === ReactiveFlags.IS_READONLY) {
+      // 访问 __v_isReadonly
       return isReadonly
     } else if (
       // 如果访问的 key 是 __v_raw，并且 receiver == target.__v_readonly || receiver == target.__v_reactive
