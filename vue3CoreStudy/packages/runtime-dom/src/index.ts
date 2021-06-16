@@ -1,5 +1,5 @@
 import {
-  createRenderer,
+  createRenderer, // 创建render createApp
   createHydrationRenderer,
   warn,
   RootRenderFunction,
