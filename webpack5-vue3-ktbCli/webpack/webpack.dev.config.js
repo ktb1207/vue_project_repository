@@ -1,14 +1,12 @@
 const path = require('path');
-// 引入webpack
-const webpack = require('webpack');
 // 引入webpack-merge
 const { merge } = require('webpack-merge');
 // 引入基础配置
 const base = require('./webpack.config');
 // 路径处理
 const handleUrl = (str) => {
-  return path.resolve(__dirname, `../${str}`)
-}
+  return path.resolve(__dirname, `../${str}`);
+};
 module.exports = merge(base, {
   mode: 'development',
   devtool: 'source-map',
@@ -28,4 +26,4 @@ module.exports = merge(base, {
     // 代理
     proxy: {}
   }
-})
+});

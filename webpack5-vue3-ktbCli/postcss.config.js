@@ -1,20 +1,14 @@
 module.exports = {
   plugins: [
+    ['postcss-short', { prefix: 'x' }],
     [
-      "postcss-short", 
-      { prefix: "x" }
-    ],
-    ["postcss-preset-env",
+      'postcss-preset-env',
       {
         // 其他选项
-      },
+      }
     ],
-    [
-      'autoprefixer'
-    ],
-    [
-      'postcss-import'
-    ]
+    ['autoprefixer'],
+    ['postcss-import']
   ],
-  execute: true,
+  execute: true
 };

@@ -1,11 +1,24 @@
 <template>
   <div class="test">
-    hello vue3789456
+    {{ helloStr }}
   </div>
 </template>
 
-<style scoped lang="less">
-  .test{
-    color: red;
+<script lang="ts">
+import { defineComponent, ref } from 'vue';
+export default defineComponent({
+  setup() {
+    const helloStr = ref('ref hello');
+
+    return {
+      helloStr
+    };
   }
+});
+</script>
+
+<style scoped lang="less">
+.test {
+  color: red;
+}
 </style>

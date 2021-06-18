@@ -1,6 +1,4 @@
 const path = require('path');
-// 引入webpack
-const webpack = require('webpack');
 // html创建
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // vue-loader
@@ -8,8 +6,8 @@ const { VueLoaderPlugin } = require('vue-loader');
 // 提取css
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const handleUrl = (str) => {
-  return path.resolve(__dirname, `../${str}`)
-}
+  return path.resolve(__dirname, `../${str}`);
+};
 const devMode = process.env.NODE_ENV === 'development';
 module.exports = {
   entry: handleUrl('src/main.js'),
@@ -28,28 +26,18 @@ module.exports = {
     rules: [
       {
         test: /\.js?$/,
-        include: [
-          handleUrl('src')
-        ],
-        exclude: [
-          handleUrl('node_modules')
-        ],
-        use: {
-          loader: 'babel-loader?cacheDirectory'
-        }
+        include: [handleUrl('src')],
+        exclude: [handleUrl('node_modules')],
+        use: ['babel-loader?cacheDirectory', 'eslint-loader']
       },
       {
         test: /\.vue$/,
-        include: [
-          handleUrl('src')
-        ],
+        include: [handleUrl('src')],
         loader: 'vue-loader'
       },
       {
         test: /\.css$/i,
-        include: [
-          handleUrl('src')
-        ],
+        include: [handleUrl('src')],
         // use: ['style-loader', 'css-loader']
         // vue-style-loader 跟 style-loader 基本用法跟功能是一样的，都是往 dom 里面插入一个 style 标签去让样式生效的
         // 但是 vue-style-loader 支持 vue 中的 ssr（服务端渲染），所以如果需要支持服务端渲染的 vue 项目，就需要用到 vue-style-loader了
@@ -70,12 +58,10 @@ module.exports = {
       },
       {
         test: /\.scss$/i,
-        include: [
-          handleUrl('src')
-        ],
+        include: [handleUrl('src')],
         use: [
           devMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader', 
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -90,12 +76,10 @@ module.exports = {
       },
       {
         test: /\.less$/i,
-        include: [
-          handleUrl('src')
-        ],
+        include: [handleUrl('src')],
         use: [
           devMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader', 
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -115,11 +99,11 @@ module.exports = {
             loader: 'url-loader',
             options: {
               name: '[name]_[hash:8].[ext]', // 使用图片的名字，并使用图片的后缀
-              limit: 8192,
-            },
-          },
-        ],
-      },
+              limit: 8192
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [
@@ -129,13 +113,12 @@ module.exports = {
       template: handleUrl('public/index.html')
     })
   ].concat(
-    devMode ? 
-    []
-    :
-    [
-      new MiniCssExtractPlugin({
-        filename: 'css/extract-style.[hash:8].css'
-      })
-    ]
+    devMode
+      ? []
+      : [
+          new MiniCssExtractPlugin({
+            filename: 'css/extract-style.[hash:8].css'
+          })
+        ]
   )
-}
+};
