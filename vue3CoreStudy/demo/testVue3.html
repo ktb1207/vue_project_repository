@@ -8,23 +8,46 @@
   <script src="../packages/vue/dist/vue.global.js"></script>
 </head>
 <body>
-  <div id='app'>
-    <p>interHtml</p>
-  </div>
-  <script>
-    const { createApp } = Vue;
+  <div id='app'></div>
+  <script type="module">
+    const { createApp, h} = Vue;
+    import { List } from './components/List.js';
     const App = {
-      template: `
-        <button>{{message}}</button>
-      `,
-      // tempalte: 'string',
-      render() {
-        return `<button>{{message}}</button>`
+      components: {
+        List
       },
       data() {
         return {
           message: 'hello vue3!'
         }
+      },
+      render() {
+        return h('div', 
+          {
+            class: 'wrp'
+          },
+          [
+            h('p', 
+              {
+                style: 'color: red'
+              },
+              '我是第一段落'
+            ),
+            h('p', 
+              {
+                style: 'color: red'
+              },
+              '我是第二段落'
+            ),
+            h('p', 
+              {
+                style: 'color: red'
+              },
+              this.message
+            ),
+            h(List)
+          ]
+        )
       }
     }
     createApp(App).mount("#app")
