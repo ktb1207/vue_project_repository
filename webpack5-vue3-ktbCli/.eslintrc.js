@@ -19,5 +19,8 @@ module.exports = {
     'eslint:recommended',
     '@vue/prettier',
     'prettier' // eslint-config-prettier
-  ]
+  ],
+  rules: {
+    'no-unused-vars': 'off'
+  }
 };

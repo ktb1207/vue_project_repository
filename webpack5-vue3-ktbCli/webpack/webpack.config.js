@@ -5,6 +5,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
 // 提取css
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// ts
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+// fork ts
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const handleUrl = (str) => {
   return path.resolve(__dirname, `../${str}`);
 };
@@ -13,23 +17,40 @@ module.exports = {
   entry: handleUrl('src/main.js'),
   output: {
     path: handleUrl('dist'),
-    filename: '[name].[fullhash:8].js'
+    filename: '[name].[fullhash:8].js',
+    clean: true
   },
   resolve: {
-    modules: [handleUrl('node_modules')],
     alias: {
       '@': handleUrl('src')
-    }
+    },
+    extensions: ['.js', '.ts', '.jsx', '.tsx', 'vue', '.json'],
+    modules: [handleUrl('node_modules')]
   },
   module: {
     // 模块配置
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.(js)x?$/,
         include: [handleUrl('src')],
         exclude: [handleUrl('node_modules')],
         use: ['babel-loader?cacheDirectory', 'eslint-loader']
       },
+      // {
+      //   test: /\.(ts)x?$/,
+      //   include: [handleUrl('src')],
+      //   exclude: [handleUrl('node_modules')],
+      //   use: [
+      //     'ts-loader',
+      //     {
+      //       options: {
+      //         transpileOnly: true,
+      //         appendTsSuffixTo: ['\\.vue$'],
+      //         happyPackMode: true
+      //       }
+      //     }
+      //   ]
+      // },
       {
         test: /\.vue$/,
         include: [handleUrl('src')],
@@ -107,6 +128,18 @@ module.exports = {
     ]
   },
   plugins: [
+    new TsconfigPathsPlugin({ baseUrl: handleUrl('tsconfig.json') }),
+    new ForkTsCheckerWebpackPlugin({
+      async: true,
+      typescript: {
+        configFile: handleUrl('tsconfig.json'),
+        extensions: {
+          vue: {
+            compiler: '@vue/compiler-sfc'
+          }
+        }
+      }
+    }),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       title: 'welcome ktbCli for vue3',

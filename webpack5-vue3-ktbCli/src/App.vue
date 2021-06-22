@@ -1,24 +1,23 @@
 <template>
-  <div class="test">
-    {{ helloStr }}
+  <div>
+    <Test></Test>
+    <p>{{ result }}</p>
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script>
+import { defineComponent } from 'vue';
+import Test from '@/components/Test';
 export default defineComponent({
+  components: {
+    Test
+  },
   setup() {
-    const helloStr = ref('ref hello');
-
     return {
-      helloStr
+      result: 12
     };
   }
 });
 </script>
 
-<style scoped lang="less">
-.test {
-  color: red;
-}
-</style>
+<style lang="scss"></style>
