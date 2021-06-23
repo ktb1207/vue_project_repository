@@ -1,22 +1,12 @@
 <template>
-  <div>
-    <Test></Test>
-    <p>{{ result }}</p>
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import Test from '@/components/Test';
 export default defineComponent({
-  components: {
-    Test
-  },
-  setup() {
-    return {
-      result: 12
-    };
-  }
+  components: {},
+  setup() {}
 });
 </script>
 

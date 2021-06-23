@@ -24,7 +24,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/route/routerMap.js", "src/route/index.js"  ],
   "exclude": [
     "node_modules",
     "dist"

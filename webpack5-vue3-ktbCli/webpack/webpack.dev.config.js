@@ -7,7 +7,7 @@ const base = require('./webpack.config');
 const handleUrl = (str) => {
   return path.resolve(__dirname, `../${str}`);
 };
-module.exports = merge(base, {
+module.exports = merge(base('development'), {
   mode: 'development',
   devtool: 'source-map',
   devServer: {
@@ -22,7 +22,7 @@ module.exports = merge(base, {
     port: 9000,
     index: 'index.html',
     // 打开页面
-    openPage: '',
+    openPage: 'index.html#/',
     // 代理
     proxy: {}
   }
