@@ -534,6 +534,7 @@ function baseCreateRenderer(
           optimized
         )
         break
+      // 元素类型、组件类型、teleport、supense
       default:
         if (shapeFlag & ShapeFlags.ELEMENT) {
           // 按位与运算，判断是一个元素类型
@@ -928,6 +929,7 @@ function baseCreateRenderer(
     // #1426 take the old vnode's patch flag into account since user may clone a
     // compiler-generated vnode, which de-opts to FULL_PROPS
     patchFlag |= n1.patchFlag & PatchFlags.FULL_PROPS
+    // 将新旧节点的 props 声明提取出来，因为之后需要对 props 进行 patch 比较。
     const oldProps = n1.props || EMPTY_OBJ
     const newProps = n2.props || EMPTY_OBJ
     let vnodeHook: VNodeHook | undefined | null

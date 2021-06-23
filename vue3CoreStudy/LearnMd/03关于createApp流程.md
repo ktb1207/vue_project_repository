@@ -70,7 +70,9 @@ function baseCreateRenderer(
 - packages\runtime-core\src\apiCreateApp.ts
 
 - 作用：
-  - 1.  定义 app 实例方法 use, mixin, component, directive, mount, unmount, provide
+  - 1. 声明创建 appContext 对象
+  - 2. 初始化 plugin Set()
+  - 3.  定义 app 实例方法 use, mixin, component, directive, mount, unmount, provide
   - 2.  返回 app 实例，支持链式调用
 
 ```js
