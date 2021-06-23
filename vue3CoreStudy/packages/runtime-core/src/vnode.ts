@@ -273,11 +273,11 @@ export function createBlock(
   }
   return vnode
 }
-
+// 判断是否Vnode
 export function isVNode(value: any): value is VNode {
   return value ? value.__v_isVNode === true : false
 }
-
+// 判断是否为同一个vnode
 export function isSameVNodeType(n1: VNode, n2: VNode): boolean {
   if (
     __DEV__ &&
@@ -329,7 +329,7 @@ const normalizeRef = ({ ref }: VNodeProps): VNodeNormalizedRefAtom | null => {
       : ref
     : null) as any
 }
-
+// createVnode
 export const createVNode = (__DEV__
   ? createVNodeWithArgsTransform
   : _createVNode) as typeof _createVNode

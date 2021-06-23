@@ -550,6 +550,7 @@ function baseCreateRenderer(
             optimized
           )
         } else if (shapeFlag & ShapeFlags.COMPONENT) {
+          // 按位与运算，判断是一个组件类型
           processComponent(
             n1,
             n2,
@@ -600,6 +601,7 @@ function baseCreateRenderer(
 
   const processText: ProcessTextOrCommentFn = (n1, n2, container, anchor) => {
     if (n1 == null) {
+      // 不存在就text,则将新text vnode插入
       hostInsert(
         (n2.el = hostCreateText(n2.children as string)),
         container,
@@ -607,6 +609,7 @@ function baseCreateRenderer(
       )
     } else {
       const el = (n2.el = n1.el!)
+      //
       if (n2.children !== n1.children) {
         hostSetText(el, n2.children as string)
       }

@@ -21,33 +21,36 @@
           message: 'hello vue3!'
         }
       },
+      // render() {
+      //   return h('div', 
+      //     {
+      //       class: 'wrp'
+      //     },
+      //     [
+      //       h('p', 
+      //         {
+      //           style: 'color: red'
+      //         },
+      //         '我是第一段落'
+      //       ),
+      //       h('p', 
+      //         {
+      //           style: 'color: red'
+      //         },
+      //         '我是第二段落'
+      //       ),
+      //       h('p', 
+      //         {
+      //           style: 'color: red'
+      //         },
+      //         this.message
+      //       ),
+      //       h(List)
+      //     ]
+      //   )
+      // }
       render() {
-        return h('div', 
-          {
-            class: 'wrp'
-          },
-          [
-            h('p', 
-              {
-                style: 'color: red'
-              },
-              '我是第一段落'
-            ),
-            h('p', 
-              {
-                style: 'color: red'
-              },
-              '我是第二段落'
-            ),
-            h('p', 
-              {
-                style: 'color: red'
-              },
-              this.message
-            ),
-            h(List)
-          ]
-        )
+        return h('i', null, '这是i内容')
       }
     }
     createApp(App).mount("#app")
