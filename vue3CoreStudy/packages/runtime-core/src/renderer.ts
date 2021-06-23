@@ -2393,13 +2393,17 @@ function baseCreateRenderer(
 
   const render: RootRenderFunction = (vnode, container, isSVG) => {
     if (vnode == null) {
+      // new vnode null
       if (container._vnode) {
+        // old vnode存在，卸载
         unmount(container._vnode, null, null, true)
       }
     } else {
+      // old vnode new vonde patch
       patch(container._vnode || null, vnode, container, null, null, null, isSVG)
     }
     flushPostFlushCbs()
+    // 保存vnode
     container._vnode = vnode
   }
 
