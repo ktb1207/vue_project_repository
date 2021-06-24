@@ -794,6 +794,7 @@ function baseCreateRenderer(
       // props
       if (props) {
         for (const key in props) {
+          // 如果prop 不是key ref,则patch prop
           if (!isReservedProp(key)) {
             hostPatchProp(
               el,
@@ -809,6 +810,7 @@ function baseCreateRenderer(
           }
         }
         if ((vnodeHook = props.onVnodeBeforeMount)) {
+          // 调用声明周期函数BeforeMount
           invokeVNodeHook(vnodeHook, parentComponent, vnode)
         }
       }
@@ -816,16 +818,19 @@ function baseCreateRenderer(
       setScopeId(el, vnode, vnode.scopeId, slotScopeIds, parentComponent)
     }
     if (__DEV__ || __FEATURE_PROD_DEVTOOLS__) {
+      // 保存vnode作为旧vnode
       Object.defineProperty(el, '__vnode', {
         value: vnode,
         enumerable: false
       })
+      // 保存旧父信息
       Object.defineProperty(el, '__vueParentComponent', {
         value: parentComponent,
         enumerable: false
       })
     }
     if (dirs) {
+      // 指令钩子beforeMount
       invokeDirectiveHook(vnode, null, parentComponent, 'beforeMount')
     }
     // #1583 For inside suspense + suspense not resolved case, enter hook should call when suspense resolved
