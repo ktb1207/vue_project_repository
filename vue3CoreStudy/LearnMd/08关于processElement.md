@@ -1,4 +1,5 @@
-### 关于processElement处理元素类型的分析
+### 关于 processElement 处理元素类型的分析
+
 ---
 
 [一、方法定义]()
@@ -173,3 +174,17 @@ const processElement = (
     }
   }
 ```
+
+> 解析
+
+- 1. 根据 vnode.el 创建元素标签
+- 2. 如果 vnode 子元素为 text 类型，hostSetElementText()创建元素文本内容
+- 3. 如果 vnode 子元素类型为数组成员，mountChildren()挂载子元素
+- 4. 如果 当前元素存在绑定指令，触发指令钩子 created
+- 5. 如果 当前 vnode 元素存在 props,for...in 遍历 props,当 props 不为 key,ref 情况，则 hostPatchProp
+- 6. 如果 当前 vnode 声明有 BeforeMount，则调用 BeforeMount 钩子函数
+- 7. 保存 \_\_vnode 为当前 node 值，作为再下一个更新中旧 vnode
+- 8. 保存 \_\_vueParentComponent 为父元素信息
+- 9. 如果 当前元素绑定指令，触发指令钩子 beforeMount
+- 10. 触发 vnode 组件声明周期 mounted
+- 11. 如果有绑定指令，触发指令生命周期 mounted
