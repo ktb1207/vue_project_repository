@@ -104,7 +104,7 @@ function createGetter(isReadonly = false, shallow = false) {
     if (!isReadonly && targetIsArray && hasOwn(arrayInstrumentations, key)) {
       return Reflect.get(arrayInstrumentations, key, receiver)
     }
-
+    // 取值
     const res = Reflect.get(target, key, receiver)
     // 如果 key 是 symbol 并且属于 symbol 的内置方法之一，或者访问的是原型对象，直接返回结果，不收集依赖。
     if (
@@ -150,7 +150,9 @@ function createSetter(shallow = false) {
     value: unknown,
     receiver: object
   ): boolean {
+    // 取旧值
     let oldValue = (target as any)[key]
+    // 深度代理情况下，我们需要手动处理属性值为ref的情况，将trigger交给ref来触发
     if (!shallow) {
       value = toRaw(value)
       oldValue = toRaw(oldValue)
@@ -161,7 +163,7 @@ function createSetter(shallow = false) {
     } else {
       // in shallow mode, objects are set as-is regardless of reactive or not
     }
-
+    // 判断是新增或者修改
     const hadKey =
       isArray(target) && isIntegerKey(key)
         ? Number(key) < target.length

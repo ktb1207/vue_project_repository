@@ -189,7 +189,9 @@ export function resetTracking() {
 }
 // track主要功能是将reactiveEffect添加为target[key]的观察者
 export function track(target: object, type: TrackOpTypes, key: unknown) {
-  // activeEffect 为空，代表没有依赖，直接返回
+  // 依赖收集进行的前置条件：
+  // 1. 全局收集标识开启
+  // 2. 存在激活的副作用
   if (!shouldTrack || activeEffect === undefined) {
     return
   }
