@@ -537,4 +537,4 @@ const setupRenderEffect: SetupRenderEffectFn = (
 - 渲染组件子树
 - patch 子树
 
-patch 子树的时候也就是递归挂载组件 VNode Tree 的时机
+patch 子树的时候也就是递归挂载组件 VNode Tree 的时机,当然子树包含的可能是子组件也可能是 Dom 元素这就是 patch 的分发逻辑工作了；
