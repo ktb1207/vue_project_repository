@@ -21,6 +21,7 @@ module.exports = {
     'prettier' // eslint-config-prettier
   ],
   rules: {
-    'no-unused-vars': 'off'
+    'no-unused-vars': 'off',
+    'no-debugger': 'off'
   }
 };

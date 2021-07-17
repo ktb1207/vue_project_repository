@@ -2,6 +2,7 @@
   <div>
     <button @click="openPage('Proxy')">Proxy</button>
     <button @click="openPage('MountSequence')">组件挂载顺序</button>
+    <button @click="openPage('Canvas')">canvas</button>
   </div>
 </template>
 

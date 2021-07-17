@@ -19,6 +19,11 @@ export const routerMap = [
     component: () => import('@/page/MountSequence.vue')
   },
   {
+    path: '/canvas',
+    name: 'Canvas',
+    component: () => import('@/page/Canvas.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('@/page/About.vue')
