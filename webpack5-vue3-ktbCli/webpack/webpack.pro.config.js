@@ -7,5 +7,18 @@ const base = require('./webpack.config');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = merge(base('production'), {
   mode: 'production',
+  optimization: {
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
+  },
   plugins: []
 });

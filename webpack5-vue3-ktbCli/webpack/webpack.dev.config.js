@@ -9,7 +9,7 @@ const handleUrl = (str) => {
 };
 module.exports = merge(base('development'), {
   mode: 'development',
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: handleUrl('dist'),
     compress: false,

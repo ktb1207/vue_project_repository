@@ -20,7 +20,7 @@ module.exports = (env) => {
     entry: handleUrl('src/main.js'),
     output: {
       path: handleUrl('dist'),
-      filename: '[name].[fullhash:8].js',
+      filename: '[name].[contenthash].js',
       clean: true
     },
     resolve: {
