@@ -7,6 +7,9 @@ const base = require('./webpack.config');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = merge(base('production'), {
   mode: 'production',
+  output: {
+    clean: true
+  },
   optimization: {
     moduleIds: 'deterministic',
     runtimeChunk: 'single',
@@ -16,6 +19,13 @@ module.exports = merge(base('production'), {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
           chunks: 'all'
+        },
+        // css提取
+        styles: {
+          name: 'styles',
+          type: 'css/mini-extract',
+          chunks: 'all',
+          enforce: true
         }
       }
     }

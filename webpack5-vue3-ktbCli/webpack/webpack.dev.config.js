@@ -10,6 +10,9 @@ const handleUrl = (str) => {
 module.exports = merge(base('development'), {
   mode: 'development',
   devtool: 'inline-source-map',
+  output: {
+    pathinfo: false
+  },
   devServer: {
     contentBase: handleUrl('dist'),
     compress: false,

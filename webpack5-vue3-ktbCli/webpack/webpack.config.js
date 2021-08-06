@@ -27,8 +27,9 @@ module.exports = (env) => {
       alias: {
         '@': handleUrl('src')
       },
-      extensions: ['.js', '.ts', '.jsx', '.tsx', 'vue', '.json'],
-      modules: [handleUrl('node_modules')]
+      extensions: ['.js', '.ts', '.vue', '.jsx', '.tsx'],
+      modules: [handleUrl('node_modules')],
+      symlinks: false
     },
     module: {
       // 模块配置
@@ -153,7 +154,8 @@ module.exports = (env) => {
         ? []
         : [
             new MiniCssExtractPlugin({
-              filename: 'css/extract-style.[hash:8].css'
+              filename: '[name].css',
+              chunkFilename: '[id].css'
             })
           ]
     )

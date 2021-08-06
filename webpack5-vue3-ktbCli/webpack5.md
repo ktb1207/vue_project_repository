@@ -88,3 +88,6 @@ module.exports = {
     },
 }
 ```
+
+[九、生产环境自动压缩]()
+生产环境下默认使用 TerserPlugin
