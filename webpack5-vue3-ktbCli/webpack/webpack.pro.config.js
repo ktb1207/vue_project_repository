@@ -14,18 +14,18 @@ module.exports = merge(base('production'), {
     runtimeChunk: 'single',
     usedExports: true,
     splitChunks: {
+      chunks: 'all',
       cacheGroups: {
+        vueLib: {
+          filename: 'vueLib.[contenthash].js',
+          test: /[\\/]node_modules[\\/](vue|vuex|vue-router)[\\/]/,
+          priority: 20,
+          enforce: true
+        },
         defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'all'
-        },
-        // css提取
-        styles: {
-          name: 'styles',
-          type: 'css/mini-extract',
-          chunks: 'all',
-          enforce: true
+          priority: -10 // 拆分优先级
         }
       }
     }
