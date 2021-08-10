@@ -1,5 +1,7 @@
 // 引入webpack-merge
 const { merge } = require('webpack-merge');
+// css压缩
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 // 引入基础配置
 const base = require('./webpack.config');
 
@@ -7,12 +9,10 @@ const base = require('./webpack.config');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = merge(base('production'), {
   mode: 'production',
-  output: {
-    clean: true
-  },
   optimization: {
     moduleIds: 'deterministic',
     runtimeChunk: 'single',
+    usedExports: true,
     splitChunks: {
       cacheGroups: {
         vendor: {
@@ -30,5 +30,5 @@ module.exports = merge(base('production'), {
       }
     }
   },
-  plugins: []
+  plugins: [new CssMinimizerPlugin()]
 });

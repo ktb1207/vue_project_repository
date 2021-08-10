@@ -20,7 +20,10 @@ module.exports = (env) => {
     entry: handleUrl('src/main.js'),
     output: {
       path: handleUrl('dist'),
+      pathinfo: false,
+      // contenthash利于静态文件缓存
       filename: '[name].[contenthash].js',
+      // clean dist
       clean: true
     },
     resolve: {
@@ -29,6 +32,7 @@ module.exports = (env) => {
       },
       extensions: ['.js', '.ts', '.vue', '.jsx', '.tsx'],
       modules: [handleUrl('node_modules')],
+      plugins: [new TsconfigPathsPlugin({ baseUrl: handleUrl('tsconfig.json') })],
       symlinks: false
     },
     module: {
@@ -132,7 +136,6 @@ module.exports = (env) => {
       ]
     },
     plugins: [
-      new TsconfigPathsPlugin({ baseUrl: handleUrl('tsconfig.json') }),
       new ForkTsCheckerWebpackPlugin({
         async: true,
         typescript: {
@@ -154,8 +157,8 @@ module.exports = (env) => {
         ? []
         : [
             new MiniCssExtractPlugin({
-              filename: '[name].css',
-              chunkFilename: '[id].css'
+              filename: '[name].[contenthash].css',
+              chunkFilename: '[id].[contenthash].css'
             })
           ]
     )
