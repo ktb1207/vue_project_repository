@@ -15,7 +15,7 @@ module.exports = merge(base('production'), {
     usedExports: true,
     splitChunks: {
       cacheGroups: {
-        vendor: {
+        defaultVendors: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
           chunks: 'all'
