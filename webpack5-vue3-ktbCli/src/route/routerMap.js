@@ -24,6 +24,11 @@ export const routerMap = [
     component: () => import('@/page/Canvas.vue')
   },
   {
+    path: '/jsErrorAnalyse',
+    name: 'JSErrorAnalyse',
+    component: () => import('@/page/JSErrorAnalyse.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('@/page/About.vue')
