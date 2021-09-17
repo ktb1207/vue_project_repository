@@ -29,6 +29,11 @@ export const routerMap = [
     component: () => import('@/page/JSErrorAnalyse.vue')
   },
   {
+    path: '/echartsMap',
+    name: 'EchartsMap',
+    component: () => import('@/page/EchartsMap.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('@/page/About.vue')
