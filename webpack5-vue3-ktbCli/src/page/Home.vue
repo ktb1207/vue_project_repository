@@ -4,8 +4,8 @@
     <button @click="openPage('MountSequence')">组件挂载顺序</button> |
     <button @click="openPage('Canvas')">canvas</button> |
     <button @click="openPage('JSErrorAnalyse')">js错误处理分析</button> |
-    <button @click="openPage('EchartsMap')">echarts地图</button> |
-    <button @click="testTreeFind">递归测试</button>
+    <button @click="openPage('EchartsMap')">echarts地图</button> | <button @click="testTreeFind">递归测试</button> |
+    <button @click="openPage('ArraySort')">数组排序</button>
   </div>
 </template>
 

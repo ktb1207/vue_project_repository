@@ -34,6 +34,11 @@ export const routerMap = [
     component: () => import('@/page/EchartsMap.vue')
   },
   {
+    path: '/arraySort',
+    name: 'ArraySort',
+    component: () => import('@/page/ArraySort.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('@/page/About.vue')
