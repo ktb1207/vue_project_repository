@@ -1,0 +1,36 @@
+$leftW: 258px;
+$rightW: 238px;
+$topH: 62px;
+$borderColor: #d4d4d4;
+$shadowColor: #acacac;
+$previewborder: #acacac;
+.edit-page{
+  // 右侧设置区域样式
+  .setting-block{
+    border: 1px dashed $borderColor;
+    padding: 4px;
+    h5{
+      font-size: 14px;
+      line-height: 14px;
+      margin: 0;
+      padding: 0;
+    }
+    .s-row{
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      & + .s-row{
+        margin-top: 12px;
+      }
+    }
+    .col-fixed-w{
+      flex: 0 0 82px;
+      text-align: center;
+      font-size: 12px;
+    }
+    .col-auto-w{
+      flex: 1 1 auto;
+      width: 0;
+    }
+  }
+}

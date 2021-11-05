@@ -1,0 +1,11 @@
+{
+	"routerArr": [
+		{
+			"path": "/example",
+			"name": "Example",
+			"meta": {
+				"title": "考试成绩排名"
+			}
+		}
+	]
+}

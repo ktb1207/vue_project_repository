@@ -1,0 +1,43 @@
+@import '../varible.scss';
+$editColor: #1890ff;
+.k-row{
+  padding: 2px 0px;
+  display: flex;
+  & + .k-row {
+    margin-top: 2px;
+  }
+}
+.is-edit{}
+.k-row.is-edit{
+  min-height: 48px;
+  resize: vertical;
+  overflow: auto;
+  border: 1px dashed $editColor;
+}
+.flex-left{
+  justify-content: flex-start;
+}
+.flex-center{
+  justify-content: center;
+}
+.flex-right{
+  justify-content: flex-end;
+}
+.flex-between{
+  justify-content: space-between;
+}
+.flex-around{
+  justify-content: space-around;
+}
+.vertical-top{
+  align-items: flex-start;
+}
+.vertical-middle{
+  align-items: center;
+}
+.vertical-bottom{
+  align-items: flex-end;
+}
+.vertical-stretch{
+  align-items: stretch;
+}

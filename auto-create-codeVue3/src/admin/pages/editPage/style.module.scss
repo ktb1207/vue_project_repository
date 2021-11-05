@@ -1,0 +1,70 @@
+@import './index.scss';
+.left-wrp{
+  position: fixed;
+  top:0;
+  bottom:0;
+  left: 0;
+  width: $leftW;
+  padding:0 4px;
+  background-color: #fff;
+  box-shadow: 2px 0px 4px 2px $shadowColor;
+  z-index: 2;
+  .drag-item{
+    cursor: move;
+  }
+}
+.right-wrp{
+  position: fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  width:$rightW;
+  z-index: 2;
+  background-color: #fff;
+  box-shadow: -2px 0px 4px 2px $shadowColor;
+  padding: 4px;
+}
+.head-wrp{
+  position: fixed;
+  top:0;
+  right:0;
+  left:0;
+  height: $topH;
+  z-index: 1;
+  padding-left: $leftW;
+  padding-right: $rightW;
+  background-color: #fff;
+  box-shadow: 0px 2px 4px 2px $shadowColor;
+  .top-flex-content{
+    height: 100%;
+    overflow: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.content-wrp{
+  position: fixed;
+  top:$topH;
+  right: $rightW;
+  bottom: 0;
+  left: $leftW;
+  z-index: 1;
+  overflow: hidden;
+  padding: 12px;
+  .overflow-scroll{
+    height: 100%;
+    overflow: auto;
+  }
+  .center-preview{
+    margin:4px auto;
+    box-shadow: 0px -2px 4px 2px $previewborder, 2px 0px 4px 2px $previewborder, 0px 2px 4px 2px $previewborder, -2px 0px 4px 2px $previewborder;
+    overflow: auto;
+    background:
+        -webkit-linear-gradient(top, transparent 23px, #ccc 24px),
+        -webkit-linear-gradient(left, transparent 23px, #ccc 24px)
+        ;
+    background-size: 24px 24px;
+  }
+}
