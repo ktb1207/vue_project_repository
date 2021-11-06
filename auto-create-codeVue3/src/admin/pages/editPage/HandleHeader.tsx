@@ -1,5 +1,4 @@
 import { defineComponent, PropType } from 'vue';
-import { ElButton } from 'element-plus';
 import style from './style.module.scss';
 interface PropsType {
   onSave?: () => void;
@@ -19,18 +18,18 @@ export default defineComponent({
     };
     return () => (
       <div class={style['top-flex-content']}>
-        <ElButton type="primary" size="small" disabled>
+        <el-Button type="primary" size="small" disabled>
           回退
-        </ElButton>
-        <ElButton type="primary" size="small" disabled>
+        </el-Button>
+        <el-button type="primary" size="small" disabled>
           删除
-        </ElButton>
-        <ElButton type="primary" size="small" disabled>
+        </el-button>
+        <el-button type="primary" size="small" disabled>
           重置
-        </ElButton>
-        <ElButton type="primary" size="small" onClick={saveClick}>
+        </el-button>
+        <el-button type="primary" size="small" onClick={saveClick}>
           保存
-        </ElButton>
+        </el-button>
       </div>
     );
   }

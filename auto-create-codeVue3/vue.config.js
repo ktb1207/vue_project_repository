@@ -25,7 +25,8 @@ module.exports = {
       resolve: {
         extensions: ['.js', '.ts', '.vue', '.tsx', '.jsx'],
         modules: ['node_modules']
-      }
+      },
+      plugins: []
     };
     if (process.env.NODE_ENV === 'production') {
       // 为生产环境修改配置...
@@ -42,12 +43,16 @@ module.exports = {
     return configObj;
   },
   devServer: {
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false
+      },
+      progress: true
+    },
     open: true,
-    // 打开页面
-    openPage: 'index.html#/',
+    host: 'localhost',
     port: theDefaultPort,
-    https: false,
-    hotOnly: false,
     hot: true,
     proxy: {
       '/api': {

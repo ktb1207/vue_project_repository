@@ -3,9 +3,6 @@ import { useRouter } from 'vue-router';
 import style from './style.module.scss';
 import sysApi from '@/admin/api/index';
 import { pageConfig, PageItemType } from '@/pageConfig/index';
-import { Button as AntButton } from 'ant-design-vue';
-import { LoginOutlined as AntLoginOutlined, PlusOutlined as AntPlusOutlined } from '@ant-design/icons-vue';
-import { ElDialog, ElForm, ElFormItem, ElInput, ElButton } from 'element-plus';
 import { utils } from '@/utils';
 
 interface FormState {
@@ -14,16 +11,7 @@ interface FormState {
 }
 export default defineComponent({
   name: 'ManagerPage',
-  components: {
-    AntButton,
-    AntLoginOutlined,
-    AntPlusOutlined,
-    ElDialog,
-    ElForm,
-    ElFormItem,
-    ElInput,
-    ElButton
-  },
+  components: {},
   setup() {
     const router = useRouter();
     // 创建页面
@@ -82,15 +70,13 @@ export default defineComponent({
       return (
         <div class={`root-page ${style['page-wrp']}`}>
           <header class={style['page-wrp-header']}>
-            <AntButton type="primary" onClick={backHome}>
-              <AntLoginOutlined></AntLoginOutlined>
+            <el-button type="primary" onClick={backHome}>
               返回首页
-            </AntButton>
+            </el-button>
           </header>
           <div class={style['page-wrp-content']}>
             <div class={`${style['gird']} ${style['gird-add']}`} onClick={addPage}>
-              <AntPlusOutlined />
-              添加
+              +添加
             </div>
             {/* config page list */}
             {configData.map((item) => {
@@ -113,7 +99,7 @@ export default defineComponent({
             })}
           </div>
           {/* add modal */}
-          <ElDialog
+          <el-dialog
             modelValue={modalVisible.value}
             title="添加页面"
             width={720}
@@ -121,21 +107,21 @@ export default defineComponent({
             closeOnClickModal={false}
             showClose={false}
           >
-            <ElForm model={formState} labelWidth="110px">
-              <ElFormItem label="文件名称">
-                <ElInput v-model={formState.fileName}></ElInput>
-              </ElFormItem>
-              <ElFormItem label="页面描述">
-                <ElInput v-model={formState.pageDesc}></ElInput>
-              </ElFormItem>
-              <ElFormItem>
-                <ElButton type="primary" onClick={sureBtnClick}>
+            <el-form model={formState} labelWidth="110px">
+              <el-form-item label="文件名称">
+                <el-input v-model={formState.fileName}></el-input>
+              </el-form-item>
+              <el-form-item label="页面描述">
+                <el-input v-model={formState.pageDesc}></el-input>
+              </el-form-item>
+              <el-form-item>
+                <el-button type="primary" onClick={sureBtnClick}>
                   添加
-                </ElButton>
-                <ElButton onClick={() => (modalVisible.value = false)}>取消</ElButton>
-              </ElFormItem>
-            </ElForm>
-          </ElDialog>
+                </el-button>
+                <el-button onClick={() => (modalVisible.value = false)}>取消</el-button>
+              </el-form-item>
+            </el-form>
+          </el-dialog>
         </div>
       );
     };
