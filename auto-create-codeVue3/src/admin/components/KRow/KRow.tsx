@@ -1,4 +1,4 @@
-import { defineComponent, PropType, SetupContext, inject, Ref, toRef } from 'vue';
+import { defineComponent, PropType, SetupContext, inject, Ref, toRef, ref } from 'vue';
 import { EventBus } from '@/admin/utils/Eventbus';
 import './style.scss';
 
@@ -37,9 +37,11 @@ export default defineComponent({
     }
   },
   setup(props: PropsType, ctx: SetupContext) {
+    const editActiveId = inject<Ref>('editId', ref(999999));
     const showMethod = toRef(props, 'showWay');
+    const nowId = toRef(props, 'nodeId');
     const overKey = showMethod.value === 'edit' && inject<Ref>('dragKey');
-    const testClass = () => {
+    const computedClass = () => {
       // 编辑
       const editStyle = props.showWay === 'edit' ? ' ' + 'is-edit' : '';
       // 水平flex
@@ -83,7 +85,8 @@ export default defineComponent({
           verStyle = ' ' + 'vertical-middle';
           break;
       }
-      return 'k-row' + flexStyle + verStyle + editStyle;
+      const isActive = editActiveId?.value === nowId.value ? ' ' + 'edit-active' : '';
+      return 'k-row' + flexStyle + verStyle + editStyle + isActive;
     };
     const dragOver = (e: DragEvent) => {
       // 只允许放置KCol
@@ -99,7 +102,7 @@ export default defineComponent({
       });
     };
     return () => (
-      <div class={testClass()} onDragover={(e) => dragOver(e)} onDrop={(e) => drop(e)}>
+      <div class={computedClass()} onDragover={(e) => dragOver(e)} onDrop={(e) => drop(e)}>
         {ctx.slots.default ? ctx.slots.default() : ''}
       </div>
     );

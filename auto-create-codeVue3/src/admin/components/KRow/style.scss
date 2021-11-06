@@ -1,5 +1,6 @@
 @import '../varible.scss';
 $editColor: #1890ff;
+$activeColor: red;
 .k-row{
   padding: 2px 0px;
   display: flex;
@@ -7,12 +8,14 @@ $editColor: #1890ff;
     margin-top: 2px;
   }
 }
-.is-edit{}
 .k-row.is-edit{
   min-height: 48px;
   resize: vertical;
   overflow: auto;
   border: 1px dashed $editColor;
+}
+.k-row.edit-active{
+  border: 1px dashed $activeColor;
 }
 .flex-left{
   justify-content: flex-start;

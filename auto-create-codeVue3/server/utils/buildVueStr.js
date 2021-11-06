@@ -36,10 +36,11 @@ function getPropValue(propArr) {
   var propStr = '';
   propArr.forEach((val) => {
     if (val.propKey === 'nodeId') {
-      console.log('过滤不需要组件属性');
+      propStr += '';
     } else if (val.propKey === 'showWay') {
-      // propStr += ' ' + val.propKey + '=' + '"' + 'show' + '"';
-      propStr += ' ' + val.propKey + '=' + '"' + val.propValue + '"';
+      propStr += ' ' + val.propKey + '=' + '"' + 'show' + '"';
+      // edit
+      // propStr += ' ' + val.propKey + '=' + '"' + val.propValue + '"';
     } else {
       propStr += ' ' + val.propKey + '=' + '"' + val.propValue + '"';
     }

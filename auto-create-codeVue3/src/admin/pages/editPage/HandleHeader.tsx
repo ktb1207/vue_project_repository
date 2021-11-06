@@ -1,8 +1,5 @@
 import { defineComponent, PropType } from 'vue';
 import style from './style.module.scss';
-interface PropsType {
-  onSave?: () => void;
-}
 export default defineComponent({
   name: 'HandleHeader',
   props: {
@@ -11,7 +8,7 @@ export default defineComponent({
       required: false
     }
   },
-  setup(props: PropsType) {
+  setup(props) {
     // 保存
     const saveClick = () => {
       props.onSave && props.onSave();

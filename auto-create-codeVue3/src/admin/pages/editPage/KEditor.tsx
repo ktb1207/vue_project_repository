@@ -1,6 +1,6 @@
 import { defineComponent, createVNode, resolveComponent, PropType, toRef, VNode, ComponentOptions } from 'vue';
 import { ElementType } from '@/pageConfig/index';
-import { utils } from '@/admin/utils/index';
+import { utils, registerConfig, ComponentPropType } from '@/admin/utils/index';
 interface ComponentProps {
   [propsName: string]: any;
 }
@@ -11,16 +11,45 @@ export default defineComponent({
       type: Array as PropType<Array<ElementType>>,
       default: () => [],
       required: false
+    },
+    onComponentClick: {
+      type: Function as PropType<(id: number) => void>,
+      required: false
     }
   },
   setup(props) {
     const configData = toRef(props, 'editData');
     /**
+     * @description 依据组件name找出组件可调整属性
+     * */
+    function findComponentSettingProps(componentName: string): Array<ComponentPropType> {
+      const allProps = registerConfig.componentMap[componentName].render.props;
+      const resizeProps = allProps.filter((item) => {
+        return item.allowResize === true;
+      });
+      return resizeProps;
+    }
+    /**
+     * @description 依据组件id找出组件属性对应值
+     * */
+    function findComponentNowPropValue(componentId: number): Array<ComponentPropType> {
+      const propArr: Array<ComponentPropType> = [];
+      configData.value.forEach((item) => {
+        if (item.id === componentId) {
+          propArr.push(...item.props);
+        }
+      });
+      return propArr;
+    }
+    /**
      * @description 点击选中
+     * @param {componentName} 组件名称
+     * @param {componentId} 当前组件id
      * */
     function clickSelection(e: MouseEvent, componentName: string, componentId: number) {
-      console.log(componentName);
-      console.log(componentId);
+      const getResizeProps = findComponentSettingProps(componentName);
+      const getResizeValue = findComponentNowPropValue(componentId);
+      props.onComponentClick && props.onComponentClick(componentId);
       e.stopPropagation();
     }
     /**

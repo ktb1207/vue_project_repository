@@ -1,3 +1,4 @@
+export { registerConfig, DefaultRender, ComponentMap, ComponentPropType } from './EditRegister';
 const utils = {
   deepClone<T>(value: T): T {
     return JSON.parse(JSON.stringify(value));

@@ -19,9 +19,11 @@ export default defineComponent({
   },
   setup() {
     provide('config', config); // 注册组件信息
-    const route = useRoute();
     const activeDragKey = ref<string>('');
     provide('dragKey', activeDragKey); // 当前拖拽组件key
+    const activeComponentId = ref<number>(999999);
+    provide('editId', activeComponentId);
+    const route = useRoute();
     // 预览
     const previewW = ref<string>('880');
     const previewH = ref<string>('780');
@@ -48,6 +50,14 @@ export default defineComponent({
       // 添加放置组件数据
       editorData.push(resolveRender);
     });
+    /**
+     * @description 选中编辑组件
+     * @param {id} 组件id
+     * */
+    const editComponentClick = (id: number): void => {
+      activeComponentId.value = id;
+    };
+    // 保存
     const saveData = () => {
       const postData = {
         fileId: pageId,
@@ -92,7 +102,7 @@ export default defineComponent({
               onDrop={(e) => previewDrop(e, config.componentMap)}
             >
               {/* 编辑预览 */}
-              <KEditor editData={editorData}></KEditor>
+              <KEditor editData={editorData} onComponentClick={editComponentClick}></KEditor>
             </div>
           </div>
         </div>

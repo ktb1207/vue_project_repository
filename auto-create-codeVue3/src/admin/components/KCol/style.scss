@@ -1,16 +1,18 @@
 @import '../varible.scss';
 $editColor: #acacac;
+$editActiveColor: red;
 .k-col{
   display: flex;
   flex-wrap: wrap;
 }
-.is-edit{}
-.is-preview{}
 .k-col.is-edit{
   border: 1px dashed $editColor;
 }
 .k-col.is-preview{
   height: 20px;
+}
+.k-col.edit-active{
+  border: 1px dashed $editActiveColor;
 }
 .k-col.flex-row{
   flex-direction: row;

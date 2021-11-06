@@ -1,7 +1,8 @@
-import { defineComponent, SetupContext, PropType, toRef, computed } from 'vue';
+import { defineComponent, SetupContext, PropType, toRef, computed, inject, Ref, ref } from 'vue';
 import './style.scss';
 
 interface PropsType {
+  nodeId?: number;
   // 展示方式
   showWay?: 'edit' | 'show';
   // 展示位置
@@ -18,6 +19,11 @@ interface PropsType {
 export default defineComponent({
   name: 'KCol',
   props: {
+    nodeId: {
+      type: Number,
+      default: 0,
+      required: false
+    },
     showWay: {
       type: String as PropType<'edit' | 'show'>,
       default: 'show',
@@ -50,6 +56,8 @@ export default defineComponent({
     }
   },
   setup(props: PropsType, ctx: SetupContext) {
+    const editActiveId = inject<Ref>('editId', ref(999999));
+    const nowId = toRef(props, 'nodeId');
     const computedClass = (): string => {
       const editClass = props.showWay === 'edit' ? ' is-edit' : '';
       const isPreview = props.showPosition === 'preview' ? ' is-preview' : '';
@@ -65,7 +73,8 @@ export default defineComponent({
           flexDirectionClass = ' flex-row';
           break;
       }
-      return 'k-col' + isPreview + editClass + flexDirectionClass;
+      const isActive = editActiveId?.value === nowId.value ? ' ' + 'edit-active' : '';
+      return 'k-col' + isPreview + editClass + flexDirectionClass + isActive;
     };
     const mainAlignClass = props.mainAlign === 'center' ? 'center' : `flex-${props.mainAlign}`;
     const crossAlignClass = toRef(props, 'crossAlign').value;
