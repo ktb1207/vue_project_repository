@@ -3,7 +3,8 @@ import { useRoute } from 'vue-router';
 import './index.scss';
 import style from './style.module.scss';
 import SettingContainer from '@/admin/components/settingContainer/SettingContainer';
-import { registerConfig as config } from '@/admin/utils/EditRegister';
+import SettingForm, { ResizeType } from '@/admin/components/settingForm/SettingForm';
+import { ComponentPropType, registerConfig as config } from '@/admin/utils/EditRegister';
 import { pageConfig, PageItemType, ElementType } from '@/pageConfig/index';
 import KEditor from './KEditor';
 import HandleHeader from './HandleHeader';
@@ -15,7 +16,8 @@ export default defineComponent({
   name: 'EditPage',
   components: {
     SettingContainer,
-    HandleHeader
+    HandleHeader,
+    SettingForm
   },
   setup() {
     provide('config', config); // 注册组件信息
@@ -27,6 +29,14 @@ export default defineComponent({
     // 预览
     const previewW = ref<string>('880');
     const previewH = ref<string>('780');
+    // 调整项prop
+    const activeComponentProp = reactive<{
+      propArr: Array<ResizeType>;
+      id: number;
+    }>({
+      propArr: [],
+      id: 0
+    });
     // 从页面配置数据中心找出对应编辑页面数据
     const pageId = route.params.pageId;
     let pageName = '';
@@ -54,10 +64,51 @@ export default defineComponent({
      * @description 选中编辑组件
      * @param {id} 组件id
      * */
-    const editComponentClick = (id: number): void => {
+    const editComponentClick = (id: number, propArr: Array<ComponentPropType>): void => {
       activeComponentId.value = id;
+      activeComponentProp.propArr.splice(0);
+      activeComponentProp.id = id;
+      let inx = 0;
+      for (let i = 0, l = editorData.length; i < l; i++) {
+        if (editorData[i].id === id) {
+          inx = i;
+          break;
+        }
+      }
+      propArr.forEach((item: ComponentPropType) => {
+        const obj: ResizeType = {
+          resizeFormItem: item.resizeFormItem ?? 'text',
+          resizeTitle: item.resizeTitle ?? '',
+          propKey: item.propKey,
+          propSelect: item.propSelect ?? '',
+          propValue: ''
+        };
+        editorData[inx].props.forEach((val) => {
+          if (val.propKey === item.propKey) {
+            obj.propValue = val.propValue;
+          }
+        });
+        activeComponentProp.propArr.push(obj);
+      });
     };
-    // 保存
+    /**
+     * @description 编辑
+     * */
+    const editPreComponent = (editId: number, editKey: string, newValue: string | number) => {
+      for (let i = 0, l = editorData.length; i < l; i++) {
+        if (editorData[i].id === editId) {
+          editorData[i].props.forEach((item) => {
+            if (item.propKey === editKey) {
+              item.propValue = newValue;
+            }
+          });
+          break;
+        }
+      }
+    };
+    /**
+     * 保存页面信息
+     * */
     const saveData = () => {
       const postData = {
         fileId: pageId,
@@ -85,12 +136,19 @@ export default defineComponent({
         </div>
         {/* 属性控制区 */}
         <div class={style['right-wrp']}>
+          {/* 预览控制 */}
           <SettingContainer
             v-models={[
               [previewW.value, 'width'],
               [previewH.value, 'height']
             ]}
           ></SettingContainer>
+          {/* 属性调整 */}
+          <SettingForm
+            resizeProp={activeComponentProp}
+            resizeId={activeComponentId.value}
+            resizeChange={editPreComponent}
+          ></SettingForm>
         </div>
         {/* 中心内容 */}
         <div class={style['content-wrp']}>

@@ -13,7 +13,7 @@ export default defineComponent({
       required: false
     },
     onComponentClick: {
-      type: Function as PropType<(id: number) => void>,
+      type: Function as PropType<(id: number, resizeProp: Array<ComponentPropType>) => void>,
       required: false
     }
   },
@@ -48,8 +48,9 @@ export default defineComponent({
      * */
     function clickSelection(e: MouseEvent, componentName: string, componentId: number) {
       const getResizeProps = findComponentSettingProps(componentName);
-      const getResizeValue = findComponentNowPropValue(componentId);
-      props.onComponentClick && props.onComponentClick(componentId);
+      // const getResizeValue = findComponentNowPropValue(componentId);
+      // console.log(getResizeValue);
+      props.onComponentClick && props.onComponentClick(componentId, getResizeProps);
       e.stopPropagation();
     }
     /**

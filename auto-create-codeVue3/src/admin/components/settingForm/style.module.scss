@@ -1,0 +1,10 @@
+@import '../varible.scss';
+.settingForm{
+  margin-top: 12px;
+  border: 1px dashed $grey-color;
+  h5{
+    margin:0;
+    padding: 0 0 0 6px;
+    line-height: 24px;
+  }
+}

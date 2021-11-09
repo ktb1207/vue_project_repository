@@ -15,7 +15,7 @@ $activeColor: red;
   border: 1px dashed $editColor;
 }
 .k-row.edit-active{
-  border: 1px dashed $activeColor;
+  border: 2px dashed $activeColor;
 }
 .flex-left{
   justify-content: flex-start;

@@ -1,0 +1,16 @@
+$inputHeight: 28px;
+$inputWidth: 146px;
+.propItem{
+  padding-left: 6px;
+  .propLable{
+    color: #575757;
+  }
+  .propInput{
+    display: block;
+    box-sizing: border-box;
+    width: $inputWidth;
+    height: $inputHeight;
+    font-size: 18px;
+    padding-left: 12px;
+  }
+}

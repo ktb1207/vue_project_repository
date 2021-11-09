@@ -90,7 +90,7 @@ registerConfig.reqister({
         propValue: 'stretch',
         propSelect: ['top', 'middle', 'bottom', 'stretch'],
         allowResize: true,
-        resizeTitle: '水平对齐',
+        resizeTitle: '垂直对齐',
         resizeFormItem: 'select'
       }
     ],
