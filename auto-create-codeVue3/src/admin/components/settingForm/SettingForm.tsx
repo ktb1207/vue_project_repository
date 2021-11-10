@@ -1,14 +1,15 @@
 import { defineComponent, PropType, createVNode, toRef, watch, VNode, reactive, onMounted } from 'vue';
 import style from './style.module.scss';
+import { PropSelect, PropValue, PropResize } from '@/admin/utils/EditRegister';
 import PText from './formItem/PText';
 import PSelect from './formItem/PSelect';
 import PColor from './formItem/PColor';
 export interface ResizeType {
-  resizeFormItem: 'text' | 'select' | 'color';
+  resizeFormItem: PropResize;
   resizeTitle: string;
   propKey: string;
-  propValue: string | number;
-  propSelect: string | number | Array<string>;
+  propValue: PropValue;
+  propSelect: PropSelect;
 }
 
 interface ReactiveProp {
@@ -54,7 +55,6 @@ export default defineComponent({
      * */
     function createPropVnode(propArr: Array<ResizeType>, uniqueId: number): void {
       vProp.splice(0);
-      console.log(propArr);
       propArr.forEach((item) => {
         vProp.push(
           createVNode(componentMap[item.resizeFormItem], {
@@ -71,7 +71,6 @@ export default defineComponent({
     watch(
       () => resizePropArr.value?.id,
       (newValue) => {
-        console.log(newValue);
         createPropVnode(resizePropArr.value?.propArr as Array<ResizeType>, newValue as number);
       }
     );

@@ -36,7 +36,6 @@ export default defineComponent({
     watch(moduleValue, (newVal) => {
       emit('itemChange', props.valueKey, newVal);
     });
-    console.log(optionValue.value);
     return () => (
       <div class={style.propItem}>
         <div class={style.propLable}>{props.label}</div>

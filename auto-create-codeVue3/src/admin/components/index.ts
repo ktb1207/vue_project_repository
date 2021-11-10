@@ -3,16 +3,20 @@ import { App } from 'vue';
 import krow from './KRow/index';
 // col
 import kcol from './KCol/index';
+// p
+import kp from './KP/index';
 // 单个use
 export { default as KRow } from './KRow/index';
 export { default as KCol } from './KCol/index';
+export { default as KP } from './KP/index';
 interface ComponentProps {
   [propName: string]: any;
 }
 const components: ComponentProps = {
   // 重命名
   KRow: krow,
-  KCol: kcol
+  KCol: kcol,
+  KP: kp
 };
 const install = (app: App): void => {
   Object.keys(components).forEach((c) => {

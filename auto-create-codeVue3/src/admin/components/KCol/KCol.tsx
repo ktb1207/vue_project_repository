@@ -1,12 +1,13 @@
 import { defineComponent, SetupContext, PropType, toRef, computed, inject, Ref, ref } from 'vue';
+import { ShowWay, ShowPosition } from '../componType';
 import './style.scss';
 
 interface PropsType {
   nodeId?: number;
   // 展示方式
-  showWay?: 'edit' | 'show';
+  showWay?: ShowWay;
   // 展示位置
-  showPosition?: '' | 'preview';
+  showPosition?: ShowPosition;
   // 宽度
   width?: string; // auto, 48px 1 2 3、
   // 子元素排列方向
@@ -25,13 +26,13 @@ export default defineComponent({
       required: false
     },
     showWay: {
-      type: String as PropType<'edit' | 'show'>,
+      type: String as PropType<ShowWay>,
       default: 'show',
       required: false
     },
     showPosition: {
-      type: String as PropType<'' | 'preview'>,
-      default: '',
+      type: String as PropType<ShowPosition>,
+      default: 'preview',
       required: false
     },
     width: {
@@ -60,7 +61,7 @@ export default defineComponent({
     const nowId = toRef(props, 'nodeId');
     const computedClass = (): string => {
       const editClass = props.showWay === 'edit' ? ' is-edit' : '';
-      const isPreview = props.showPosition === 'preview' ? ' is-preview' : '';
+      const isPreview = props.showPosition === 'preview' ? ' is-preview' : ' is-editview';
       let flexDirectionClass = '';
       switch (props.flexDirection) {
         case 'row':

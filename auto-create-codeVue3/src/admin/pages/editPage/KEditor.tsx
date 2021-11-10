@@ -76,7 +76,10 @@ export default defineComponent({
           },
           {
             default() {
-              return arr[i].children.length > 0 ? recurrenceBuildVnode(arr[i].children) : [];
+              if (typeof arr[i].children === 'string') {
+                return arr[i].children;
+              }
+              return arr[i].children.length > 0 ? recurrenceBuildVnode(arr[i].children as Array<ElementType>) : [];
             }
           }
         );

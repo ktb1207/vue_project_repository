@@ -8,12 +8,21 @@ $activeColor: red;
     margin-top: 2px;
   }
 }
+// edit
 .k-row.is-edit{
-  min-height: 48px;
-  resize: vertical;
   overflow: auto;
   border: 1px dashed $editColor;
 }
+// preview
+.k-row.is-preview{
+  height: 48px;
+}
+// editview
+.k-row.is-editview{
+  height: 72px;
+  resize: vertical;
+}
+// active
 .k-row.edit-active{
   border: 2px dashed $activeColor;
 }

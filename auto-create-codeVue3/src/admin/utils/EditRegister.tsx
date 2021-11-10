@@ -1,28 +1,31 @@
 // 导入组件
-import { KRow, KCol } from '@/admin/components/index';
+import { KRow, KCol, KP } from '@/admin/components/index';
 import { VNode } from 'vue';
 
+type PropSelect = Array<string> | Array<number> | string | number | boolean;
+type PropValue = string | number | boolean;
+type PropResize = 'text' | 'color' | 'select';
 // 组件属性定义
 interface ComponentPropType {
   // 组件prop name
   propKey: string;
   // prop value
-  propValue: string | number;
+  propValue: PropValue;
   // prop value 可选项
-  propSelect?: Array<string> | string | number;
+  propSelect?: PropSelect;
   // 属性是否可调
   allowResize: boolean;
   // 属性调整标题
   resizeTitle?: string;
   // 属性调整控件
-  resizeFormItem?: 'text' | 'color' | 'select';
+  resizeFormItem?: PropResize;
 }
 interface DefaultRender {
   id: number;
   parentId: number | null;
   key: string; // 组件名称
   props: Array<ComponentPropType>; // 组件属性
-  children: Array<DefaultRender>;
+  children: Array<DefaultRender> | string;
 }
 // 组件类型定义
 interface ComponentType {
@@ -59,7 +62,7 @@ const registerConfig = createEditorRegister();
 registerConfig.reqister({
   label: '行',
   key: 'KRow',
-  preview: () => <KRow showWay="edit"></KRow>,
+  preview: () => <KRow showWay="edit" showPosition="preview"></KRow>,
   render: {
     key: 'KRow',
     id: 0,
@@ -75,6 +78,12 @@ registerConfig.reqister({
         propKey: 'showWay',
         propValue: 'edit',
         propSelect: ['edit', 'show'],
+        allowResize: false
+      },
+      {
+        propKey: 'showPosition',
+        propValue: 'editview',
+        propSelect: 'editview',
         allowResize: false
       },
       {
@@ -119,6 +128,12 @@ registerConfig.reqister({
         allowResize: false
       },
       {
+        propKey: 'showPosition',
+        propValue: 'editview',
+        propSelect: 'editview',
+        allowResize: false
+      },
+      {
         propKey: 'width',
         propValue: '160px',
         propSelect: '160px',
@@ -155,4 +170,70 @@ registerConfig.reqister({
   }
 });
 
-export { registerConfig, DefaultRender, ComponentMap, ComponentPropType };
+registerConfig.reqister({
+  label: '文本',
+  key: 'KP',
+  preview: () => (
+    <KP showWay="edit" showPosition="preview">
+      预览文本
+    </KP>
+  ),
+  render: {
+    key: 'KP',
+    id: 0,
+    parentId: null,
+    props: [
+      {
+        propKey: 'nodeId',
+        propValue: 0,
+        propSelect: 0,
+        allowResize: false
+      },
+      {
+        propKey: 'showWay',
+        propValue: 'edit',
+        propSelect: ['edit', 'show'],
+        allowResize: false
+      },
+      {
+        propKey: 'showPosition',
+        propValue: 'editview',
+        propSelect: 'editview',
+        allowResize: false
+      },
+      {
+        propKey: 'contentEdit',
+        propValue: true,
+        propSelect: true,
+        allowResize: false
+      },
+      {
+        propKey: 'fontColor',
+        propValue: '#333',
+        propSelect: '#333',
+        allowResize: true,
+        resizeTitle: '字体颜色',
+        resizeFormItem: 'color'
+      },
+      {
+        propKey: 'fontSize',
+        propValue: 14,
+        propSelect: [12, 14, 16, 18, 20, 22, 24, 28, 32],
+        allowResize: true,
+        resizeTitle: '字号大小',
+        resizeFormItem: 'select'
+      },
+      {
+        propKey: 'fontWeight',
+        propValue: 'normal',
+        propSelect: ['100', '200', '300', '400', '500', '600', '700', '800', '900', 'normal', 'bold'],
+        allowResize: true,
+        resizeTitle: '字体加粗',
+        resizeFormItem: 'select'
+      }
+    ],
+    children: []
+  }
+});
+
+export { registerConfig, DefaultRender, ComponentMap, ComponentPropType, PropSelect, PropValue, PropResize };

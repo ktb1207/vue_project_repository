@@ -5,12 +5,19 @@ $editActiveColor: red;
   display: flex;
   flex-wrap: wrap;
 }
+// edit
 .k-col.is-edit{
   border: 1px dashed $editColor;
 }
+// preview
 .k-col.is-preview{
   height: 20px;
 }
+// editview
+.k-col.is-editview{
+  padding: 4px;
+}
+// editactive
 .k-col.edit-active{
   border: 2px dashed $editActiveColor;
 }

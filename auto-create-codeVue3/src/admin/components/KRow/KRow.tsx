@@ -1,10 +1,12 @@
 import { defineComponent, PropType, SetupContext, inject, Ref, toRef, ref } from 'vue';
 import { EventBus } from '@/admin/utils/Eventbus';
+import { ShowWay, ShowPosition } from '../componType';
 import './style.scss';
 
 interface PropsType {
   nodeId?: number;
-  showWay?: 'edit' | 'show';
+  showWay?: ShowWay;
+  showPosition?: ShowPosition;
   align?: 'left' | 'center' | 'right' | 'between' | 'around';
   verticalAlign?: 'top' | 'middle' | 'bottom' | 'stretch';
 }
@@ -19,8 +21,13 @@ export default defineComponent({
     },
     // 展示方式
     showWay: {
-      type: String as PropType<'edit' | 'show'>,
+      type: String as PropType<ShowWay>,
       default: 'show',
+      required: false
+    },
+    showPosition: {
+      type: String as PropType<ShowPosition>,
+      default: 'preview',
       required: false
     },
     // 水平对齐方式
@@ -44,6 +51,7 @@ export default defineComponent({
     const computedClass = () => {
       // 编辑
       const editStyle = props.showWay === 'edit' ? ' ' + 'is-edit' : '';
+      const isPreview = props.showPosition === 'preview' ? ' is-preview' : ' is-editview';
       // 水平flex
       let flexStyle = '';
       switch (props.align) {
@@ -86,7 +94,7 @@ export default defineComponent({
           break;
       }
       const isActive = editActiveId?.value === nowId.value ? ' ' + 'edit-active' : '';
-      return 'k-row' + flexStyle + verStyle + editStyle + isActive;
+      return 'k-row' + isPreview + flexStyle + verStyle + editStyle + isActive;
     };
     const dragOver = (e: DragEvent) => {
       // 只允许放置KCol
