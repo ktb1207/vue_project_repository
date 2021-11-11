@@ -10,7 +10,7 @@ export default defineComponent({
       required: false
     },
     labelValue: {
-      type: String,
+      type: [String, Number],
       default: '',
       required: false
     },

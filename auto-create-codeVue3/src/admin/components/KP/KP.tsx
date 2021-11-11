@@ -1,5 +1,6 @@
 import { defineComponent, PropType, inject, ref, toRef, Ref, SetupContext } from 'vue';
 import { ShowWay, ShowPosition, FontWeight } from '../componType';
+import { useEditDrag } from '../useComponDrag';
 
 import './style.scss';
 
@@ -43,21 +44,36 @@ export default defineComponent({
   },
   setup(props, ctx: SetupContext) {
     const editActiveId = inject<Ref>('editId', ref(999999));
-    const nowId = toRef(props, 'nodeId');
+    const nowNodeId = toRef(props, 'nodeId');
+    const showMethod = toRef(props, 'showWay');
+    const overKey = inject<Ref>('dragKey');
+    const { onEditDragOver, onEditDrop } = useEditDrag();
     const computedClass = (): string => {
       const editClass = props.showWay === 'edit' ? ' is-edit' : '';
       const isPreview = props.showPosition === 'preview' ? ' is-preview' : ' is-editview';
-      const isActive = editActiveId?.value === nowId.value ? ' ' + 'edit-active' : '';
+      const isActive = editActiveId?.value === nowNodeId.value ? ' ' + 'edit-active' : '';
       return 'k-p' + isPreview + editClass + isActive;
     };
     const fcolor = toRef(props, 'fontColor');
     const fsize = toRef(props, 'fontSize');
     const fweight = toRef(props, 'fontWeight');
+    const dragOver = (e: DragEvent) => {
+      if (showMethod.value === 'edit') {
+        onEditDragOver(e, (overKey as Ref<any>)?.value, 'KP');
+      }
+    };
+    const drop = (e: DragEvent) => {
+      if (showMethod.value === 'edit') {
+        onEditDrop(e, nowNodeId.value as number);
+      }
+    };
     return () => (
       <p
         class={computedClass()}
         style={{ color: fcolor.value, fontSize: fsize.value + 'px', fontWeight: fweight.value }}
         contenteditable={props.contentEdit}
+        onDragover={(e) => dragOver(e)}
+        onDrop={(e) => drop(e)}
       >
         {ctx.slots.default ? ctx.slots.default() : ''}
       </p>

@@ -8,7 +8,7 @@ import { ComponentPropType, registerConfig as config } from '@/admin/utils/EditR
 import { pageConfig, PageItemType, ElementType } from '@/pageConfig/index';
 import KEditor from './KEditor';
 import HandleHeader from './HandleHeader';
-import useMaterialDrag from './useMaterialDrag';
+import { useMaterialDrag } from './useMaterialDrag';
 import { EventBus } from '@/admin/utils/Eventbus';
 import { utils } from '@/admin/utils/index';
 import sysApi from '@/admin/api/index';

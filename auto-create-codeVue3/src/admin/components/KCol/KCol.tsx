@@ -1,4 +1,5 @@
 import { defineComponent, SetupContext, PropType, toRef, computed, inject, Ref, ref } from 'vue';
+import { useEditDrag } from '../useComponDrag';
 import { ShowWay, ShowPosition } from '../componType';
 import './style.scss';
 
@@ -58,7 +59,10 @@ export default defineComponent({
   },
   setup(props: PropsType, ctx: SetupContext) {
     const editActiveId = inject<Ref>('editId', ref(999999));
-    const nowId = toRef(props, 'nodeId');
+    const nowNodeId = toRef(props, 'nodeId');
+    const showMethod = toRef(props, 'showWay');
+    const overKey = inject<Ref>('dragKey');
+    const { onEditDragOver, onEditDrop } = useEditDrag();
     const computedClass = (): string => {
       const editClass = props.showWay === 'edit' ? ' is-edit' : '';
       const isPreview = props.showPosition === 'preview' ? ' is-preview' : ' is-editview';
@@ -74,7 +78,7 @@ export default defineComponent({
           flexDirectionClass = ' flex-row';
           break;
       }
-      const isActive = editActiveId?.value === nowId.value ? ' ' + 'edit-active' : '';
+      const isActive = editActiveId?.value === nowNodeId.value ? ' ' + 'edit-active' : '';
       return 'k-col' + isPreview + editClass + flexDirectionClass + isActive;
     };
     const mainAlignClass = props.mainAlign === 'center' ? 'center' : `flex-${props.mainAlign}`;
@@ -93,10 +97,22 @@ export default defineComponent({
       }
       return '1';
     });
+    const dragOver = (e: DragEvent) => {
+      if (showMethod.value === 'edit') {
+        onEditDragOver(e, (overKey as Ref<any>)?.value, 'KCol');
+      }
+    };
+    const drop = (e: DragEvent) => {
+      if (showMethod.value === 'edit') {
+        onEditDrop(e, nowNodeId.value as number);
+      }
+    };
     return () => (
       <div
         class={computedClass()}
         style={{ flex: computedWidth.value, justifyContent: mainAlignClass, alignItems: crossAlignClass }}
+        onDragover={(e) => dragOver(e)}
+        onDrop={(e) => drop(e)}
       >
         {ctx.slots.default ? ctx.slots.default() : ''}
       </div>

@@ -7,7 +7,7 @@ const utils = {
     let treeArr: Array<any> = [];
     const map: any = {};
     arr.forEach((item: any) => {
-      item.children = [];
+      item.children = item.children ?? [];
       if (!map[item[uniqueId]]) {
         map[item[uniqueId]] = item;
       }

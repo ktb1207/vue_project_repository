@@ -4,6 +4,10 @@ $editActiveColor: red;
 .k-col{
   display: flex;
   flex-wrap: wrap;
+  & > .k-row{
+    height: 100%;
+    flex:1;
+  }
 }
 // edit
 .k-col.is-edit{

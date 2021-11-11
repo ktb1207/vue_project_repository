@@ -8,6 +8,9 @@ interface Rtype {
   previewDrop: (e: DragEvent, materialMap: ComponentMap) => void;
 }
 
+/**
+ * @description 物料区拖拽
+ **/
 function useMaterialDrag(previewData: Array<ElementType>, dragKey: Ref): Rtype {
   // 物料开始拖拽
   const materialDragStart = (e: DragEvent, c: DefaultRender) => {
@@ -36,4 +39,5 @@ function useMaterialDrag(previewData: Array<ElementType>, dragKey: Ref): Rtype {
     previewDrop
   };
 }
-export default useMaterialDrag;
+
+export { useMaterialDrag };

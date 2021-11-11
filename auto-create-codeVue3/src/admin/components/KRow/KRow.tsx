@@ -1,5 +1,5 @@
 import { defineComponent, PropType, SetupContext, inject, Ref, toRef, ref } from 'vue';
-import { EventBus } from '@/admin/utils/Eventbus';
+import { useEditDrag } from '../useComponDrag';
 import { ShowWay, ShowPosition } from '../componType';
 import './style.scss';
 
@@ -46,7 +46,8 @@ export default defineComponent({
   setup(props: PropsType, ctx: SetupContext) {
     const editActiveId = inject<Ref>('editId', ref(999999));
     const showMethod = toRef(props, 'showWay');
-    const nowId = toRef(props, 'nodeId');
+    const nowNodeId = toRef(props, 'nodeId');
+    const { onEditDragOver, onEditDrop } = useEditDrag();
     const overKey = showMethod.value === 'edit' && inject<Ref>('dragKey');
     const computedClass = () => {
       // 编辑
@@ -93,21 +94,18 @@ export default defineComponent({
           verStyle = ' ' + 'vertical-middle';
           break;
       }
-      const isActive = editActiveId?.value === nowId.value ? ' ' + 'edit-active' : '';
+      const isActive = editActiveId?.value === nowNodeId.value ? ' ' + 'edit-active' : '';
       return 'k-row' + isPreview + flexStyle + verStyle + editStyle + isActive;
     };
     const dragOver = (e: DragEvent) => {
-      // 只允许放置KCol
-      if (showMethod.value === 'edit' && (overKey as Ref<any>)?.value === 'KCol') {
-        e.preventDefault();
+      if (showMethod.value === 'edit') {
+        onEditDragOver(e, (overKey as Ref<any>)?.value, 'KRow');
       }
     };
     const drop = (e: DragEvent) => {
-      const getDragKey = e.dataTransfer?.getData('materialComponent') as string;
-      EventBus.$emit('commentDrop', {
-        targetId: props.nodeId as number,
-        dropKey: getDragKey
-      });
+      if (showMethod.value === 'edit') {
+        onEditDrop(e, nowNodeId.value as number);
+      }
     };
     return () => (
       <div class={computedClass()} onDragover={(e) => dragOver(e)} onDrop={(e) => drop(e)}>

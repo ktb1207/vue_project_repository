@@ -232,7 +232,7 @@ registerConfig.reqister({
         resizeFormItem: 'select'
       }
     ],
-    children: []
+    children: '这是默认文本内容，点击可编辑'
   }
 });
 
