@@ -16,5 +16,6 @@ $editActive: red;
 }
 // active
 .k-p.edit-active{
-  border: 2px dashed $editActive;
+  border: none;
+  outline: none;
 }
