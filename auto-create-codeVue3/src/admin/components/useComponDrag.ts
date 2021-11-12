@@ -2,6 +2,7 @@ import { EventBus } from '@/admin/utils/Eventbus';
 interface ReturnValue {
   onEditDragOver: (e: DragEvent, dragKey: string, overKey: string) => void;
   onEditDrop: (e: DragEvent, nodeId: number) => void;
+  onEditChildrenTextCHange: (nodeId: number, textValue: string) => void;
 }
 
 /**
@@ -25,9 +26,16 @@ function useEditDrag(): ReturnValue {
       dropKey: getDragKey
     });
   };
+  const onEditChildrenTextCHange = (nodeId: number, textValue: string) => {
+    EventBus.$emit('commentTextEdit', {
+      targetId: nodeId,
+      textValue
+    });
+  };
   return {
     onEditDragOver,
-    onEditDrop
+    onEditDrop,
+    onEditChildrenTextCHange
   };
 }
 

@@ -40,6 +40,7 @@ export default defineComponent({
     // 从页面配置数据中心找出对应编辑页面数据
     const pageId = route.params.pageId;
     let pageName = '';
+    let KPTextChangeValue = '';
     const editorData = reactive<Array<ElementType>>([]);
     (pageConfig.data as Array<PageItemType>).forEach((item) => {
       if (item.id === Number(pageId)) {
@@ -59,6 +60,18 @@ export default defineComponent({
       resolveRender.parentId = data.targetId;
       // 添加放置组件数据
       editorData.push(resolveRender);
+    });
+    /**
+     * @description 监听KP文本内容编辑
+     *
+     */
+    EventBus.$on('commentTextEdit', 'KP', (data: any) => {
+      // for (let i = 0, l = editorData.length; i < l; i++) {
+      //   if (editorData[i].id === data.targetId) {
+      //     editorData[i].children = data.textValue as string;
+      //   }
+      // }
+      KPTextChangeValue = data.textValue;
     });
     /**
      * @description 选中编辑组件
@@ -97,11 +110,27 @@ export default defineComponent({
     const editPreComponent = (editId: number, editKey: string, newValue: string | number) => {
       for (let i = 0, l = editorData.length; i < l; i++) {
         if (editorData[i].id === editId) {
-          editorData[i].props.forEach((item) => {
-            if (item.propKey === editKey) {
-              item.propValue = newValue;
+          if (editKey === 'children') {
+            editorData[i].children = KPTextChangeValue;
+          } else {
+            // 处理组件后期新增props
+            const propList: Array<string> = [];
+            editorData[i].props.forEach((item) => {
+              propList.push(item.propKey);
+            });
+            const inPropListIndex = propList.findIndex((value) => {
+              return value === editKey;
+            });
+            if (inPropListIndex > -1) {
+              editorData[i].props[inPropListIndex].propValue = newValue;
+            } else {
+              const addPropsItem = config.componentMap[editorData[i].key].render.props.filter((value) => {
+                return value.propKey === editKey;
+              });
+              addPropsItem.length > 0 ? (addPropsItem[0].propValue = newValue) : null;
+              editorData[i].props.push(...addPropsItem);
             }
-          });
+          }
           break;
         }
       }

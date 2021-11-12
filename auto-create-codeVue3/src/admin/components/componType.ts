@@ -12,3 +12,4 @@ export type FontWeight =
   | 'bolder'
   | 'lighter'
   | undefined;
+export type FontAlign = 'left' | 'center' | 'right';

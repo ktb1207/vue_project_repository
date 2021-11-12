@@ -61,7 +61,7 @@ export default defineComponent({
     const editActiveId = inject<Ref>('editId', ref(999999));
     const nowNodeId = toRef(props, 'nodeId');
     const showMethod = toRef(props, 'showWay');
-    const overKey = inject<Ref>('dragKey');
+    const overKey = inject<Ref>('dragKey', ref(''));
     const { onEditDragOver, onEditDrop } = useEditDrag();
     const computedClass = (): string => {
       const editClass = props.showWay === 'edit' ? ' is-edit' : '';

@@ -4,7 +4,7 @@ import { VNode } from 'vue';
 
 type PropSelect = Array<string> | Array<number> | string | number | boolean;
 type PropValue = string | number | boolean;
-type PropResize = 'text' | 'color' | 'select';
+type PropResize = 'text' | 'color' | 'select' | 'button';
 // 组件属性定义
 interface ComponentPropType {
   // 组件prop name
@@ -208,6 +208,14 @@ registerConfig.reqister({
         allowResize: false
       },
       {
+        propKey: 'fontAlign',
+        propValue: 'left',
+        propSelect: ['left', 'center', 'right'],
+        allowResize: true,
+        resizeTitle: '字体对齐',
+        resizeFormItem: 'select'
+      },
+      {
         propKey: 'fontColor',
         propValue: '#333',
         propSelect: '#333',
@@ -230,6 +238,14 @@ registerConfig.reqister({
         allowResize: true,
         resizeTitle: '字体加粗',
         resizeFormItem: 'select'
+      },
+      {
+        propKey: 'children',
+        propValue: '保存',
+        propSelect: '',
+        allowResize: true,
+        resizeTitle: '保存文本',
+        resizeFormItem: 'button'
       }
     ],
     children: '这是默认文本内容，点击可编辑'

@@ -19,7 +19,8 @@ $activeColor: red;
 }
 // editview
 .k-row.is-editview{
-  height: 72px;
+  min-height: 72px;
+  height: auto;
   resize: vertical;
 }
 // active

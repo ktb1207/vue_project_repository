@@ -1,21 +1,22 @@
 $previewColor: #acacac;
 $editColor: #333;
 $editActive: red;
-.k-p{
-  margin:0;
+.k-p {
+  margin: 0;
   padding: 0;
+  flex: 1;
   font-size: 14px;
 }
 // preview
-.k-p.is-preview{
-  color: $previewColor !important;
+.k-p.is-preview {
+  color: $previewColor;
 }
 // editview
-.k-p.is-editview{
+.k-p.is-editview {
   color: $editColor;
 }
 // active
-.k-p.edit-active{
+.k-p.edit-active {
   border: none;
   outline: none;
 }

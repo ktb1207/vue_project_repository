@@ -4,6 +4,7 @@ import { PropSelect, PropValue, PropResize } from '@/admin/utils/EditRegister';
 import PText from './formItem/PText';
 import PSelect from './formItem/PSelect';
 import PColor from './formItem/PColor';
+import PButton from './formItem/PButton';
 export interface ResizeType {
   resizeFormItem: PropResize;
   resizeTitle: string;
@@ -42,7 +43,8 @@ export default defineComponent({
     const componentMap = {
       text: PText,
       color: PColor,
-      select: PSelect
+      select: PSelect,
+      button: PButton
     };
     const vProp = reactive<Array<VNode>>([]);
     function valueChange(key: string, value: string | number) {

@@ -1,7 +1,8 @@
-import { defineComponent, PropType, toRef, ref, watch} from 'vue';
+import { defineComponent, PropType } from 'vue';
 import style from './style.module.scss';
 export default defineComponent({
-  name: 'PColor',
+  name: 'PButton',
+  emits: ['itemChange'],
   props: {
     label: {
       type: String,
@@ -28,17 +29,15 @@ export default defineComponent({
       required: false
     }
   },
-  setup(props, {emit}) {
-    const initValue = toRef(props, 'labelValue');
-    const moduleValue = ref<string>(initValue.value);
-    watch(moduleValue, (newVal) => {
-      emit('itemChange', props.valueKey, newVal);
-    });
+  setup(props, { emit }) {
+    const buttonClick = () => {
+      emit('itemChange', props.valueKey, props.labelValue);
+    };
     return () => (
       <div class={style.propItem}>
         <div class={style.propLable}>{props.label}</div>
         <div>
-          <input type="color" class={style.propInput} v-model={moduleValue.value}/>
+          <button onClick={buttonClick}>{props.labelValue}</button>
         </div>
       </div>
     );

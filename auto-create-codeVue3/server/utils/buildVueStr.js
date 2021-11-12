@@ -5,7 +5,7 @@ function buildTreeData(arr, uniqueId = 'id', parentIdName = 'parentId') {
   let treeArr = [];
   const map = {};
   arr.forEach((item) => {
-    item.children = [];
+    item.children = item.children || [];
     if (!map[item[uniqueId]]) {
       map[item[uniqueId]] = item;
     }
@@ -35,14 +35,12 @@ function getEndTag(key) {
 function getPropValue(propArr) {
   var propStr = '';
   propArr.forEach((val) => {
-    if (val.propKey === 'nodeId') {
-      propStr += '';
-    } else if (val.propKey === 'showWay') {
-      propStr += ' ' + val.propKey + '=' + '"' + 'show' + '"';
-      // edit
-      // propStr += ' ' + val.propKey + '=' + '"' + val.propValue + '"';
-    } else {
-      propStr += ' ' + val.propKey + '=' + '"' + val.propValue + '"';
+    if (val.allowResize) {
+      if (typeof val.propValue === 'string') {
+        propStr += ' ' + val.propKey + '=' + '"' + val.propValue + '"';
+      } else {
+        propStr += ' ' + ':' + val.propKey + '=' + '"' + val.propValue + '"';
+      }
     }
   });
   return propStr;
