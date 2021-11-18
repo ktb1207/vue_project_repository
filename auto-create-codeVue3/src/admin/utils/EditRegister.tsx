@@ -1,5 +1,5 @@
 // 导入组件
-import { KRow, KCol, KP } from '@/admin/components/index';
+import { KRow, KCol, KP, KImage } from '@/admin/components/index';
 import { VNode } from 'vue';
 
 type PropSelect = Array<string> | Array<number> | string | number | boolean;
@@ -249,6 +249,19 @@ registerConfig.reqister({
       }
     ],
     children: '这是默认文本内容，点击可编辑'
+  }
+});
+
+registerConfig.reqister({
+  label: '图片',
+  key: 'KImage',
+  preview: () => <KImage showWay="edit" showPosition="preview"></KImage>,
+  render: {
+    key: 'KImage',
+    id: 0,
+    parentId: null,
+    props: [],
+    children: []
   }
 });
 

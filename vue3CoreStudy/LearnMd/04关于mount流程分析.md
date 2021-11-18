@@ -73,7 +73,8 @@ export function createAppAPI<HostElement>(
         isHydrate?: boolean,
         isSVG?: boolean
       ): any {
-        if (!isMounted) {
+        // 判断当前根是否已挂载
+		if (!isMounted) {
           // 获取vnode
           const vnode = createVNode(
             rootComponent as ConcreteComponent,
@@ -129,6 +130,7 @@ export function createAppAPI<HostElement>(
 > 分析
 - createAppAPI()方法接受render方法作为参数
 - 声明app对象，mount作为app对象的方法
+- 判断当前根是否已挂载，已挂载不允许重复挂载
 - mount方法首先调用createVNode方法获取最新vnode
 - 给vnode添加vnode.appContext = context
 - 调用render将vnode创建真实dom

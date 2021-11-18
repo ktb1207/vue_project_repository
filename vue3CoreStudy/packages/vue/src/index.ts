@@ -14,7 +14,16 @@ if (__DEV__) {
 }
 // 缓存编译结果
 const compileCache: Record<string, RenderFunction> = Object.create(null)
-// 注入compile方法
+
+/**
+ * @description 将template转换为render
+ *
+ * $mount内部，在没有render函数的情况下，会将template转换render
+ *
+ * @param {(string | HTMLElement)} template
+ * @param {CompilerOptions} [options]
+ * @return {*}  {RenderFunction}
+ */
 function compileToFunction(
   template: string | HTMLElement, // 模板
   options?: CompilerOptions // 编译配置
@@ -36,6 +45,7 @@ function compileToFunction(
     return cached
   }
   // 如果是 ID 选择器，这获取 DOM 元素后，取 innerHTML
+  // template 可以是一串字符串，也可以是id=template的dom元素里面的内容作为显示渲染内容
   if (template[0] === '#') {
     const el = document.querySelector(template)
     if (__DEV__ && !el) {
@@ -47,7 +57,7 @@ function compileToFunction(
     // by the server, the template should not contain any user data.
     template = el ? el.innerHTML : ``
   }
-  // 调用 compile 获取 render code
+  // 调用 compile 获取 render function
   const { code } = compile(
     template,
     extend(
@@ -82,8 +92,8 @@ function compileToFunction(
   const render = (__GLOBAL__
     ? new Function(code)()
     : new Function('Vue', code)(runtimeDom)) as RenderFunction
-
   // mark the function as runtime compiled
+  // 标记template to render 完成
   ;(render as InternalRenderFunction)._rc = true
   // 返回 render 方法的同时，将其放入缓存
   return (compileCache[key] = render)

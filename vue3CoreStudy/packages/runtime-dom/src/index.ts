@@ -12,11 +12,11 @@ import {
   DeprecationTypes,
   compatUtils
 } from '@vue/runtime-core'
-// 疯转节点操作方法
+// 平台相关--节点操作方法
 import { nodeOps } from './nodeOps'
-//
+// 属性比较相关
 import { patchProp, forcePatchProp } from './patchProp'
-// Importing from the compiler, will be tree-shaken in prod
+// 工具方法
 import { isFunction, isString, isHTMLTag, isSVGTag, extend } from '@vue/shared'
 
 declare module '@vue/reactivity' {
@@ -25,7 +25,7 @@ declare module '@vue/reactivity' {
     runtimeDOMBailTypes: Node | Window
   }
 }
-// 合并属性操作和节点操作
+// 合并属性和节点操作
 const rendererOptions = extend({ patchProp, forcePatchProp }, nodeOps)
 
 // lazy create the renderer - this makes core renderer logic tree-shakable

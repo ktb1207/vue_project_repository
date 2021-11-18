@@ -79,7 +79,7 @@ function baseCreateRenderer(
 
 - 作用：
   - 1. 声明创建 appContext 对象
-  - 2. 初始化 plugin Set()
+  - 2. 生命创建并初始化 保存已注册plugin为 Set()结构类型
   - 3.  定义 app 实例方法 use, mixin, component, directive, mount, unmount, provide
   - 2.  返回 app 实例，支持链式调用
 

@@ -1,56 +1,59 @@
 @import '../varible.scss';
-$editColor: #1890ff;
+$editColor: #dcdfe6;
 $activeColor: red;
-.k-row{
-  padding: 2px 0px;
+.k-row {
+  padding: 4px;
   display: flex;
   & + .k-row {
-    margin-top: 2px;
+    margin-top: 4px;
   }
 }
 // edit
-.k-row.is-edit{
+.k-row.is-edit {
   overflow: auto;
-  border: 1px dashed $editColor;
+  border-style: solid;
+  border-color: $editColor;
 }
 // preview
-.k-row.is-preview{
+.k-row.is-preview {
   height: 48px;
+  border-width: 4px;
 }
 // editview
-.k-row.is-editview{
+.k-row.is-editview {
   min-height: 72px;
+  border-width: 8px;
   height: auto;
   resize: vertical;
 }
 // active
-.k-row.edit-active{
-  border: 2px dashed $activeColor;
+.k-row.edit-active {
+  border-color: $activeColor;
 }
-.flex-left{
+.flex-left {
   justify-content: flex-start;
 }
-.flex-center{
+.flex-center {
   justify-content: center;
 }
-.flex-right{
+.flex-right {
   justify-content: flex-end;
 }
-.flex-between{
+.flex-between {
   justify-content: space-between;
 }
-.flex-around{
+.flex-around {
   justify-content: space-around;
 }
-.vertical-top{
+.vertical-top {
   align-items: flex-start;
 }
-.vertical-middle{
+.vertical-middle {
   align-items: center;
 }
-.vertical-bottom{
+.vertical-bottom {
   align-items: flex-end;
 }
-.vertical-stretch{
+.vertical-stretch {
   align-items: stretch;
 }

@@ -8,7 +8,8 @@
   <script src="../packages/vue/dist/vue.global.js"></script>
 </head>
 <body>
-  <div id='app'></div>
+  <div id='app'>app</div>
+  <div id='cpp'>welcome vue</div>
   <script type="module">
     const { createApp, h} = Vue;
     import { List } from './components/List.js';
@@ -21,34 +22,35 @@
           message: 'hello vue3!'
         }
       },
-      render() {
-        return h('div', 
-          {
-            class: 'wrp'
-          },
-          [
-            h('p', 
-              {
-                style: 'color: red'
-              },
-              '我是第一段落'
-            ),
-            h('p', 
-              {
-                style: 'color: red'
-              },
-              '我是第二段落'
-            ),
-            h('p', 
-              {
-                style: 'color: red'
-              },
-              this.message
-            ),
-            h(List)
-          ]
-        )
-      }
+      template: '#cpp',
+      // render() {
+      //   return h('div', 
+      //     {
+      //       class: 'wrp'
+      //     },
+      //     [
+      //       h('p', 
+      //         {
+      //           style: 'color: red'
+      //         },
+      //         '我是第一段落'
+      //       ),
+      //       h('p', 
+      //         {
+      //           style: 'color: red'
+      //         },
+      //         '我是第二段落'
+      //       ),
+      //       h('p', 
+      //         {
+      //           style: 'color: red'
+      //         },
+      //         this.message
+      //       ),
+      //       h(List)
+      //     ]
+      //   )
+      // }
       // render() {
       //   return h('i', null, '这是i内容')
       // }

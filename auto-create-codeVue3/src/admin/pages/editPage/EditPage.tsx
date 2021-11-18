@@ -66,11 +66,6 @@ export default defineComponent({
      *
      */
     EventBus.$on('commentTextEdit', 'KP', (data: any) => {
-      // for (let i = 0, l = editorData.length; i < l; i++) {
-      //   if (editorData[i].id === data.targetId) {
-      //     editorData[i].children = data.textValue as string;
-      //   }
-      // }
       KPTextChangeValue = data.textValue;
     });
     /**
@@ -158,7 +153,7 @@ export default defineComponent({
         <div class={style['left-wrp']}>
           {config.componentList.map((item) => (
             <div class={style['drag-item']} draggable onDragstart={(e) => materialDragStart(e, item.render)}>
-              <span>{item.label}</span>
+              <h3>{item.label}</h3>
               {item.preview()}
             </div>
           ))}

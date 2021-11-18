@@ -33,6 +33,7 @@ export const patchProp: DOMRendererOptions['patchProp'] = (
       patchStyle(el, prevValue, nextValue)
       break
     default:
+      // 事件prop
       if (isOn(key)) {
         // ignore v-model listeners
         if (!isModelListener(key)) {

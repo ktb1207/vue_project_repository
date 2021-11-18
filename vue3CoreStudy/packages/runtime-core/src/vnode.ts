@@ -335,10 +335,10 @@ export const createVNode = (__DEV__
   : _createVNode) as typeof _createVNode
 
 function _createVNode(
-  type: VNodeTypes | ClassComponent | typeof NULL_DYNAMIC_COMPONENT,
-  props: (Data & VNodeProps) | null = null,
+  type: VNodeTypes | ClassComponent | typeof NULL_DYNAMIC_COMPONENT, // 节点类型
+  props: (Data & VNodeProps) | null = null, // class style event  any props
   children: unknown = null,
-  patchFlag: number = 0,
+  patchFlag: number = 0, //
   dynamicProps: string[] | null = null,
   isBlockNode = false
 ): VNode {

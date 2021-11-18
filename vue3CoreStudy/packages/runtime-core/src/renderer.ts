@@ -444,7 +444,7 @@ function baseCreateRenderer(
 
 // implementation
 function baseCreateRenderer(
-  options: RendererOptions,
+  options: RendererOptions, // 平台相关 dom节点和属性操作方法
   createHydrationFns?: typeof createHydrationFunctions
 ): any {
   // compile-time feature flags check
@@ -2398,16 +2398,17 @@ function baseCreateRenderer(
     }
     return hostNextSibling((vnode.anchor || vnode.el)!)
   }
-
+  // 作为createAppAPI参数传入，app.mount()阶段在createVNode()之后调用
   const render: RootRenderFunction = (vnode, container, isSVG) => {
+    // vnode 新传入虚拟dom
+    // container._vnode 旧虚拟dom
     if (vnode == null) {
-      // new vnode null
       if (container._vnode) {
-        // old vnode存在，卸载
+        // 新vnode为空，存在旧vnode情况下，销毁旧组件
         unmount(container._vnode, null, null, true)
       }
     } else {
-      // old vnode new vonde patch
+      // 创建or更新
       patch(container._vnode || null, vnode, container, null, null, null, isSVG)
     }
     flushPostFlushCbs()
