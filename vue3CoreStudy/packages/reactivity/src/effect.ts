@@ -23,15 +23,17 @@ import { EMPTY_OBJ, isArray, isIntegerKey, isMap } from '@vue/shared'
 // raw Sets to reduce memory overhead.
 type Dep = Set<ReactiveEffect>
 type KeyToDepMap = Map<any, Dep>
+// targetMap 依赖管理中心，用于收集依赖和触发依赖
 const targetMap = new WeakMap<any, KeyToDepMap>()
 
+// 副作用的类型定义
 export interface ReactiveEffect<T = any> {
   (): T
-  _isEffect: true
+  _isEffect: true // 属性标识这是一个副作用
   id: number
-  active: boolean
-  raw: () => T
-  deps: Array<Dep>
+  active: boolean // 标识这个副作用启用和停用的状态
+  raw: () => T // 保存初始传入的函数
+  deps: Array<Dep> // 这个副作用的所有依赖
   options: ReactiveEffectOptions
   allowRecurse: boolean
 }
@@ -187,7 +189,22 @@ export function resetTracking() {
   const last = trackStack.pop()
   shouldTrack = last === undefined ? true : last
 }
-// track主要功能是将reactiveEffect添加为target[key]的观察者
+
+/**
+ * @description track主要功能是将reactiveEffect添加为target[key]的观察者
+ * @export
+ * @param {object} target
+ * @param {TrackOpTypes} type get has interate
+ * @param {unknown} key target[key]
+ *
+ *
+ * target: {
+ *    __v_isRef: true,
+ *    _rawValue: 0,
+ *    _shallow: false,
+ *    _value: 0
+ * }
+ */
 export function track(target: object, type: TrackOpTypes, key: unknown) {
   // 依赖收集进行的前置条件：
   // 1. 全局收集标识开启
@@ -224,9 +241,9 @@ export function track(target: object, type: TrackOpTypes, key: unknown) {
     depsMap.set(key, (dep = new Set()))
   }
   if (!dep.has(activeEffect)) {
-    // 将当前effect放到依赖集合中
+    // 将当前的副作用函数收集进依赖中
     dep.add(activeEffect)
-    // 一个effect可能使用到了多个key，所以会有多个dep依赖集合
+    // 并在当前副作用函数的 deps 属性中记录该依赖
     activeEffect.deps.push(dep)
     if (__DEV__ && activeEffect.options.onTrack) {
       activeEffect.options.onTrack({

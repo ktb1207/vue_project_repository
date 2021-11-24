@@ -58,7 +58,7 @@ export function ref<T = any>(): Ref<T | undefined>
 export function ref(value?: unknown) {
   return createRef(value)
 }
-
+// shallowRef
 export function shallowRef<T extends object>(
   value: T
 ): T extends Ref ? T : Ref<T>
@@ -73,19 +73,45 @@ class RefImpl<T> {
   private _value: T
   // ref 标识
   public readonly __v_isRef = true
+  /**
+   * 构造函数
+   *
+   *  _rawValue: 保存上一个值
+   *  _shallow: 浅标注
+   * */
 
   constructor(private _rawValue: T, public readonly _shallow = false) {
-    // 如果是对象就value就是reactive(val)，否则就是自己
+    /**
+     * 1.首先判断_shallow,浅代理标志
+     *
+     * 如果是浅代理，取得代理值本身
+     *
+     * 不是浅代理，判断代理值类型，是否为Object，为简单值则获取代理值本身，如果为Object,则获取reactive(obj)返回值
+     * */
+
     this._value = _shallow ? _rawValue : convert(_rawValue)
   }
   // 获取数据
   get value() {
     // 依赖收集
+    /**
+     * const num = ref(0);
+     *
+     * toRaw(this) 返回值
+     *
+     * {
+     *   __v_isRef: true
+     *   _rawValue: 0
+     *   _shallow: false
+     *   _value: 0
+     * }
+     * */
     track(toRaw(this), TrackOpTypes.GET, 'value')
     return this._value
   }
   // 设置新值
   set value(newVal) {
+    // 判断新旧值是否有变化
     if (hasChanged(toRaw(newVal), this._rawValue)) {
       this._rawValue = newVal
       this._value = this._shallow ? newVal : convert(newVal)
@@ -103,11 +129,11 @@ function createRef(rawValue: unknown, shallow = false) {
   //
   return new RefImpl(rawValue, shallow)
 }
-
+// 手动执行与 shallowRef 关联的任何作用 (effect)
 export function triggerRef(ref: Ref) {
   trigger(toRaw(ref), TriggerOpTypes.SET, 'value', __DEV__ ? ref.value : void 0)
 }
-// 如果参数是一个 ref，则返回内部值，否则返回参数本身
+// 如果参数是一个 ref，则返回内部值，否则返回参数本身。这是 val = isRef(val) ? val.value : val 的语法糖函数。
 export function unref<T>(ref: T): T extends Ref<infer V> ? V : T {
   return isRef(ref) ? (ref.value as any) : ref
 }

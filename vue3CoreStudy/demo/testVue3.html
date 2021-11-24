@@ -9,51 +9,27 @@
 </head>
 <body>
   <div id='app'>app</div>
-  <div id='cpp'>welcome vue</div>
+  <!-- <div id='cpp'>welcome vue</div> -->
   <script type="module">
-    const { createApp, h} = Vue;
+    const { createApp, h, ref } = Vue;
     import { List } from './components/List.js';
     const App = {
       components: {
         List
       },
-      data() {
-        return {
-          message: 'hello vue3!'
+      // template: '#cpp',
+      setup() {
+        const num = ref(0);
+        const btnClick = () => {
+          num.value += 1;
         }
-      },
-      template: '#cpp',
-      // render() {
-      //   return h('div', 
-      //     {
-      //       class: 'wrp'
-      //     },
-      //     [
-      //       h('p', 
-      //         {
-      //           style: 'color: red'
-      //         },
-      //         '我是第一段落'
-      //       ),
-      //       h('p', 
-      //         {
-      //           style: 'color: red'
-      //         },
-      //         '我是第二段落'
-      //       ),
-      //       h('p', 
-      //         {
-      //           style: 'color: red'
-      //         },
-      //         this.message
-      //       ),
-      //       h(List)
-      //     ]
-      //   )
-      // }
-      // render() {
-      //   return h('i', null, '这是i内容')
-      // }
+        return () => h(
+          'button',
+          {
+            onclick: btnClick
+          }, 
+          `点我+1--${num.value}`)
+      }
     }
     const app = createApp(App).mount("#app");
     console.log(app);

@@ -98,7 +98,8 @@ function compileToFunction(
   // 返回 render 方法的同时，将其放入缓存
   return (compileCache[key] = render)
 }
-// 依赖注入编译函数至runtime
+
+// 通过依赖注入的方式，将 compile 函数注入至 runtime 运行时中
 registerRuntimeCompiler(compileToFunction)
 
 export { compileToFunction as compile }

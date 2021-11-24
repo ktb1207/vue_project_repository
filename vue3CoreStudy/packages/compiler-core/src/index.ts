@@ -1,3 +1,21 @@
+/**
+ * compile核心模块说明
+ *
+ * compiler-core 的一个核心作用就是将字符串转换成 抽象对象语法树AST，将非结构化的字符串数据，转换成结构化的 AST
+ *
+ * 目录说明：
+ * test 测试文件
+ * src/ast 语法类型定义
+ * src/codegen 将生成的ast转换成render字符串
+ * src/compiler 主要有一个baseCompile,用来编译模板文件
+ * src/error 定义compiler错误类型
+ * src/index 入口文件
+ * src/parse 将模板字符串转换成AST
+ * src/runtimeHelper 生成code的时候定义常量对应关系
+ * src/transform 处理AST中的vue特有语法，如v-on,v-if的解析
+ *
+ * */
+
 export { baseCompile } from './compile'
 
 // Also expose lower level APIs & types

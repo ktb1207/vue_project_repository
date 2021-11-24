@@ -163,7 +163,11 @@ export function createAppAPI<HostElement>(
     const installedPlugins = new Set()
     // 当前未挂载标识
     let isMounted = false
-
+    /***
+     *
+     * 1. context.app = {...}
+     * 2. const app: App = context
+     */
     const app: App = (context.app = {
       _uid: uid++,
       _component: rootComponent as ConcreteComponent,
@@ -334,7 +338,6 @@ export function createAppAPI<HostElement>(
         return app
       }
     })
-
     if (__COMPAT__) {
       installAppCompatProperties(app, context, render)
     }

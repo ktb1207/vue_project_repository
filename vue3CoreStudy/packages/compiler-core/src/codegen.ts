@@ -61,10 +61,10 @@ const WITH_ID = `_withId`
 type CodegenNode = TemplateChildNode | JSChildNode | SSRCodegenNode
 
 export interface CodegenResult {
-  code: string
-  preamble: string
-  ast: RootNode
-  map?: RawSourceMap
+  code: string // 代码字符串
+  preamble: string // 代码字符串的前置部分 preamble
+  ast: RootNode // ast 抽象语法树
+  map?: RawSourceMap // 可选的 sourceMap
 }
 
 export interface CodegenContext
@@ -183,6 +183,17 @@ function createCodegenContext(
 
   return context
 }
+/**
+ * 作用：
+ * 1.返回代码字符串
+ * 2.配合 Function 类的构造函数生成 render 渲染函数
+ *
+ * ast:经过转换器处理的 ast 抽象语法树
+ * options:代码生成选项
+ *
+ * 返回CodegenResult
+ *
+ * */
 
 export function generate(
   ast: RootNode,
