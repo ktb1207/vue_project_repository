@@ -105,24 +105,26 @@ export default defineComponent({
       }
     };
     return () => (
-      <p
-        class={computedClass()}
-        style={{
-          color: fcolor.value,
-          fontSize: fsize.value + 'px',
-          fontWeight: fweight.value,
-          textAlign: falign.value
-        }}
-        contenteditable={props.contentEdit}
-        onDragover={(e) => dragOver(e)}
-        onDrop={(e) => drop(e)}
-        onCompositionstart={(e) => keUpStart(e)}
-        onKeyup={(e) => keyUp(e)}
-        onCompositionend={(e) => keUpEnd(e)}
-        onMousedown={(e) => mouseDown(e)}
-      >
-        {ctx.slots.default ? ctx.slots.default() : ''}
-      </p>
+      <div style={{ flex: 1 }}>
+        <p
+          class={computedClass()}
+          style={{
+            color: fcolor.value,
+            fontSize: fsize.value + 'px',
+            fontWeight: fweight.value,
+            textAlign: falign.value
+          }}
+          contenteditable={props.contentEdit}
+          onDragover={(e) => dragOver(e)}
+          onDrop={(e) => drop(e)}
+          onCompositionstart={(e) => keUpStart(e)}
+          onKeyup={(e) => keyUp(e)}
+          onCompositionend={(e) => keUpEnd(e)}
+          onMousedown={(e) => mouseDown(e)}
+        >
+          {ctx.slots.default ? ctx.slots.default() : ''}
+        </p>
+      </div>
     );
   }
 });

@@ -1,4 +1,4 @@
-import { defineComponent, SetupContext, PropType, toRef, computed, inject, Ref, ref } from 'vue';
+import { defineComponent, SetupContext, PropType, toRef, computed, inject, Ref, ref, watch } from 'vue';
 import { useEditDrag } from '../useComponDrag';
 import { ShowWay, ShowPosition } from '../componType';
 import './style.scss';
@@ -81,8 +81,48 @@ export default defineComponent({
       const isActive = editActiveId?.value === nowNodeId.value ? ' ' + 'edit-active' : '';
       return 'k-col' + isPreview + editClass + flexDirectionClass + isActive;
     };
-    const mainAlignClass = props.mainAlign === 'center' ? 'center' : `flex-${props.mainAlign}`;
-    const crossAlignClass = toRef(props, 'crossAlign').value;
+    const mainPropValue = toRef(props, 'mainAlign');
+    const mainAlignStyle = computed(() => {
+      let value = 'flex-start';
+      switch (mainPropValue.value) {
+        case 'around':
+          value = 'space-around';
+          break;
+        case 'between':
+          value = 'space-between';
+          break;
+        case 'center':
+          value = 'center';
+          break;
+        case 'end':
+          value = 'flex-end';
+          break;
+        default:
+          value = 'flex-start';
+      }
+      return value;
+    });
+    const crossPropValue = toRef(props, 'crossAlign');
+    const crossAlignStyle = computed(() => {
+      let value = 'stretch';
+      switch (crossPropValue.value) {
+        case 'center':
+          value = 'center';
+          break;
+        case 'flex-start':
+          value = 'flex-start';
+          break;
+        case 'flex-end':
+          value = 'flex-end';
+          break;
+        case 'stretch':
+          value = 'stretch';
+          break;
+        default:
+          break;
+      }
+      return value;
+    });
     const refWidth = toRef(props, 'width');
     const computedWidth = computed(() => {
       const pxReg = /^(\d+(px))$/;
@@ -110,7 +150,7 @@ export default defineComponent({
     return () => (
       <div
         class={computedClass()}
-        style={{ flex: computedWidth.value, justifyContent: mainAlignClass, alignItems: crossAlignClass }}
+        style={{ flex: computedWidth.value, justifyContent: mainAlignStyle.value, alignItems: crossAlignStyle.value }}
         onDragover={(e) => dragOver(e)}
         onDrop={(e) => drop(e)}
       >

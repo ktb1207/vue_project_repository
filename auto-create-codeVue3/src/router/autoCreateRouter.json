@@ -1,8 +1,8 @@
 {
 	"routerArr": [
 		{
-			"path": "/studentInfo",
-			"name": "StudentInfo",
+			"path": "/studyInfo",
+			"name": "StudyInfo",
 			"meta": {
 				"title": "学生信息"
 			}

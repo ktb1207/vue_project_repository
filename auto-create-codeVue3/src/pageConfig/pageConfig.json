@@ -1,13 +1,13 @@
 {
 	"data": [
 		{
-			"id": 1636525134693,
-			"fileName": "StudentInfo",
+			"id": 1638173313213,
+			"fileName": "StudyInfo",
 			"pageDesc": "学生信息",
 			"children": [
 				{
 					"key": "KRow",
-					"id": 1636697639164,
+					"id": 1638175183864,
 					"parentId": null,
 					"props": [
 						{
@@ -63,8 +63,8 @@
 				},
 				{
 					"key": "KCol",
-					"id": 1636697641415,
-					"parentId": 1636697639164,
+					"id": 1638175186251,
+					"parentId": 1638175183864,
 					"props": [
 						{
 							"propKey": "nodeId",
@@ -89,7 +89,7 @@
 						},
 						{
 							"propKey": "width",
-							"propValue": "1",
+							"propValue": "16",
 							"propSelect": "160px",
 							"allowResize": true,
 							"resizeTitle": "宽度",
@@ -138,8 +138,8 @@
 				},
 				{
 					"key": "KP",
-					"id": 1636697643897,
-					"parentId": 1636697641415,
+					"id": 1638175196990,
+					"parentId": 1638175186251,
 					"props": [
 						{
 							"propKey": "nodeId",
@@ -169,8 +169,20 @@
 							"allowResize": false
 						},
 						{
+							"propKey": "fontAlign",
+							"propValue": "right",
+							"propSelect": [
+								"left",
+								"center",
+								"right"
+							],
+							"allowResize": true,
+							"resizeTitle": "字体对齐",
+							"resizeFormItem": "select"
+						},
+						{
 							"propKey": "fontColor",
-							"propValue": "#24bbc6",
+							"propValue": "#d54848",
 							"propSelect": "#333",
 							"allowResize": true,
 							"resizeTitle": "字体颜色",
@@ -221,253 +233,9 @@
 							"allowResize": true,
 							"resizeTitle": "保存文本",
 							"resizeFormItem": "button"
-						},
-						{
-							"propKey": "fontAlign",
-							"propValue": "right",
-							"propSelect": [
-								"left",
-								"center",
-								"right"
-							],
-							"allowResize": true,
-							"resizeTitle": "字体对齐",
-							"resizeFormItem": "select"
 						}
 					],
-					"children": "2008年北京奥运会主题曲\n作词：大奎\n作曲：大奎\n演唱：吐鲁番"
-				},
-				{
-					"key": "KRow",
-					"id": 1636701602259,
-					"parentId": null,
-					"props": [
-						{
-							"propKey": "nodeId",
-							"propValue": 0,
-							"propSelect": 0,
-							"allowResize": false
-						},
-						{
-							"propKey": "showWay",
-							"propValue": "edit",
-							"propSelect": [
-								"edit",
-								"show"
-							],
-							"allowResize": false
-						},
-						{
-							"propKey": "showPosition",
-							"propValue": "editview",
-							"propSelect": "editview",
-							"allowResize": false
-						},
-						{
-							"propKey": "align",
-							"propValue": "left",
-							"propSelect": [
-								"left",
-								"center",
-								"right",
-								"between",
-								"around"
-							],
-							"allowResize": true,
-							"resizeTitle": "水平对齐",
-							"resizeFormItem": "select"
-						},
-						{
-							"propKey": "verticalAlign",
-							"propValue": "stretch",
-							"propSelect": [
-								"top",
-								"middle",
-								"bottom",
-								"stretch"
-							],
-							"allowResize": true,
-							"resizeTitle": "垂直对齐",
-							"resizeFormItem": "select"
-						}
-					],
-					"children": []
-				},
-				{
-					"key": "KCol",
-					"id": 1636701604469,
-					"parentId": 1636701602259,
-					"props": [
-						{
-							"propKey": "nodeId",
-							"propValue": 0,
-							"propSelect": 0,
-							"allowResize": false
-						},
-						{
-							"propKey": "showWay",
-							"propValue": "edit",
-							"propSelect": [
-								"edit",
-								"show"
-							],
-							"allowResize": false
-						},
-						{
-							"propKey": "showPosition",
-							"propValue": "editview",
-							"propSelect": "editview",
-							"allowResize": false
-						},
-						{
-							"propKey": "width",
-							"propValue": "1",
-							"propSelect": "160px",
-							"allowResize": true,
-							"resizeTitle": "宽度",
-							"resizeFormItem": "text"
-						},
-						{
-							"propKey": "flexDirection",
-							"propValue": "row",
-							"propSelect": [
-								"row",
-								"col"
-							],
-							"allowResize": true,
-							"resizeTitle": "排列方向",
-							"resizeFormItem": "select"
-						},
-						{
-							"propKey": "mainAlign",
-							"propValue": "start",
-							"propSelect": [
-								"start",
-								"center",
-								"end",
-								"between",
-								"around"
-							],
-							"allowResize": true,
-							"resizeTitle": "主对齐",
-							"resizeFormItem": "select"
-						},
-						{
-							"propKey": "crossAlign",
-							"propValue": "stretch",
-							"propSelect": [
-								"flex-start",
-								"center",
-								"flex-end",
-								"stretch"
-							],
-							"allowResize": true,
-							"resizeTitle": "副对齐",
-							"resizeFormItem": "select"
-						}
-					],
-					"children": []
-				},
-				{
-					"key": "KP",
-					"id": 1636701611817,
-					"parentId": 1636701604469,
-					"props": [
-						{
-							"propKey": "nodeId",
-							"propValue": 0,
-							"propSelect": 0,
-							"allowResize": false
-						},
-						{
-							"propKey": "showWay",
-							"propValue": "edit",
-							"propSelect": [
-								"edit",
-								"show"
-							],
-							"allowResize": false
-						},
-						{
-							"propKey": "showPosition",
-							"propValue": "editview",
-							"propSelect": "editview",
-							"allowResize": false
-						},
-						{
-							"propKey": "contentEdit",
-							"propValue": true,
-							"propSelect": true,
-							"allowResize": false
-						},
-						{
-							"propKey": "fontAlign",
-							"propValue": "right",
-							"propSelect": [
-								"left",
-								"center",
-								"right"
-							],
-							"allowResize": true,
-							"resizeTitle": "字体对齐",
-							"resizeFormItem": "select"
-						},
-						{
-							"propKey": "fontColor",
-							"propValue": "#333",
-							"propSelect": "#333",
-							"allowResize": true,
-							"resizeTitle": "字体颜色",
-							"resizeFormItem": "color"
-						},
-						{
-							"propKey": "fontSize",
-							"propValue": 20,
-							"propSelect": [
-								12,
-								14,
-								16,
-								18,
-								20,
-								22,
-								24,
-								28,
-								32
-							],
-							"allowResize": true,
-							"resizeTitle": "字号大小",
-							"resizeFormItem": "select"
-						},
-						{
-							"propKey": "fontWeight",
-							"propValue": "bold",
-							"propSelect": [
-								"100",
-								"200",
-								"300",
-								"400",
-								"500",
-								"600",
-								"700",
-								"800",
-								"900",
-								"normal",
-								"bold"
-							],
-							"allowResize": true,
-							"resizeTitle": "字体加粗",
-							"resizeFormItem": "select"
-						},
-						{
-							"propKey": "children",
-							"propValue": "保存",
-							"propSelect": "",
-							"allowResize": true,
-							"resizeTitle": "保存文本",
-							"resizeFormItem": "button"
-						}
-					],
-					"children": "暗杀刷卡机哈桑\n阿卡莎开始觉得哈手机号ask电话卡时就会打开ask记得哈矿山救护队\n阿拉斯加的拉伸空间的阿里山可见度拉萨空间的拉山口建档立卡十九点埃里克森建档立卡十九点\n拉萨大家拉克斯基的阿斯利康到家啦时空的距离阿斯利康大家ask来得及爱丽丝的加拉时刻记得"
+					"children": "这是默认文本内容，点击可编辑"
 				}
 			]
 		}

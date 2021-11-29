@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .flex-wrp{
+      display: flex;
+      height: 200px;
+      align-items: flex-start;
+      background-color: bisque;
+    }
+    .p-wrp{
+      flex: 1;
+    }
+    p{
+      margin: 0;
+    }
+    .edit-p{
+      outline: none;
+      border: none;
+      display: block;
+      width: 100%;
+      background-color: brown;
+    }
+  </style>
+</head>
+<body>
+  <div class="flex-wrp">
+    <div class="p-wrp">
+      <p contenteditable="true" class="edit-p">这是p段落</p>
+    </div>
+    
+  </div>
+</body>
+</html>

@@ -2,7 +2,7 @@ import { defineComponent, PropType, inject, Ref, ref, toRef } from 'vue';
 import './style.scss';
 import { ShowWay, ShowPosition } from '../componType';
 import { useEditDrag } from '../useComponDrag';
-import kPreviewImage from './k_img_preview.png';
+// import kPreviewImage from './k_img_preview.png';
 import kEditviewImage from './k_img_editview.png';
 
 export default defineComponent({

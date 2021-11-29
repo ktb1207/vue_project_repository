@@ -12,9 +12,11 @@ function useEditDrag(): ReturnValue {
   const onEditDragOver = (e: DragEvent, dragKey: string, overKey: string) => {
     e.stopPropagation();
     if (overKey === 'KRow' && dragKey === 'KCol') {
+      // row只允许放置单元格
       e.preventDefault();
     }
-    if (overKey === 'KCol') {
+    if (overKey === 'KCol' && dragKey !== 'KCol') {
+      // col 不允许在放置col
       e.preventDefault();
     }
   };
