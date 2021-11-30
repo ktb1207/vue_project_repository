@@ -1,5 +1,6 @@
 import { httpAxios } from '@/utils/index';
 const pageService = '/api/page';
+const fileService = '/api/file';
 
 type getParamsType = {
   [propname: string]: any;
@@ -15,7 +16,10 @@ const sysApi = {
   // 删除页面
   postDelPage: (data: postParamsType = {}): Promise<any> => httpAxios.post(`${pageService}/deletePage`, data),
   // 修改保存
-  postEditSavePage: (data: postParamsType = {}): Promise<any> => httpAxios.post(`${pageService}/editSave`, data)
+  postEditSavePage: (data: postParamsType = {}): Promise<any> => httpAxios.post(`${pageService}/editSave`, data),
+
+  // 获取图片base64
+  getImageBase: (params: getParamsType = {}): Promise<any> => httpAxios.get(`${fileService}/image`, { params })
 };
 
 export default sysApi;

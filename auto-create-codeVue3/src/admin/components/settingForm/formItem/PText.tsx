@@ -32,14 +32,22 @@ export default defineComponent({
   setup(props, { emit }) {
     const initValue = toRef(props, 'labelValue');
     const moduleValue = ref<string>(initValue.value);
-    watch(moduleValue, (newVal) => {
-      emit('itemChange', props.valueKey, newVal);
-    });
+    let oldInputValue = moduleValue.value;
+    const sureClick = () => {
+      if (oldInputValue === moduleValue.value) {
+        return;
+      }
+      oldInputValue = moduleValue.value;
+      emit('itemChange', props.valueKey, moduleValue.value);
+    };
     return () => (
       <div class={style.propItem}>
         <div class={style.propLable}>{props.label}</div>
         <div>
           <input type="text" class={style.propInput} v-model={moduleValue.value} />
+          <button class={style.inputAfterButton} onClick={sureClick}>
+            确认
+          </button>
         </div>
       </div>
     );

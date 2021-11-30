@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const page = require('./routes/page');
+const file = require('./routes/file');
 
 const server = express();
 const port = 8088;
@@ -13,6 +14,7 @@ server.use(bodyParser.json());
 
 // 路由模块
 server.use('/api/page', page);
+server.use('/api/file', file);
 server.get('/', (req, res) => {
   res.send('this is node server for file');
 });

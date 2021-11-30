@@ -6,8 +6,8 @@ $editActiveColor: red;
   padding: 0;
 }
 .k-image.is-preview {
-  width: 140px;
-  height: 140px;
+  width: auto;
+  height: auto;
   border: 1px dashed $editColor;
 }
 .k-image.is-editview {

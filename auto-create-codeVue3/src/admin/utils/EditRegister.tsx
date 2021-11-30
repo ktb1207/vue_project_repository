@@ -260,7 +260,34 @@ registerConfig.reqister({
     key: 'KImage',
     id: 0,
     parentId: null,
-    props: [],
+    props: [
+      {
+        propKey: 'nodeId',
+        propValue: 0,
+        propSelect: 0,
+        allowResize: false
+      },
+      {
+        propKey: 'showWay',
+        propValue: 'edit',
+        propSelect: ['edit', 'show'],
+        allowResize: false
+      },
+      {
+        propKey: 'showPosition',
+        propValue: 'editview',
+        propSelect: 'editview',
+        allowResize: false
+      },
+      {
+        propKey: 'imageName',
+        propValue: 'default.png',
+        propSelect: '',
+        allowResize: true,
+        resizeTitle: '图片名称',
+        resizeFormItem: 'text'
+      }
+    ],
     children: []
   }
 });

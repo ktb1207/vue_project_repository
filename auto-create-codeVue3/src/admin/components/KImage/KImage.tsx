@@ -1,8 +1,9 @@
-import { defineComponent, PropType, inject, Ref, ref, toRef } from 'vue';
+import { defineComponent, PropType, inject, Ref, ref, toRef, computed, watch } from 'vue';
 import './style.scss';
 import { ShowWay, ShowPosition } from '../componType';
 import { useEditDrag } from '../useComponDrag';
-// import kPreviewImage from './k_img_preview.png';
+import sysApi from '@/admin/api/index';
+import kPreviewImage from './k_img_preview.png';
 import kEditviewImage from './k_img_editview.png';
 
 export default defineComponent({
@@ -22,12 +23,18 @@ export default defineComponent({
       type: String as PropType<ShowPosition>,
       default: 'preview',
       required: false
+    },
+    imageName: {
+      type: String,
+      default: 'default.png',
+      required: false
     }
   },
   setup(props) {
     const editActiveId = inject<Ref>('editId', ref(999999));
     const nowNodeId = toRef(props, 'nodeId');
     const showMethod = toRef(props, 'showWay');
+    const showLocation = toRef(props, 'showPosition');
     const overKey = inject<Ref>('dragKey', ref(''));
     const { onEditDragOver, onEditDrop } = useEditDrag();
     const computedClass = (): string => {
@@ -36,6 +43,25 @@ export default defineComponent({
       const isActive = editActiveId?.value === nowNodeId.value ? ' ' + 'edit-active' : '';
       return 'k-image' + isPreview + editClass + isActive;
     };
+    const imagePropName = toRef(props, 'imageName');
+    const computedImageUrl = computed(() => {
+      if (showLocation.value === 'preview') {
+        return kPreviewImage;
+      } else {
+        return kEditviewImage;
+      }
+    });
+    const editViewImageUrl = ref(computedImageUrl.value);
+    watch(imagePropName, (newVal) => {
+      if (newVal) {
+        sysApi.getImageBase({ imageName: newVal }).then((res) => {
+          if (res.code === 200) {
+            editViewImageUrl.value = res.data.dataSrc;
+            console.log(res.data.dataSrc);
+          }
+        });
+      }
+    });
     const dragOver = (e: DragEvent) => {
       if (showMethod.value === 'edit') {
         onEditDragOver(e, (overKey as Ref<any>)?.value, 'KImage');
@@ -46,13 +72,17 @@ export default defineComponent({
         onEditDrop(e, nowNodeId.value as number);
       }
     };
+    const imgError = (e: Event) => {
+      console.log(e);
+    };
     return () => (
       <img
         class={computedClass()}
-        src={kEditviewImage}
+        src={editViewImageUrl.value}
         alt="kimage"
         onDragover={(e) => dragOver(e)}
         onDrop={(e) => drop(e)}
+        onError={(e) => imgError(e)}
       />
     );
   }

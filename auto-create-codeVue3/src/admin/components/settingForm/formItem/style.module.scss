@@ -6,11 +6,15 @@ $inputWidth: 146px;
     color: #575757;
   }
   .propInput{
-    display: block;
+    display: inline-block;
     box-sizing: border-box;
     width: $inputWidth;
     height: $inputHeight;
     font-size: 18px;
     padding-left: 12px;
   }
+  .inputAfterButton{
+    height: $inputHeight;
+  }
 }
+
