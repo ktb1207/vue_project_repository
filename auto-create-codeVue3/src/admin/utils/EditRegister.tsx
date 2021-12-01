@@ -286,6 +286,22 @@ registerConfig.reqister({
         allowResize: true,
         resizeTitle: '图片名称',
         resizeFormItem: 'text'
+      },
+      {
+        propKey: 'imageWidth',
+        propValue: 'auto',
+        propSelect: '',
+        allowResize: true,
+        resizeTitle: '图片宽度',
+        resizeFormItem: 'text'
+      },
+      {
+        propKey: 'imageHeight',
+        propValue: 'auto',
+        propSelect: '',
+        allowResize: true,
+        resizeTitle: '图片高度',
+        resizeFormItem: 'text'
       }
     ],
     children: []

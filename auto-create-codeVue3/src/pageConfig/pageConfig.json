@@ -236,6 +236,446 @@
 						}
 					],
 					"children": "这是默认文本内容，点击可编辑"
+				},
+				{
+					"key": "KRow",
+					"id": 1638323931686,
+					"parentId": null,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "align",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "水平对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "verticalAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"top",
+								"middle",
+								"bottom",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "垂直对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1638323933277,
+					"parentId": 1638323931686,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "160px",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "center",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "flex-end",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KImage",
+					"id": 1638323935066,
+					"parentId": 1638323933277,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "imageName",
+							"propValue": "image1.jpg",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片名称",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "imageWidth",
+							"propValue": "200px",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "imageHeight",
+							"propValue": "100px",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片高度",
+							"resizeFormItem": "text"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1638323970172,
+					"parentId": 1638323931686,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "160px",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KImage",
+					"id": 1638323971716,
+					"parentId": 1638323970172,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "imageName",
+							"propValue": "image2.jpeg",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片名称",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "imageWidth",
+							"propValue": "400px",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "imageHeight",
+							"propValue": "360px",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片高度",
+							"resizeFormItem": "text"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1638345440359,
+					"parentId": 1638323931686,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "160px",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KImage",
+					"id": 1638345442439,
+					"parentId": 1638345440359,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "imageName",
+							"propValue": "image1.jpg",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片名称",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "imageWidth",
+							"propValue": "auto",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "imageHeight",
+							"propValue": "auto",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片高度",
+							"resizeFormItem": "text"
+						}
+					],
+					"children": []
 				}
 			]
 		}
