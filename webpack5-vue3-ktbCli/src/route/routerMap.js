@@ -39,6 +39,11 @@ export const routerMap = [
     component: () => import('@/page/ArraySort.vue')
   },
   {
+    path: '/promiseAsync',
+    name: 'PromiseAsync',
+    component: () => import('@/page/PromiseAsync.vue')
+  },
+  {
     path: '/about',
     name: 'About',
     component: () => import('@/page/About.vue')
