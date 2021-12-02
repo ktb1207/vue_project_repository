@@ -21,10 +21,10 @@ export const enum ReactiveFlags {
 }
 
 export interface Target {
-  [ReactiveFlags.SKIP]?: boolean
-  [ReactiveFlags.IS_REACTIVE]?: boolean
-  [ReactiveFlags.IS_READONLY]?: boolean
-  [ReactiveFlags.RAW]?: any
+  [ReactiveFlags.SKIP]?: boolean // 跳过
+  [ReactiveFlags.IS_REACTIVE]?: boolean // reactive标记
+  [ReactiveFlags.IS_READONLY]?: boolean // readonly标记
+  [ReactiveFlags.RAW]?: any // 原值
 }
 
 export const reactiveMap = new WeakMap<Target, any>()
