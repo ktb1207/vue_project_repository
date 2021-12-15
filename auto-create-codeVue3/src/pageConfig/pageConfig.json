@@ -1,13 +1,13 @@
 {
 	"data": [
 		{
-			"id": 1638173313213,
-			"fileName": "StudyInfo",
-			"pageDesc": "学生信息",
+			"id": 1639535506968,
+			"fileName": "NewDesc",
+			"pageDesc": "新闻描述",
 			"children": [
 				{
 					"key": "KRow",
-					"id": 1638175183864,
+					"id": 1639535701530,
 					"parentId": null,
 					"props": [
 						{
@@ -63,8 +63,8 @@
 				},
 				{
 					"key": "KCol",
-					"id": 1638175186251,
-					"parentId": 1638175183864,
+					"id": 1639535703534,
+					"parentId": 1639535701530,
 					"props": [
 						{
 							"propKey": "nodeId",
@@ -89,7 +89,7 @@
 						},
 						{
 							"propKey": "width",
-							"propValue": "16",
+							"propValue": "1",
 							"propSelect": "160px",
 							"allowResize": true,
 							"resizeTitle": "宽度",
@@ -138,8 +138,8 @@
 				},
 				{
 					"key": "KP",
-					"id": 1638175196990,
-					"parentId": 1638175186251,
+					"id": 1639535715843,
+					"parentId": 1639535703534,
 					"props": [
 						{
 							"propKey": "nodeId",
@@ -170,7 +170,7 @@
 						},
 						{
 							"propKey": "fontAlign",
-							"propValue": "right",
+							"propValue": "left",
 							"propSelect": [
 								"left",
 								"center",
@@ -182,7 +182,7 @@
 						},
 						{
 							"propKey": "fontColor",
-							"propValue": "#d54848",
+							"propValue": "#075ce4",
 							"propSelect": "#333",
 							"allowResize": true,
 							"resizeTitle": "字体颜色",
@@ -190,7 +190,7 @@
 						},
 						{
 							"propKey": "fontSize",
-							"propValue": 20,
+							"propValue": 16,
 							"propSelect": [
 								12,
 								14,
@@ -235,11 +235,11 @@
 							"resizeFormItem": "button"
 						}
 					],
-					"children": "这是默认文本内容，点击可编辑"
+					"children": "当高通公司发布了最新的旗舰处理器骁龙8 Gen1之后，很多手机品牌均放出喜报，并表示自己将会是首批用上这一处理器的手机厂商，看到这种情况很多普通消费者都会感觉不理解，是不是首批用上这一处理器难道真的有这么重要吗？事实上在快速发展的手机行业中，率先搭载最新的硬件配置不仅仅能够获得更高的热度，对于销售而言也确实能有较大的帮助。"
 				},
 				{
 					"key": "KRow",
-					"id": 1638323931686,
+					"id": 1639535743931,
 					"parentId": null,
 					"props": [
 						{
@@ -295,8 +295,8 @@
 				},
 				{
 					"key": "KCol",
-					"id": 1638323933277,
-					"parentId": 1638323931686,
+					"id": 1639535745675,
+					"parentId": 1639535743931,
 					"props": [
 						{
 							"propKey": "nodeId",
@@ -321,7 +321,423 @@
 						},
 						{
 							"propKey": "width",
-							"propValue": "160px",
+							"propValue": "1",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KImage",
+					"id": 1639535755266,
+					"parentId": 1639535745675,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "imageName",
+							"propValue": "a1.jpeg",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片名称",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "imageWidth",
+							"propValue": "auto",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "imageHeight",
+							"propValue": "auto",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片高度",
+							"resizeFormItem": "text"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KRow",
+					"id": 1639535823701,
+					"parentId": null,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "align",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "水平对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "verticalAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"top",
+								"middle",
+								"bottom",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "垂直对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1639535825659,
+					"parentId": 1639535823701,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "1",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KP",
+					"id": 1639535853949,
+					"parentId": 1639535825659,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "contentEdit",
+							"propValue": true,
+							"propSelect": true,
+							"allowResize": false
+						},
+						{
+							"propKey": "fontAlign",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right"
+							],
+							"allowResize": true,
+							"resizeTitle": "字体对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "fontColor",
+							"propValue": "#e10e0e",
+							"propSelect": "#333",
+							"allowResize": true,
+							"resizeTitle": "字体颜色",
+							"resizeFormItem": "color"
+						},
+						{
+							"propKey": "fontSize",
+							"propValue": 16,
+							"propSelect": [
+								12,
+								14,
+								16,
+								18,
+								20,
+								22,
+								24,
+								28,
+								32
+							],
+							"allowResize": true,
+							"resizeTitle": "字号大小",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "fontWeight",
+							"propValue": "normal",
+							"propSelect": [
+								"100",
+								"200",
+								"300",
+								"400",
+								"500",
+								"600",
+								"700",
+								"800",
+								"900",
+								"normal",
+								"bold"
+							],
+							"allowResize": true,
+							"resizeTitle": "字体加粗",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "children",
+							"propValue": "保存",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "保存文本",
+							"resizeFormItem": "button"
+						}
+					],
+					"children": "手机厂商们都明白这一点，所以也都在争取首发权，不过按照惯例，小米公司的小米12将会是最有可能首发这一处理器的新机，即使它不是首发，也绝对会是最早能大批量供货的骁龙8 Gen1新机，毕竟小米手机拥有着全球前三的市场份额，如此大的体量也拥有着更大的话语权，不过伴随着小米12即将到来，图中的这款上一代小米数字系列旗舰小米11也已经是开始加速让路了。"
+				},
+				{
+					"key": "KRow",
+					"id": 1639535887273,
+					"parentId": null,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "align",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "水平对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "verticalAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"top",
+								"middle",
+								"bottom",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "垂直对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1639535889554,
+					"parentId": 1639535887273,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "1",
 							"propSelect": "160px",
 							"allowResize": true,
 							"resizeTitle": "宽度",
@@ -354,7 +770,7 @@
 						},
 						{
 							"propKey": "crossAlign",
-							"propValue": "flex-end",
+							"propValue": "stretch",
 							"propSelect": [
 								"flex-start",
 								"center",
@@ -370,8 +786,8 @@
 				},
 				{
 					"key": "KImage",
-					"id": 1638323935066,
-					"parentId": 1638323933277,
+					"id": 1639535896645,
+					"parentId": 1639535889554,
 					"props": [
 						{
 							"propKey": "nodeId",
@@ -396,7 +812,7 @@
 						},
 						{
 							"propKey": "imageName",
-							"propValue": "image1.jpg",
+							"propValue": "a2.jpeg",
 							"propSelect": "",
 							"allowResize": true,
 							"resizeTitle": "图片名称",
@@ -404,7 +820,7 @@
 						},
 						{
 							"propKey": "imageWidth",
-							"propValue": "200px",
+							"propValue": "auto",
 							"propSelect": "",
 							"allowResize": true,
 							"resizeTitle": "图片宽度",
@@ -412,7 +828,7 @@
 						},
 						{
 							"propKey": "imageHeight",
-							"propValue": "100px",
+							"propValue": "auto",
 							"propSelect": "",
 							"allowResize": true,
 							"resizeTitle": "图片高度",
@@ -422,9 +838,65 @@
 					"children": []
 				},
 				{
+					"key": "KRow",
+					"id": 1639546841144,
+					"parentId": null,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "align",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "水平对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "verticalAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"top",
+								"middle",
+								"bottom",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "垂直对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
 					"key": "KCol",
-					"id": 1638323970172,
-					"parentId": 1638323931686,
+					"id": 1639546843978,
+					"parentId": 1639546841144,
 					"props": [
 						{
 							"propKey": "nodeId",
@@ -449,7 +921,7 @@
 						},
 						{
 							"propKey": "width",
-							"propValue": "160px",
+							"propValue": "1",
 							"propSelect": "160px",
 							"allowResize": true,
 							"resizeTitle": "宽度",
@@ -497,9 +969,9 @@
 					"children": []
 				},
 				{
-					"key": "KImage",
-					"id": 1638323971716,
-					"parentId": 1638323970172,
+					"key": "KP",
+					"id": 1639546853517,
+					"parentId": 1639546843978,
 					"props": [
 						{
 							"propKey": "nodeId",
@@ -523,36 +995,140 @@
 							"allowResize": false
 						},
 						{
-							"propKey": "imageName",
-							"propValue": "image2.jpeg",
-							"propSelect": "",
-							"allowResize": true,
-							"resizeTitle": "图片名称",
-							"resizeFormItem": "text"
+							"propKey": "contentEdit",
+							"propValue": true,
+							"propSelect": true,
+							"allowResize": false
 						},
 						{
-							"propKey": "imageWidth",
-							"propValue": "400px",
-							"propSelect": "",
+							"propKey": "fontAlign",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right"
+							],
 							"allowResize": true,
-							"resizeTitle": "图片宽度",
-							"resizeFormItem": "text"
+							"resizeTitle": "字体对齐",
+							"resizeFormItem": "select"
 						},
 						{
-							"propKey": "imageHeight",
-							"propValue": "360px",
+							"propKey": "fontColor",
+							"propValue": "#47d912",
+							"propSelect": "#333",
+							"allowResize": true,
+							"resizeTitle": "字体颜色",
+							"resizeFormItem": "color"
+						},
+						{
+							"propKey": "fontSize",
+							"propValue": 18,
+							"propSelect": [
+								12,
+								14,
+								16,
+								18,
+								20,
+								22,
+								24,
+								28,
+								32
+							],
+							"allowResize": true,
+							"resizeTitle": "字号大小",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "fontWeight",
+							"propValue": "bold",
+							"propSelect": [
+								"100",
+								"200",
+								"300",
+								"400",
+								"500",
+								"600",
+								"700",
+								"800",
+								"900",
+								"normal",
+								"bold"
+							],
+							"allowResize": true,
+							"resizeTitle": "字体加粗",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "children",
+							"propValue": "保存",
 							"propSelect": "",
 							"allowResize": true,
-							"resizeTitle": "图片高度",
-							"resizeFormItem": "text"
+							"resizeTitle": "保存文本",
+							"resizeFormItem": "button"
+						}
+					],
+					"children": "小米11这款手机的登场时间非常特殊，2020年上半年小米公司发布了小米10，但是在2020年年底这款小米11却提前登场了，打破了小米数字系列旗舰一年一更新的惯例，之所以小米公司急着发布小米11，也是因为当时想要抢骁龙888处理器的首发权，而最终小米11成功的成为了全球首发骁龙888处理器的旗舰。"
+				},
+				{
+					"key": "KRow",
+					"id": 1639546901273,
+					"parentId": null,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "align",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "水平对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "verticalAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"top",
+								"middle",
+								"bottom",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "垂直对齐",
+							"resizeFormItem": "select"
 						}
 					],
 					"children": []
 				},
 				{
 					"key": "KCol",
-					"id": 1638345440359,
-					"parentId": 1638323931686,
+					"id": 1639546904077,
+					"parentId": 1639546901273,
 					"props": [
 						{
 							"propKey": "nodeId",
@@ -577,7 +1153,7 @@
 						},
 						{
 							"propKey": "width",
-							"propValue": "160px",
+							"propValue": "1",
 							"propSelect": "160px",
 							"allowResize": true,
 							"resizeTitle": "宽度",
@@ -596,7 +1172,7 @@
 						},
 						{
 							"propKey": "mainAlign",
-							"propValue": "start",
+							"propValue": "end",
 							"propSelect": [
 								"start",
 								"center",
@@ -626,8 +1202,8 @@
 				},
 				{
 					"key": "KImage",
-					"id": 1638345442439,
-					"parentId": 1638345440359,
+					"id": 1639546912607,
+					"parentId": 1639546904077,
 					"props": [
 						{
 							"propKey": "nodeId",
@@ -652,7 +1228,7 @@
 						},
 						{
 							"propKey": "imageName",
-							"propValue": "image1.jpg",
+							"propValue": "a3.jpeg",
 							"propSelect": "",
 							"allowResize": true,
 							"resizeTitle": "图片名称",
