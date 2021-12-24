@@ -1,10 +1,10 @@
 {
 	"routerArr": [
 		{
-			"path": "/studyInfo",
-			"name": "StudyInfo",
+			"path": "/newDesc",
+			"name": "NewDesc",
 			"meta": {
-				"title": "学生信息"
+				"title": "新闻描述"
 			}
 		}
 	]

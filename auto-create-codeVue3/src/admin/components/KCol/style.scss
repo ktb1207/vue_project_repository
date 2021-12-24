@@ -18,12 +18,12 @@ $editActiveColor: red;
   border-color: $editColor;
 }
 // preview
-.k-col.is-preview {
+.is-edit.is-preview {
   height: 20px;
   border-width: 2px;
 }
 // editview
-.k-col.is-editview {
+.is-edit.is-editview {
   padding: 0;
   border-width: 4px;
   min-height: 72px;
