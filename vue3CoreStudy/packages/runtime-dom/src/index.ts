@@ -61,6 +61,10 @@ export const hydrate = ((...args) => {
   ensureHydrationRenderer().hydrate(...args)
 }) as RootHydrateFunction
 
+/**
+ * @param {args} 根组件实例
+ */
+
 export const createApp = ((...args) => {
   // ensureRenderer() 返回 render,hydrate,createApp三个方法
   const app = ensureRenderer().createApp(...args)

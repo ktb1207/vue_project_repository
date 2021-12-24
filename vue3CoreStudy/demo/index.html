@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>hello vue3</title>
+  <script src="../packages/vue/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id='app'>app</div>
+  <script type="module">
+    const { createApp, h, ref } = Vue;
+    const App = {
+      setup() {
+        const num = ref(0);
+        const btnClick = () => {
+          num.value += 1;
+        }
+        return () => h(
+          'button',
+          {
+            onclick: btnClick
+          }, 
+          `点我+1--${num.value}`)
+      }
+    }
+    const app = createApp(App).mount("#app");
+    console.log(app);
+  </script>
+</body>
+</html>
