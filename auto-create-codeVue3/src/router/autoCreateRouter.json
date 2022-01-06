@@ -6,6 +6,13 @@
 			"meta": {
 				"title": "新闻描述"
 			}
+		},
+		{
+			"path": "/Day",
+			"name": "Day",
+			"meta": {
+				"title": "今天圣诞节"
+			}
 		}
 	]
 }

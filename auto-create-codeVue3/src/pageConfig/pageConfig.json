@@ -1254,7 +1254,1198 @@
 					"children": []
 				}
 			]
+		},
+		{
+			"id": 1640348883803,
+			"fileName": "Day",
+			"pageDesc": "今天圣诞节",
+			"children": [
+				{
+					"key": "KRow",
+					"id": 1640348933851,
+					"parentId": null,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "align",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "水平对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "verticalAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"top",
+								"middle",
+								"bottom",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "垂直对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1640348936479,
+					"parentId": 1640348933851,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "1",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KP",
+					"id": 1640348960940,
+					"parentId": 1640348936479,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "contentEdit",
+							"propValue": true,
+							"propSelect": true,
+							"allowResize": false
+						},
+						{
+							"propKey": "fontAlign",
+							"propValue": "right",
+							"propSelect": [
+								"left",
+								"center",
+								"right"
+							],
+							"allowResize": true,
+							"resizeTitle": "字体对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "fontColor",
+							"propValue": "#2cb55c",
+							"propSelect": "#333",
+							"allowResize": true,
+							"resizeTitle": "字体颜色",
+							"resizeFormItem": "color"
+						},
+						{
+							"propKey": "fontSize",
+							"propValue": 28,
+							"propSelect": [
+								12,
+								14,
+								16,
+								18,
+								20,
+								22,
+								24,
+								28,
+								32
+							],
+							"allowResize": true,
+							"resizeTitle": "字号大小",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "fontWeight",
+							"propValue": "bold",
+							"propSelect": [
+								"100",
+								"200",
+								"300",
+								"400",
+								"500",
+								"600",
+								"700",
+								"800",
+								"900",
+								"normal",
+								"bold"
+							],
+							"allowResize": true,
+							"resizeTitle": "字体加粗",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "children",
+							"propValue": "保存",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "保存文本",
+							"resizeFormItem": "button"
+						}
+					],
+					"children": "今天是圣诞袜了JFK拉士大夫看见撒旦发安康市分厘卡是否会拉克斯基ask就返回拉萨开发和"
+				},
+				{
+					"key": "KRow",
+					"id": 1640349008051,
+					"parentId": null,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "align",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "水平对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "verticalAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"top",
+								"middle",
+								"bottom",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "垂直对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1640349010071,
+					"parentId": 1640349008051,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "1",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KImage",
+					"id": 1640349035864,
+					"parentId": 1640349010071,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "imageName",
+							"propValue": "a1.jpeg",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片名称",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "imageWidth",
+							"propValue": "auto",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "imageHeight",
+							"propValue": "auto",
+							"propSelect": "",
+							"allowResize": true,
+							"resizeTitle": "图片高度",
+							"resizeFormItem": "text"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KRow",
+					"id": 1640349195283,
+					"parentId": null,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "align",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "水平对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "verticalAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"top",
+								"middle",
+								"bottom",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "垂直对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1640349197768,
+					"parentId": 1640349195283,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "160px",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1640349200411,
+					"parentId": 1640349195283,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "160px",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1640349203224,
+					"parentId": 1640349195283,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "160px",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1640349207910,
+					"parentId": 1640349195283,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "160px",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KRow",
+					"id": 1640349232018,
+					"parentId": null,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "align",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "水平对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "verticalAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"top",
+								"middle",
+								"bottom",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "垂直对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1640349234646,
+					"parentId": 1640349232018,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "1",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1640349237130,
+					"parentId": 1640349232018,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "1",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KRow",
+					"id": 1640349239404,
+					"parentId": null,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "align",
+							"propValue": "left",
+							"propSelect": [
+								"left",
+								"center",
+								"right",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "水平对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "verticalAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"top",
+								"middle",
+								"bottom",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "垂直对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1640349242352,
+					"parentId": 1640349239404,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "1",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				},
+				{
+					"key": "KCol",
+					"id": 1640349244933,
+					"parentId": 1640349239404,
+					"props": [
+						{
+							"propKey": "nodeId",
+							"propValue": 0,
+							"propSelect": 0,
+							"allowResize": false
+						},
+						{
+							"propKey": "showWay",
+							"propValue": "edit",
+							"propSelect": [
+								"edit",
+								"show"
+							],
+							"allowResize": false
+						},
+						{
+							"propKey": "showPosition",
+							"propValue": "editview",
+							"propSelect": "editview",
+							"allowResize": false
+						},
+						{
+							"propKey": "width",
+							"propValue": "1",
+							"propSelect": "160px",
+							"allowResize": true,
+							"resizeTitle": "宽度",
+							"resizeFormItem": "text"
+						},
+						{
+							"propKey": "flexDirection",
+							"propValue": "row",
+							"propSelect": [
+								"row",
+								"col"
+							],
+							"allowResize": true,
+							"resizeTitle": "排列方向",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "mainAlign",
+							"propValue": "start",
+							"propSelect": [
+								"start",
+								"center",
+								"end",
+								"between",
+								"around"
+							],
+							"allowResize": true,
+							"resizeTitle": "主对齐",
+							"resizeFormItem": "select"
+						},
+						{
+							"propKey": "crossAlign",
+							"propValue": "stretch",
+							"propSelect": [
+								"flex-start",
+								"center",
+								"flex-end",
+								"stretch"
+							],
+							"allowResize": true,
+							"resizeTitle": "副对齐",
+							"resizeFormItem": "select"
+						}
+					],
+					"children": []
+				}
+			]
 		}
 	],
-	"total": 1
+	"total": 2
 }
