@@ -1,4 +1,5 @@
 /**
+ * ShapeFlags是为了实现快速判断组件类型而定义的枚举类型
  * shapeFlags 针对 VNode 的 type 进行了更详细的分类，便于在 patch 阶段，根据不同的类型执行相应的逻辑。
  * */
 

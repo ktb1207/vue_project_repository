@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试vue3 update</title>
+  <script src="../packages/vue/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id='app'>app</div>
+  <script type="module">
+    import { MyButton } from './components/MyButton.js'; 
+    const { createApp, h, ref } = Vue;
+    const App = {
+      components: {
+        MyButton
+      },
+      setup() {
+        return () => h(
+          'div',
+          {},
+          [
+            h(
+              'h3',
+              {
+                style: 'color: red'
+              },
+              '关于测试vue3更新流程--vnode是整个vnodeTree参与patch还是部分更新的vnode参与patch'
+            ),
+            h(MyButton),
+            h(
+              'h5',
+              {
+                style: 'color: green'
+              },
+              '测试结果说明，vue3在更新的过程中，会从当前数据更新的组件为起点进行向下树节点链路的patch,不会进行应用整棵vnode的patch，然后再进行有变化的更新dom'
+            )
+          ]
+        )
+      }
+    }
+    const app = createApp(App).mount("#app");
+  </script>
+</body>
+</html>
