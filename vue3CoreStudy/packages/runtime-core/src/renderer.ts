@@ -1335,6 +1335,7 @@ function baseCreateRenderer(
     // 2.x compat may pre-creaate the component instance before actually
     // mounting
     const compatMountInstance = __COMPAT__ && initialVNode.component
+    // 挂载组件第一步：创建组件实例
     const instance: ComponentInternalInstance =
       compatMountInstance ||
       (initialVNode.component = createComponentInstance(
