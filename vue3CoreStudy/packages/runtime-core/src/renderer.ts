@@ -1382,7 +1382,7 @@ function baseCreateRenderer(
       }
       return
     }
-
+    // // 挂载组件第二步：创建响应式渲染函数
     setupRenderEffect(
       instance,
       initialVNode,
@@ -1975,10 +1975,12 @@ function baseCreateRenderer(
     // [i ... e2 + 1]: a b [e d c h] f g
     // i = 2, e1 = 4, e2 = 5
     else {
-      const s1 = i // prev starting index
-      const s2 = i // next starting index
+      // 旧未知序列起始索引
+      const s1 = i
+      // 新未知序列起始索引
+      const s2 = i
 
-      // 5.1 build key:index map for newChildren
+      // 创建新节点未知序列key---索引map {key5: 3, key6: 4}
       const keyToNewIndexMap: Map<string | number, number> = new Map()
       for (i = s2; i <= e2; i++) {
         const nextChild = (c2[i] = optimized
@@ -1995,12 +1997,18 @@ function baseCreateRenderer(
           keyToNewIndexMap.set(nextChild.key, i)
         }
       }
+      // 遍历旧数组序列进行选择性的更新和移除
+      // 遍历旧数组的未知序列，根据key值且对照着刚刚建立的keyToNewIndexMap
+      // 查找旧数组序列中哪些节点仍然存在可以patch
+      // 哪些节点不存在需要移除
+      // 哪些节点需要移动
 
-      // 5.2 loop through old children left to be patched and try to patch
-      // matching nodes & remove nodes that are no longer present
       let j
+      // 新旧数组中已经 patch 过的节点数
       let patched = 0
+      // 所有待处理的节点，是新数组未知序列的长度
       const toBePatched = e2 - s2 + 1
+      // 是否有节点需要移动
       let moved = false
       // used to track whether any node has moved
       let maxNewIndexSoFar = 0
@@ -2011,16 +2019,20 @@ function baseCreateRenderer(
       // used for determining longest stable subsequence
       const newIndexToOldIndexMap = new Array(toBePatched)
       for (i = 0; i < toBePatched; i++) newIndexToOldIndexMap[i] = 0
-
+      // 遍历旧数组未知序列
       for (i = s1; i <= e1; i++) {
+        // 当前旧节点
         const prevChild = c1[i]
+        // 已经patch过的新节点数大于等于新节点未知序列长度，说明新节点未知序列部分处理完毕
         if (patched >= toBePatched) {
-          // all new children have been patched so this can only be a removal
+          // 旧节点移除
           unmount(prevChild, parentComponent, parentSuspense, true)
           continue
         }
         let newIndex
+        // 假定旧节点key存在
         if (prevChild.key != null) {
+          // 依据旧节点key获取新节点key值对对应的索引
           newIndex = keyToNewIndexMap.get(prevChild.key)
         } else {
           // key-less node, try to locate a key-less node of the same type
@@ -2034,15 +2046,24 @@ function baseCreateRenderer(
             }
           }
         }
+        // 当前节点在新节点未知序列不存在
         if (newIndex === undefined) {
+          // 移除节点
           unmount(prevChild, parentComponent, parentSuspense, true)
         } else {
+          // 旧节点存在新节点未知序列---更新
+          // 更新数组，因为默认值是 0，i 有可能是 0，+ 1 避免和默认值冲突
           newIndexToOldIndexMap[newIndex - s2] = i + 1
+          // maxNewIndexSoFar初始为0
+          // maxNewIndexSoFar赋值为当前旧节点在新节点未知序列的索引
           if (newIndex >= maxNewIndexSoFar) {
+            // 说明旧节点未知序列和新节点未知序列的顺序是一样的递增
             maxNewIndexSoFar = newIndex
           } else {
+            // 顺序发生变化，需要移动
             moved = true
           }
+          // patch新旧节点中相同节点
           patch(
             prevChild,
             c2[newIndex] as VNode,
@@ -2054,6 +2075,7 @@ function baseCreateRenderer(
             slotScopeIds,
             optimized
           )
+          // 未知序列处理过标识自增
           patched++
         }
       }
