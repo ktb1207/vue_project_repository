@@ -1,0 +1,48 @@
+@import '../../styles/variable.scss';
+$header-height: 58px;
+$left-width: 162px;
+$right-width: 196px;
+@mixin vertical-align-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.design-page{
+  font-size: 16px;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  .flex-header{
+    flex: 0 0 $header-height;
+    border-bottom: 1px solid $normal-border-color;
+    display: flex;
+    &-left{
+      flex: 0 0 $left-width;
+      @include vertical-align-center
+    }
+    &-center{
+      flex: 1;
+      @include vertical-align-center
+    }
+    &-right{
+      flex: 0 0 $right-width;
+    }
+  }
+  .flex-content{
+    flex: 1 1 auto;
+    height: 0;
+    display: flex;
+    &-left{
+      flex: 0 0 $left-width;
+      border-right: 1px solid $normal-border-color;
+    }
+    &-center{
+      flex: 1;
+    }
+    &-right{
+      flex: 0 0 $right-width;
+      border-left: 1px solid $normal-border-color;
+    }
+  }
+}

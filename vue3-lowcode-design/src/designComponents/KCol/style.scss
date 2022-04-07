@@ -1,0 +1,23 @@
+@import '../varible.scss';
+.k-col{
+  display: flex;
+  flex-wrap: wrap;
+  & + .k-col {
+    margin-left: $gutter;
+  }
+  & > .k-row{
+    flex: 1;
+  }
+}
+// edit
+.k-col.is-edit{
+  outline: 1px dashed $normal-border-color;
+  min-height: 48px;
+}
+
+.k-col.flex-row {
+  flex-direction: row;
+}
+.k-col.flex-col {
+  flex-direction: column;
+}

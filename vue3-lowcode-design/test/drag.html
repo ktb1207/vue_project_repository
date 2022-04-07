@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #app{
+      height: 100%;
+      background-color: aquamarine;
+    }
+    .child-one{
+      margin: 0 auto;
+      width: 320px;
+      height: 160px;
+      background-color: blanchedalmond;
+    }
+    .child-two{
+      margin: 42px auto;
+      width: 320px;
+      height: 160px;
+      background-color: brown;
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      const appDom = document.getElementById('app');
+
+      appDom.addEventListener('dragover', function(e) {
+        if(e.target.getAttribute('data-drop')!=='true') {
+          // 禁止放置
+          e.stopPropagation()
+        } else {
+          // 允许放置
+          e.preventDefault();
+        }
+      })
+      appDom.addEventListener('drop', function (e){
+        console.log(e)
+      })
+    }
+  </script>
+</head>
+<body>
+  <div id="app" data-drop="true">
+    <div class="child-one" data-drop="false"></div>
+    <div class="child-two" data-drop="true"></div>
+    <button draggable="true">drag</button>
+  </div>
+</body>
+</html>

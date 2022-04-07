@@ -1,0 +1,17 @@
+.preview-wrp{
+  position: relative;
+  height: 100%;
+  overflow: auto;
+  .placeholder{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  header{
+    height: 54px;
+    line-height: 54px;
+    padding-left: 12px;
+    border-bottom: 1px solid #ccc;
+  }
+}

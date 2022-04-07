@@ -1,0 +1,41 @@
+@import '../varible.scss';
+.k-row{
+  display: flex;
+  & + .k-row{
+    margin-top: $gutter;
+  }
+}
+// edit
+.k-row.is-edit{
+  outline: 1px dashed $normal-border-color;
+  padding: 4px;
+}
+
+.k-row.flex-left {
+  justify-content: flex-start;
+}
+
+.k-row.flex-center {
+  justify-content: center;
+}
+.k-row.flex-right {
+  justify-content: flex-end;
+}
+.k-row.flex-between {
+  justify-content: space-between;
+}
+.k-row.flex-around {
+  justify-content: space-around;
+}
+.k-row.vertical-top {
+  align-items: flex-start;
+}
+.k-row.vertical-middle {
+  align-items: center;
+}
+.k-row.vertical-bottom {
+  align-items: flex-end;
+}
+.k-row.vertical-stretch {
+  align-items: stretch;
+}

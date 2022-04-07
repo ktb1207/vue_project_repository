@@ -1,0 +1,10 @@
+html, body,div,span,section,article,header,canvas,h1,h2,h3,h4,h5,h6,p,ul,ol,li,span,table,thead,tbody,tfoot,th,tr,td,img{
+  margin: 0;
+  padding: 0;
+}
+div{
+  box-sizing: border-box;
+}
+li{
+  list-style: none;
+}
